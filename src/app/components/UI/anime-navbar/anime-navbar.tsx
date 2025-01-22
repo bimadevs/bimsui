@@ -19,8 +19,7 @@ interface NavBarProps {
   defaultActive?: string
 }
 
-export function AnimeNavBar({ items, className, defaultActive = "Home" }: NavBarProps) {
-  const pathname = usePathname()
+export function AnimeNavBar({ items, defaultActive = "Home" }: NavBarProps) {
   const [mounted, setMounted] = useState(false)
   const [hoveredTab, setHoveredTab] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState<string>(defaultActive)
