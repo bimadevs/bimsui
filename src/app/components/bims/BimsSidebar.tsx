@@ -7,21 +7,25 @@ interface BimsSidebarProps {
 }
 
 export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSidebarProps) => {
-
     const HTML = [
-        "button",
-        "card",
-        "forms",
-        "navigation",
-        "modal",
-        "table",
-        "container",
-        "grid",
-        "stack",
-        "installation",
-        "usage",
+        { name: "Button", href: "/html/button" },
+        { name: "Card", href: "/html/card" },
+        { name: "Forms", href: "/html/forms" },
+        { name: "Navigation", href: "/html/navigation" },
+        { name: "Modal", href: "/html/modal" },
+        { name: "Table", href: "/html/table" },
+        { name: "Container", href: "/html/container" },
+        { name: "Grid", href: "/html/grid" },
+        { name: "Stack", href: "/html/stack" },
+        { name: "Installation", href: "/html/installation" },
+        { name: "Usage", href: "/html/usage" },
     ];
-    const NextJs = ["Hero", "Navbar", "Footer"];
+
+    const NextJs = [
+        { name: "Spline", href: "/previews/spline" },
+        { name: "Gooey Text", href: "/previews/GooeyText" },
+        { name: "Anime Navbar", href: "/previews/anime-navbar" },
+    ];
 
     const components = framework === "html" ? HTML : NextJs;
 
@@ -38,15 +42,15 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                     <div className="flex items-center gap-2">
                         <motion.button
                             onClick={() => onFrameworkChange("html")}
-                            className= "flex-1 border rounded-md px-3 py-1 text-sm transition-colors"
+                            className="flex-1 border rounded-md px-3 py-1 text-sm transition-colors"
                             whileHover={{ scale: 1.1, backgroundColor: "#3498db", color: "#fff" }}
-                            whileTap={{ scale: 0.95, }}
+                            whileTap={{ scale: 0.95 }}
                         >
                             HTML
                         </motion.button>
                         <motion.button
                             onClick={() => onFrameworkChange("nextjs")}
-                            className= "flex-1 border rounded-md px-3 py-1 text-sm transition-colors"
+                            className="flex-1 border rounded-md px-3 py-1 text-sm transition-colors"
                             whileHover={{ scale: 1.1, backgroundColor: "#3498db", color: "#fff" }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -58,16 +62,19 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                     <motion.ul className="space-y-1">
                         {components.map((component) => (
                             <motion.li
-                                key={component}
+                                key={component.name}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 0.1 * components.indexOf(component), duration: 0.3 }}
+                                transition={{
+                                    delay: 0.1 * components.indexOf(component),
+                                    duration: 0.3,
+                                }}
                             >
                                 <a
-                                    href="#"
+                                    href={component.href}
                                     className="block px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
                                 >
-                                    {component.charAt(0).toUpperCase() + component.slice(1)}
+                                    {component.name}
                                 </a>
                             </motion.li>
                         ))}

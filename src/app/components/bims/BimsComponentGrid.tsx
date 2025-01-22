@@ -9,52 +9,36 @@ interface BimsComponentGridProps {
 export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
   const components = [
     {
-      id: "button",
-      name: "Button",
-      description: "Clickable button element with various styles and states",
-      category: "Basic",
+      id: "Spline",
+      name: "Spline",
+      description: "Tampilan 3D dengan framer-motion dan Spline",
+      category: "NextJS",
       image: "/placeholder.svg",
       link: "/Previews/interaktif3D"
     },
     {
-      id: "card",
-      name: "Card",
-      description: "Container for content with optional header and footer",
-      category: "Layout",
+      id: "GooeyText",
+      name: "GooeyText",
+      description: "Teks Gooey dengan framer-motion",
+      category: "NextJS",
       image: "/placeholder.svg",
-      link: "/components/card"
+      link: "/Previews/GooeyText"
     },
     {
-      id: "input",
-      name: "Input",
-      description: "Text input field with various states and validations",
-      category: "Form",
+      id: "anime-navbar",
+      name: "anime-navbar",
+      description: "Sebuah Navbar dengan animasi keren dan hover efek",
+      category: "NextJS",
       image: "/placeholder.svg",
-      link: "/components/input"
+      link: "/Previews/anime-navbar"
     },
     {
-      id: "modal",
-      name: "Modal",
-      description: "Overlay dialog for important content and actions",
-      category: "Overlay",
+      id: "highlighter",
+      name: "highlighter",
+      description: "Sebuah card dengan animasi highlight saat hover",
+      category: "NextJS",
       image: "/placeholder.svg",
-      link: "/components/modal"
-    },
-    {
-      id: "table",
-      name: "Table",
-      description: "Data table with sorting and pagination",
-      category: "Data Display",
-      image: "/placeholder.svg",
-      link: "/components/table"
-    },
-    {
-      id: "navigation",
-      name: "Navigation",
-      description: "Navigation components including navbar and breadcrumbs",
-      category: "Navigation",
-      image: "/placeholder.svg",
-      link: "/components/navigation"
+      link: "/Previews/highlighter"
     },
   ];
 
@@ -63,7 +47,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Components</h1>
         <p className="text-muted-foreground mt-2">
-          Beautiful, reusable components built with Tailwind CSS and {framework === "nextjs" ? "Next.js" : "HTML"}.
+          UI Component keren dan modern
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
