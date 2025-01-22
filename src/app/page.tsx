@@ -7,7 +7,7 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { BimsComponentGrid } from "@/app/components/bims/BimsComponentGrid";
 
 export default function Home() {
-  const [framework, setFramework] = useState<"nextjs" | "html">("html");
+  const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
     <>

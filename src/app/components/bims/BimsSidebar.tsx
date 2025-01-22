@@ -27,7 +27,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Anime Navbar", href: "/previews/anime-navbar" },
     ];
 
-    const components = framework === "html" ? HTML : NextJs;
+    const components = framework === "nextjs" ? NextJs : HTML;
 
     return (
         <motion.aside
@@ -41,20 +41,28 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                 <div className="space-y-4">
                     <div className="flex items-center gap-2">
                         <motion.button
-                            onClick={() => onFrameworkChange("html")}
-                            className="flex-1 border rounded-md px-3 py-1 text-sm transition-colors"
-                            whileHover={{ scale: 1.1, backgroundColor: "#3498db", color: "#fff" }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            HTML
-                        </motion.button>
-                        <motion.button
                             onClick={() => onFrameworkChange("nextjs")}
-                            className="flex-1 border rounded-md px-3 py-1 text-sm transition-colors"
-                            whileHover={{ scale: 1.1, backgroundColor: "#3498db", color: "#fff" }}
+                            className={`flex-1 border rounded-md px-3 py-1 text-sm transition-colors ${
+                                framework === "nextjs"
+                                    ? "bg-blue-500 text-white"
+                                    : "bg-transparent text-white"
+                            }`}
+                            whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
                         >
                             Next.js
+                        </motion.button>
+                        <motion.button
+                            onClick={() => onFrameworkChange("html")}
+                            className={`flex-1 border rounded-md px-3 py-1 text-sm transition-colors ${
+                                framework === "html"
+                                    ? "bg-blue-500 text-white"
+                                    : "bg-transparent text-white"
+                            }`}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            HTML
                         </motion.button>
                     </div>
                 </div>
