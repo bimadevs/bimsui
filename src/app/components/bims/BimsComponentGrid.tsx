@@ -14,7 +14,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       description: "Tampilan 3D dengan framer-motion dan Spline",
       category: "NextJS",
       image: "/placeholder.svg",
-      link: "/Previews/interaktif3D"
+      link: "/previews/spline"
     },
     {
       id: "GooeyText",
@@ -22,7 +22,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       description: "Teks Gooey dengan framer-motion",
       category: "NextJS",
       image: "/placeholder.svg",
-      link: "/Previews/GooeyText"
+      link: "/previews/GooeyText"
     },
     {
       id: "anime-navbar",
@@ -30,7 +30,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       description: "Sebuah Navbar dengan animasi keren dan hover efek",
       category: "NextJS",
       image: "/placeholder.svg",
-      link: "/Previews/anime-navbar"
+      link: "/previews/anime-navbar"
     },
     {
       id: "highlighter",
@@ -38,7 +38,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       description: "Sebuah card dengan animasi highlight saat hover",
       category: "NextJS",
       image: "/placeholder.svg",
-      link: "/Previews/highlighter"
+      link: "/previews/highlighter"
     },
   ];
 
