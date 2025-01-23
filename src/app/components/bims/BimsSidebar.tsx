@@ -25,6 +25,11 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Spline", href: "/previews/spline" },
         { name: "Gooey Text", href: "/previews/GooeyText" },
         { name: "Anime Navbar", href: "/previews/anime-navbar" },
+        { name: "Highlighter", href: "/previews/highlighter" },
+        { name: "Floating Button", href: "/previews/floating-button" },
+        { name: "Canvas", href: "/previews/canvas" },
+        { name: "Interaktif Icon", href: "/previews/interaktif-icon" },
+        { name: "Scroll Animation", href: "/previews/scroll-animation" },
     ];
 
     const components = framework === "nextjs" ? NextJs : HTML;
@@ -38,7 +43,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
             className="fixed left-0 top-16 z-30 h-[calc(100vh-4rem)] w-64 border-r bg-background"
         >
             <div className="flex h-full flex-col gap-2 p-4">
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                     <div className="flex items-center gap-2">
                         <motion.button
                             onClick={() => onFrameworkChange("nextjs")}
@@ -65,7 +70,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             HTML
                         </motion.button>
                     </div>
-                </div>
+                </div> */}
                 <motion.nav className="mt-6 flex-1 overflow-y-auto">
                     <motion.ul className="space-y-1">
                         {components.map((component) => (

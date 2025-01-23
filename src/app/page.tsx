@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image";
 import { useState } from "react";
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { BimsSidebar } from "@/app/components/bims/BimsSidebar";

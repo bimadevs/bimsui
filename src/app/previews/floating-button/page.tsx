@@ -6,12 +6,13 @@ import { useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FloatingButton } from "@/app/components/UI/floating-button/demo";
 
 export default function Gooey() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const dependencies = `npm i clsx tailwind-merge `
+  const dependencies = `npm i clsx tailwind-merge framer-motion lucide-react`
 
   const utils = `import { ClassValue, clsx } from "clsx";
     import { twMerge } from "tailwind-merge";
@@ -22,158 +23,145 @@ export default function Gooey() {
     `
 
   const demotsx = `
-    import * as React from "react";
-    import { GooeyText } from "@/components/ui/gooey-text-morphing";
-    
-    function GooeyTextDemo() {
-      return (
-        <div className="h-[200px] flex items-center justify-center">
-          <GooeyText
-            texts={["Design", "Engineering", "Is", "Awesome"]}
-            morphTime={1}
-            cooldownTime={0.25}
-            className="font-bold"
-          />
+  'use client'
+
+  import { Github, Twitter, Linkedin, Instagram, Youtube, Facebook } from "lucide-react"
+  import { AnimatedSocialIcons } from "@/components/ui/floating-action-button"
+  
+  export function Demo() {
+    const socialIcons = [
+      { 
+        Icon: Github,
+        href: "https://github.com",
+        className: "hover:bg-accent"
+      },
+      { 
+        Icon: Twitter,
+        href: "https://twitter.com" 
+      },
+      { 
+        Icon: Linkedin,
+        href: "https://linkedin.com" 
+      },
+      { 
+        Icon: Instagram,
+        href: "https://instagram.com" 
+      }
+    ]
+  
+    return (
+      <main className="relative w-full min-h-screen flex items-start md:items-center justify-center px-4 py-10 bg-background">
+        <AnimatedSocialIcons 
+          icons={socialIcons}
+          iconSize={20}
+        />
+      </main>
+    )
+  }`;
+
+  const floatingButton = `'use client'
+
+  import { motion } from "framer-motion"
+  import { Plus, LucideIcon } from "lucide-react"
+  import { useState } from "react"
+  import { cn } from "@/lib/utils"
+  
+  interface SocialIcon {
+    Icon: LucideIcon
+    href?: string
+    className?: string
+  }
+  
+  interface AnimatedSocialIconsProps {
+    icons: SocialIcon[]
+    className?: string
+    iconSize?: number
+  }
+  
+  export function AnimatedSocialIcons({ 
+    icons, 
+    className,
+    iconSize = 20
+  }: AnimatedSocialIconsProps) {
+    const [active, setActive] = useState(false)
+  
+    const buttonSize = "size-10 sm:size-16" 
+  
+    return (
+      <div className={cn("w-full relative flex items-start justify-start sm:justify-center", className)}>
+        <div className="flex items-center justify-center relative gap-4">
+          <motion.div
+            className="absolute left-0 bg-background w-full rounded-full z-10"
+            animate={{
+              x: active ? "calc(100% + 16px)" : 0,
+            }}
+            transition={{ type: "ease-in", duration: 0.5 }}
+          >
+            <motion.button
+              className={cn(
+                buttonSize,
+                "rounded-full flex items-center justify-center",
+                "bg-primary hover:bg-primary/90 transition-colors"
+              )}
+              onClick={() => setActive(!active)}
+              animate={{ rotate: active ? 45 : 0 }}
+              transition={{
+                type: "ease-in",
+                duration: 0.5,
+              }}
+            >
+              <Plus 
+                size={iconSize} 
+                strokeWidth={3} 
+                className="text-primary-foreground" 
+              />
+            </motion.button>
+          </motion.div>
+          
+          {icons.map(({ Icon, href, className }, index) => (
+            <motion.div
+              key={index}
+              className={cn(
+                buttonSize,
+                "rounded-full flex items-center justify-center",
+                "bg-background shadow-lg hover:shadow-xl",
+                "border border-border",
+                className
+              )}
+              animate={{
+                filter: active ? "blur(0px)" : "blur(2px)",
+                scale: active ? 1 : 0.9,
+                rotate: active ? 0 : 45,
+              }}
+              transition={{
+                type: "ease-in",
+                duration: 0.4,
+              }}
+            >
+              {href ? (
+                <a 
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
+                >
+                  <Icon 
+                    size={iconSize}
+                    className="text-muted-foreground transition-all hover:text-foreground hover:scale-110" 
+                  />
+                </a>
+              ) : (
+                <Icon 
+                  size={iconSize}
+                  className="text-muted-foreground transition-all hover:text-foreground hover:scale-110" 
+                />
+              )}
+            </motion.div>
+          ))}
         </div>
-      );
-    }
-    
-    export { GooeyTextDemo };`;
-
-  const gooeyTextMorphing = `'use client';
-
-import * as React from "react";
-import { cn } from "@/lib/utils";
-
-interface GooeyTextProps {
-  texts: string[];
-  morphTime?: number;
-  cooldownTime?: number;
-  className?: string;
-  textClassName?: string;
-}
-
-export function GooeyText({
-  texts,
-  morphTime = 1,
-  cooldownTime = 0.25,
-  className,
-  textClassName
-}: GooeyTextProps) {
-  const text1Ref = React.useRef<HTMLSpanElement>(null);
-  const text2Ref = React.useRef<HTMLSpanElement>(null);
-
-  React.useEffect(() => {
-    let textIndex = texts.length - 1;
-    let time = new Date();
-    let morph = 0;
-    let cooldown = cooldownTime;
-
-    const setMorph = (fraction: number) => {
-      if (text1Ref.current && text2Ref.current) {
-        text2Ref.current.style.filter = \`blur(\${Math.min(8 / fraction - 8, 100)}px)\`;
-        text2Ref.current.style.opacity = \`\${Math.pow(fraction, 0.4) * 100}%\`;
-
-        fraction = 1 - fraction;
-        text1Ref.current.style.filter = \`blur(\${Math.min(8 / fraction - 8, 100)}px)\`;
-        text1Ref.current.style.opacity = \`\${Math.pow(fraction, 0.4) * 100}%\`;
-      }
-    };
-
-    const doCooldown = () => {
-      morph = 0;
-      if (text1Ref.current && text2Ref.current) {
-        text2Ref.current.style.filter = "";
-        text2Ref.current.style.opacity = "100%";
-        text1Ref.current.style.filter = "";
-        text1Ref.current.style.opacity = "0%";
-      }
-    };
-
-    const doMorph = () => {
-      morph -= cooldown;
-      cooldown = 0;
-      let fraction = morph / morphTime;
-
-      if (fraction > 1) {
-        cooldown = cooldownTime;
-        fraction = 1;
-      }
-
-      setMorph(fraction);
-    };
-
-    function animate() {
-      requestAnimationFrame(animate);
-      const newTime = new Date();
-      const shouldIncrementIndex = cooldown > 0;
-      const dt = (newTime.getTime() - time.getTime()) / 1000;
-      time = newTime;
-
-      cooldown -= dt;
-
-      if (cooldown <= 0) {
-        if (shouldIncrementIndex) {
-          textIndex = (textIndex + 1) % texts.length;
-          if (text1Ref.current && text2Ref.current) {
-            text1Ref.current.textContent = texts[textIndex % texts.length];
-            text2Ref.current.textContent = texts[(textIndex + 1) % texts.length];
-          }
-        }
-        doMorph();
-      } else {
-        doCooldown();
-      }
-    }
-
-    animate();
-
-    return () => {
-      // Cleanup function if needed
-    };
-  }, [texts, morphTime, cooldownTime]);
-
-  return (
-    <div className={cn("relative", className)}>
-      <svg className="absolute h-0 w-0" aria-hidden="true" focusable="false">
-        <defs>
-          <filter id="threshold">
-            <feColorMatrix
-              in="SourceGraphic"
-              type="matrix"
-              values="1 0 0 0 0
-                      0 1 0 0 0
-                      0 0 1 0 0
-                      0 0 0 255 -140"
-            />
-          </filter>
-        </defs>
-      </svg>
-
-      <div
-        className="flex items-center justify-center"
-        style={{ filter: "url(#threshold)" }}
-      >
-        <span
-          ref={text1Ref}
-          className={cn(
-            "absolute inline-block select-none text-center text-6xl md:text-[60pt]",
-            "text-foreground",
-            textClassName
-          )}
-        />
-        <span
-          ref={text2Ref}
-          className={cn(
-            "absolute inline-block select-none text-center text-6xl md:text-[60pt]",
-            "text-foreground",
-            textClassName
-          )}
-        />
       </div>
-    </div>
-  );
-}
+    )
+  }
     `;
   // Fungsi untuk menyalin kode ke clipboard
   const copyToClipboard = (code: string) => {
@@ -196,14 +184,14 @@ export function GooeyText({
           onFrameworkChange={setFramework}
         />
         <main className={`pt-20 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-          <h1 className="text-3xl font-bold">Gooey Text</h1>
-          <p className="text-muted-foreground mt-2">Menampilkan teks dengan efek Gooey yang indah.</p>
+          <h1 className="text-3xl font-bold">Floating Button</h1>
+          <p className="text-muted-foreground mt-2">Sebuah Floating Button yang modern, sangat cocok untuk website kamu yang ingin terlihat modern dan beda dari yang lain</p>
 
           <div className="w-[90vw] border-dashed border-2 mt-4">
-            <GooeyTextDemo />
+            <FloatingButton />
           </div>
 
-          <div className="mt-6 w-[70vw]"> {/* Menyesuaikan lebar secara dinamis */}
+          <div className="mt-6 w-2/3"> {/* Menyesuaikan lebar secara dinamis */}
             <h2 className="text-2xl font-semibold">Installation</h2>
             <div className="mt-4 ">
               {/* install dependencies code  */}
@@ -271,8 +259,8 @@ export function GooeyText({
                 />
               </div>
 
-              {/* splite.tsx code  */}
-              <p className="font-bold">splite.tsx</p>
+              {/* floating-button.tsx code  */}
+              <p className="font-bold">floating-button.tsx</p>
               <div className="relative">
                 <SyntaxHighlighter
                   language="tsx"
@@ -285,10 +273,10 @@ export function GooeyText({
                     whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
                     wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
                   }}>
-                  {gooeyTextMorphing}
+                  {floatingButton}
                 </SyntaxHighlighter>
                 <FaClipboard
-                  onClick={() => copyToClipboard(gooeyTextMorphing)}
+                  onClick={() => copyToClipboard(floatingButton)}
                   className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
                 />
               </div>

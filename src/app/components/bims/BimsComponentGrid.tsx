@@ -40,6 +40,38 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       image: "/placeholder.svg",
       link: "/previews/highlighter"
     },
+    {
+      id: "Floating Button",
+      name: "Floating Button",
+      description: "Sebuah Floating Button yang modern, sangat cocok untuk website kamu yang ingin terlihat modern dan beda dari yang lain",
+      category: "NextJS",
+      image: "/placeholder.svg",
+      link: "/previews/floating-button"
+    },
+    {
+      id: "Canvas",
+      name: "Canvas",
+      description: "Sebuah Hero section dengan effek hover yang memukau, membuat website mu terlihat lebih indah dan interaktif",
+      category: "NextJS",
+      image: "/placeholder.svg",
+      link: "/previews/canvas"
+    },
+    {
+      id: "Interaktif Icon",
+      name: "Interaktif Icon",
+      description: "Interaktif Icon ini sangat cocok untuk kamu yang pengen pamer langguage program dengan gaya!",
+      category: "NextJS",
+      image: "/placeholder.svg",
+      link: "/previews/interaktif-icon"
+    },
+    {
+      id: "Scroll Animation",
+      name: "Scroll Animation",
+      description: "Ini adala sebuah component Scroll animation tablet. Dengan component ini, website mu menjadi lebih keren di mata user",
+      category: "NextJS",
+      image: "/placeholder.svg",
+      link: "/previews/scroll-animation"
+    },
   ];
 
   return (

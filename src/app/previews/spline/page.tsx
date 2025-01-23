@@ -8,7 +8,7 @@ import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pi
 import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 
 export default function Splite() {
-  const [framework, setFramework] = useState<"nextjs" | "html">("html");
+  const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const dependencies = `npm i framer-motion clsx tailwind-merge @splinetool/runtime @splinetool/react-spline`
@@ -279,9 +279,9 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
         </div>
         <main className={`pt-20 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
           <h1 className="text-3xl font-bold">Spline 3d</h1>
-          <p className="text-muted-foreground mt-2">Tampilan Hero Section 3D Interaktif</p>
+          <p className="text-muted-foreground mt-2">Hero Section ini sangat cocok untuk kamu yang suka dengan 3D.</p>
 
-          <div className="w-[90vw] border-dashed border-2 p-2">
+          <div className="w-[90vw] border-dashed border-2 p-2 mt-4">
             <SplineSceneBasic />
           </div>
 
