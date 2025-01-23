@@ -10,8 +10,8 @@ import { ScrollaAnimation } from "../components/UI/scroll-animation/demo";
 export default function pict() {
     return (
         <>
-        <AnimeNavBarDemo />
-        {/* <Canvas /> */}
+        {/* <AnimeNavBarDemo /> */}
+        <Canvas />
         {/* <FloatingButton /> */}
         {/* <GooeyTextDemo /> */}
         {/* <Connect /> */}
