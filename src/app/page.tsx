@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { BimsComponentGrid } from "@/app/components/bims/BimsComponentGrid";
+import { FooterDemo } from "./components/bims/footer";
 
 export default function Home() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
@@ -20,6 +21,7 @@ export default function Home() {
           />
           <main className={`flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <BimsComponentGrid framework={framework} />
+            <FooterDemo />
           </main>
         </div>
       </div>

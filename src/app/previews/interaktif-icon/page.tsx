@@ -1,15 +1,17 @@
 "use client"
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { FaRegClipboard, FaCheck } from 'react-icons/fa';
 import { InteraktifIcon } from "@/app/components/UI/interaktif-icon/demo";
+import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function Gooey() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const dependencies = `npm i react-icon-cloud`
 
@@ -58,7 +60,7 @@ export default function Gooey() {
   }
   `;
 
-  const interaktifIcon  = `"use client"
+  const interaktifIcon = `"use client"
 
   import { useEffect, useMemo, useState } from "react"
   import { useTheme } from "next-themes"
@@ -147,16 +149,29 @@ export default function Gooey() {
     )
   }  
     `;
-  // Fungsi untuk menyalin kode ke clipboard
-  const copyToClipboard = (code: string) => {
+  const copyToClipboard = (code: string, id: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
-        alert('Code copied to clipboard!');
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
       })
       .catch(err => {
         console.error('Failed to copy: ', err);
       });
   };
+
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+      ) : (
+        <FaRegClipboard
+          onClick={() => copyToClipboard(code, id)}
+          className="text-gray-400 text-xl cursor-pointer hover:text-blue-500 transition-colors"
+        />
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -175,10 +190,10 @@ export default function Gooey() {
             <InteraktifIcon />
           </div>
 
-          <div className="mt-6 w-2/3"> {/* Menyesuaikan lebar secara dinamis */}
+          <div className="mt-6 w-2/3">
             <h2 className="text-2xl font-semibold">Installation</h2>
             <div className="mt-4 w-full">
-              {/* install dependencies code  */}
+              {/* Dependencies */}
               <p className="font-bold">Install dependencies</p>
               <div className="relative mb-8">
                 <SyntaxHighlighter
@@ -188,19 +203,15 @@ export default function Gooey() {
                     padding: '1rem',
                     borderRadius: '8px',
                     backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
                   }}>
                   {dependencies}
                 </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(dependencies)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+                <CopyIcon id="dependencies" code={dependencies} />
               </div>
 
-
-              {/* demo.tsx code  */}
+              {/* Demo.tsx */}
               <p className="font-bold">demo.tsx</p>
               <div className="relative mb-8">
                 <SyntaxHighlighter
@@ -211,18 +222,15 @@ export default function Gooey() {
                     padding: '1rem',
                     borderRadius: '8px',
                     backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
                   }}>
                   {demotsx}
                 </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(demotsx)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+                <CopyIcon id="demotsx" code={demotsx} />
               </div>
 
-              {/* interaktif-icon.tsx code  */}
+              {/* Interaktif Icon */}
               <p className="font-bold">interaktif-icon.tsx</p>
               <div className="relative">
                 <SyntaxHighlighter
@@ -233,21 +241,15 @@ export default function Gooey() {
                     padding: '1rem',
                     borderRadius: '8px',
                     backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
                   }}>
                   {interaktifIcon}
                 </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(interaktifIcon)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+                <CopyIcon id="interaktifIcon" code={interaktifIcon} />
               </div>
-
-
-
             </div>
-
+            <FooterDemo />
           </div>
         </main>
       </div>

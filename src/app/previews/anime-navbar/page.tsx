@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { AnimeNavBarDemo } from "@/app/components/UI/anime-navbar/demo";
+import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function animeNavbat() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
@@ -392,7 +393,7 @@ module.exports = {
           framework={framework}
           onFrameworkChange={setFramework}
         />
-        <main className={`pt-40 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+        <main className={`pt-40 flex-1 w-[90vw] p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
           <h1 className="text-3xl font-bold">Anime Navbar</h1>
           <p className="text-muted-foreground mt-2">Navbar keren dan interaktif dengan icon yang dinamis</p>
 
@@ -403,7 +404,7 @@ module.exports = {
 
           <div className="mt-6 w-2/3"> {/* Menyesuaikan lebar secara dinamis */}
             <h2 className="text-2xl font-semibold">Installation</h2>
-            <div className="mt-4 w-2/3">
+            <div className="mt-4 ">
               {/* install dependencies code  */}
               <p className="font-bold">Install dependencies</p>
               <div className="relative mb-8">
@@ -538,6 +539,7 @@ module.exports = {
             </div>
 
           </div>
+          <FooterDemo />
         </main>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FloatingButton } from "@/app/components/UI/floating-button/demo";
+import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function Gooey() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
@@ -286,6 +287,7 @@ export default function Gooey() {
             </div>
 
           </div>
+          <FooterDemo />
         </main>
       </div>
     </div>

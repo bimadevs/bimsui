@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { Connect } from "@/app/components/UI/highlighter/demo";
+import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function Highlighter() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
@@ -794,6 +795,7 @@ export function Connect() {
             </div>
 
           </div>
+          <FooterDemo />
         </main>
       </div>
     </div>
