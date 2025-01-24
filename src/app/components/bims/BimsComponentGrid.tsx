@@ -13,7 +13,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "Spline",
       description: "Tampilan 3D dengan framer-motion dan Spline",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/spline.png",
       link: "/previews/spline"
     },
     {
@@ -21,7 +21,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "GooeyText",
       description: "Teks Gooey dengan framer-motion",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/gooey-text.png",
       link: "/previews/GooeyText"
     },
     {
@@ -29,7 +29,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "anime-navbar",
       description: "Sebuah Navbar dengan animasi keren dan hover efek",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/anime-navbar.png",
       link: "/previews/anime-navbar"
     },
     {
@@ -37,7 +37,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "highlighter",
       description: "Sebuah card dengan animasi highlight saat hover",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/highlighter.png",
       link: "/previews/highlighter"
     },
     {
@@ -45,7 +45,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "Floating Button",
       description: "Sebuah Floating Button yang modern, sangat cocok untuk website kamu yang ingin terlihat modern dan beda dari yang lain",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/floating-button.png",
       link: "/previews/floating-button"
     },
     {
@@ -53,7 +53,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "Canvas",
       description: "Sebuah Hero section dengan effek hover yang memukau, membuat website mu terlihat lebih indah dan interaktif",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/canvas.png",
       link: "/previews/canvas"
     },
     {
@@ -61,7 +61,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "Interaktif Icon",
       description: "Interaktif Icon ini sangat cocok untuk kamu yang pengen pamer langguage program dengan gaya!",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/interaktif-icon.png",
       link: "/previews/interaktif-icon"
     },
     {
@@ -69,47 +69,42 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       name: "Scroll Animation",
       description: "Ini adala sebuah component Scroll animation tablet. Dengan component ini, website mu menjadi lebih keren di mata user",
       category: "NextJS",
-      image: "/placeholder.svg",
+      image: "/images/scroll-animation.png",
       link: "/previews/scroll-animation"
     },
   ];
 
   return (
-    <div className="pt-16">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">Components</h1>
-        <p className="text-muted-foreground mt-2">
-          UI Component keren dan modern
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {components.map((component) => (
-          <Link key={component.id} href={component.link}>
-            <motion.article
-              className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer rounded-lg"
-              whileHover={{ scale: 1.05, boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <div className="aspect-video bg-muted flex items-center justify-center">
-                <img
-                  src={component.image}
-                  alt={component.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-4">
-                <div className="inline-block px-2 py-1 mb-2 text-xs font-medium rounded-full bg-primary/10 text-primary">
-                  {component.category}
+    <div className="min-h-screen bg-black text-white py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-bold mb-8">Components</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {components.map((component) => (
+            <Link key={component.id} href={component.link}>
+              <motion.div
+                className="relative  group rounded-lg overflow-hidden bg-neutral-900 p-6 border border-neutral-800 hover:shadow-2xl transition-shadow duration-300"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                  <img
+                    src={component.image}
+                    alt={component.name}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
-                <h3 className="text-lg font-semibold">{component.name}</h3>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {component.description}
-                </p>
-              </div>
-            </motion.article>
-          </Link>
-        ))}
+                <div className="text-left">
+                  <p className="text-sm mb-2 text-blue-500">{component.category}</p>
+                  <h2 className="text-xl font-semibold mb-2">
+                    {component.name}
+                  </h2>
+                  <p className="text-sm text-neutral-400">
+                    {component.description}
+                  </p>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

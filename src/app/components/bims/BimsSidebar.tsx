@@ -32,6 +32,10 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Scroll Animation", href: "/previews/scroll-animation" },
     ];
 
+    const installasi = [
+        { name: "Install Next.js", href: ""}
+    ]
+
     const components = framework === "nextjs" ? NextJs : HTML;
 
     return (
@@ -73,6 +77,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                 </div> */}
                 <motion.nav className="mt-6 flex-1 overflow-y-auto">
                     <motion.ul className="space-y-1">
+                        <h1>Installation</h1>
                         {components.map((component) => (
                             <motion.li
                                 key={component.name}

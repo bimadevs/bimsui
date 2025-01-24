@@ -18,14 +18,13 @@ export function Canvas() {
       <div className="animation-delay-8 animate-fadeIn mt-20 flex  flex-col items-center justify-center px-4 text-center md:mt-20">
         <div className="z-10 mb-6 mt-10 sm:justify-center md:mb-4 md:mt-20">
           <div className="relative flex items-center whitespace-nowrap rounded-full border bg-popover px-3 py-1 text-xs leading-6  text-primary/60 ">
-            <DIcons.Shapes className="h-5 p-1" /> Introducing Dicons.
+            <DIcons.Shapes className="h-5 p-1" /> Introducing BimsUI
             <a
               href="/products/dicons"
               rel="noreferrer"
               className="hover:text-ali ml-1 flex items-center font-semibold"
             >
               <div className="absolute inset-0 flex" aria-hidden="true" />
-              Explore{" "}
               <span aria-hidden="true">
                 <DIcons.ArrowRight className="h-4 w-4" />
               </span>
@@ -53,7 +52,7 @@ export function Canvas() {
                   strokeWidth={4}
                   className="text-ali absolute -bottom-5 -right-5 h-10 w-10"
                 />
-                Your complete platform for the Design.
+                UI Component terbaik buatan anak bangsa
               </h1>
               <div className="flex items-center justify-center gap-1">
                 <span className="relative flex h-3 w-3 items-center justify-center">
@@ -66,21 +65,20 @@ export function Canvas() {
           </div>
 
           <h1 className="mt-8 text-2xl md:text-2xl">
-            Welcome to my creative playground! I&#39;m{" "}
-            <span className="text-ali font-bold">Ali </span>
+            Selamat datang di BimsUI I&#39;m{" "}
+            <span className="text-ali font-bold">Bima Jovanta </span>
           </h1>
 
           <p className="md:text-md mx-auto mb-16 mt-2 max-w-2xl px-6 text-sm text-primary/60 sm:px-6 md:max-w-4xl md:px-20 lg:text-lg">
-            I craft enchanting visuals for brands, and conjure design resources
-            to empower others.
+            Saya membuat UI Component yang keren dan open source namun seperti premium
           </p>
           <div className="flex justify-center gap-2">
-            <Link href={"/dashboard"}>
-              <Button variant="default" size="lg">
+            <Link href={"/"}>
+              <Button  size="lg">
                 Start Project
               </Button>
             </Link>
-            <Link href={"https://cal.com/aliimam/designali"} target="_blank">
+            <Link href={"/"} target="_blank">
               <Button variant="outline" size="lg">
                 Book a call
               </Button>

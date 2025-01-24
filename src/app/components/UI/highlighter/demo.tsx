@@ -115,7 +115,7 @@ export function Connect() {
                         />
                       </svg>
                       <span className="bg-ali relative -top-1 left-3 rounded-3xl px-2 py-1 text-xs text-white">
-                        Ali
+                        Bimadev
                       </span>
                     </div>
                   </div>
@@ -124,7 +124,7 @@ export function Connect() {
                     <div className="flex flex-col items-center">
                       <h3 className="mt-6   pb-1 font-bold ">
                         <span className="text-2xl md:text-4xl">
-                          Any questions about Design?
+                          Mau request UI Component ?
                         </span>
                       </h3>
                     </div>
@@ -133,13 +133,13 @@ export function Connect() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <Link
-                        href={"https://cal.com/aliimam/designali"}
+                        href={"https://ui.bimadev.xyz"}
                         target="_blank"
                       >
-                        <Button>Book a call</Button>
+                        <Button className="border">Book a call</Button>
                       </Link>
                       <Link
-                        href="mailto:contact@designali.in"
+                        href="mailto:bimadev06@gmail.com"
                         target="_blank"
                         className={cn(
                           buttonVariants({
@@ -153,7 +153,7 @@ export function Connect() {
                         </span>
                       </Link>
                       <Link
-                        href="https://wa.me/917678432186"
+                        href="https://wa.me/6282254044783"
                         target="_blank"
                         className={cn(
                           buttonVariants({
