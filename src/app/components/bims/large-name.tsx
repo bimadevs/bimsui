@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import { Icons } from "./icon";
+// import { Icons } from "./icon";
 import { Button } from "./button";
 
 function Footer() {
