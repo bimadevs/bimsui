@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "BimsUI",
     images: [
       {
-        url: "https://ui.bimadev.xyz/preview-web.jpg",
+        url: "https://ui.bimadev.xyz/preview-web.png",
         width: 1200,
         height: 630,
         alt: "BimsUI Component Library Preview",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BimsUI - Modern UI Component Library",
     description: "TypeScript-first component library with seamless Next.js integration",
-    images: ["https://ui.bimadev.xyz/preview-web.jpg"],
+    images: ["https://ui.bimadev.xyz/preview-web.png"],
     creator: "@bimadev",
     site: "@bimadev",
   },
