@@ -1,7 +1,7 @@
 "use client"
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
