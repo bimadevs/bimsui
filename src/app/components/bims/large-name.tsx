@@ -60,7 +60,7 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Terima Kasih</h3>
+              <h3 className="font-semibold mb-4">Thank You</h3>
               {/* <h3 className="font-semibold mb-4">Legal</h3> */}
               {/* <ul className="space-y-2">
                 <li>
