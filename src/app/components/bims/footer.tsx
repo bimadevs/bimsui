@@ -2,7 +2,7 @@ import { Footer } from "./large-name";
 
 function FooterDemo() {
   return (
-    <div className="block">
+    <div>
       <Footer />
     </div>
   );

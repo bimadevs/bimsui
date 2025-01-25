@@ -35,6 +35,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
     const installasi = [
         { name: "Install Next.js", href: "/install-nextjs"},
         { name: "Install Tailwind", href: "/install-tailwind"},
+        { name: "CLI (Coming Soon)", href: "/cli"},
     ]
 
     const components = framework === "nextjs" ? NextJs : HTML;
@@ -78,7 +79,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                 </div> */}
                 <motion.nav className="mt-6 flex-1 overflow-y-auto">
                     <motion.ul className="space-y-1">
-                        <h1>Installation</h1>
+                        <h1 className="font-bold text-xl">Installation</h1>
                         {installasi.map((install, index) => (
                             <motion.li
                                 key={install.name}
@@ -91,13 +92,13 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             >
                                 <a
                                     href={install.href}
-                                    className="block px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                                    className="block px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
                                 >
                                     {install.name}
                                 </a>
                             </motion.li>
                         ))}
-                        <h1>All Components</h1>
+                        <h1 className="font-bold text-xl">All Components</h1>
                         {components.map((component) => (
                             <motion.li
                                 key={component.name}
@@ -110,7 +111,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             >
                                 <a
                                     href={component.href}
-                                    className="block px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                                    className="block px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
                                 >
                                     {component.name}
                                 </a>

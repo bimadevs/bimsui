@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
+import { TextHoverEffect } from "./text-hover-effect";
 
-// import { Icons } from "./icon";
-import { Button } from "./button";
 
 function Footer() {
   return (
-    <footer className=" py-12 px-4 md:px-6 bg-background">
-      <div className="container mx-auto">
+    <footer className=" py-12 px-4 md:px-6 bg-background border">
+      <div className="container">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-8 md:mb-0">
             <Link href="/" className="flex items-center gap-2">
@@ -80,9 +79,7 @@ function Footer() {
           </div>
         </div>
         <div className=" w-full flex mt-4 items-center justify-center   ">
-          <h1 className="text-center text-3xl md:text-5xl lg:text-[10rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 to-neutral-900 select-none">
-            BimsUI
-          </h1>
+        <TextHoverEffect text="BimsUI" />
         </div>
       
       </div>

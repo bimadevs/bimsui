@@ -270,10 +270,11 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
       {copiedId === id ? (
         <FaCheck className="text-green-500 text-xl transition-all duration-300" />
       ) : (
-        <FaRegClipboard
-          onClick={() => copyToClipboard(code, id)}
-          className="text-gray-400 text-xl cursor-pointer hover:text-blue-500 transition-colors"
-        />
+        <h1
+        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
+        onClick={() => copyToClipboard(code, id)}>
+          salin
+        </h1>
       )}
     </div>
   );
@@ -289,132 +290,135 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
             onFrameworkChange={setFramework}
           />
         </div>
-        <main className={`pt-20 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-          <h1 className="text-3xl font-bold">Spline 3d</h1>
-          <p className="text-muted-foreground mt-2">Hero Section ini sangat cocok untuk kamu yang suka dengan 3D.</p>
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={`transition-all ease-in-out duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Spline 3d</h1>
+              <p className="text-muted-foreground mt-2">Hero Section ini sangat cocok untuk kamu yang suka dengan 3D.</p>
 
-          <div className="w-[90vw] border-dashed border-2 p-2 mt-4">
-            <SplineSceneBasic />
-          </div>
-
-          <div className="mt-6 w-2/3">
-            <h2 className="text-2xl font-semibold">Installation</h2>
-            <div className="mt-4 w-2/3">
-              {/* Dependencies */}
-              <p className="font-bold">Install dependencies</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="bash"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {dependencies}
-                </SyntaxHighlighter>
-                <CopyIcon id="dependencies" code={dependencies} />
+              <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
+                <SplineSceneBasic />
               </div>
 
-              {/* Utils */}
-              <h1 className="font-bold text-2xl">Add util file</h1>
-              <p className="">src/lib/utils.ts</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="ts"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {utils}
-                </SyntaxHighlighter>
-                <CopyIcon id="utils" code={utils} />
-              </div>
+              <div className="mt-6">
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4">
+                  {/* Dependencies */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
+                  </div>
 
-              {/* Demo.tsx */}
-              <p className="font-bold">demo.tsx</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {demotsx}
-                </SyntaxHighlighter>
-                <CopyIcon id="demotsx" code={demotsx} />
-              </div>
+                  {/* Utils */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
+                  </div>
 
-              {/* Spline.tsx */}
-              <p className="font-bold">splite.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {splitetsx}
-                </SyntaxHighlighter>
-                <CopyIcon id="splitetsx" code={splitetsx} />
-              </div>
+                  {/* Demo.tsx */}
+                  <p className="font-bold">demo.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+                  </div>
 
-              {/* Spotlight.tsx */}
-              <p className="font-bold">spotlight.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {spotlighttsx}
-                </SyntaxHighlighter>
-                <CopyIcon id="spotlighttsx" code={spotlighttsx} />
-              </div>
+                  {/* Spline.tsx */}
+                  <p className="font-bold">splite.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {splitetsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="splitetsx" code={splitetsx} />
+                  </div>
 
-              {/* Card.tsx */}
-              <p className="font-bold">card.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {cardtsx}
-                </SyntaxHighlighter>
-                <CopyIcon id="cardtsx" code={cardtsx} />
-              </div>
+                  {/* Spotlight.tsx */}
+                  <p className="font-bold">spotlight.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {spotlighttsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="spotlighttsx" code={spotlighttsx} />
+                  </div>
 
+                  {/* Card.tsx */}
+                  <p className="font-bold">card.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {cardtsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="cardtsx" code={cardtsx} />
+                  </div>
+                </div>
+              </div>
             </div>
-          <FooterDemo />
+            <FooterDemo />
           </div>
         </main>
       </div>

@@ -19,8 +19,10 @@ export default function Home() {
             framework={framework}
             onFrameworkChange={setFramework}
           />
-          <main className={`flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-            <BimsComponentGrid framework={framework} />
+          <main className={`flex-1  transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <BimsComponentGrid framework={framework} />
+            </div>
             <FooterDemo />
           </main>
         </div>

@@ -5,13 +5,14 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FloatingButton } from "@/app/components/UI/floating-button/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function Gooey() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const dependencies = `npm i clsx tailwind-merge framer-motion lucide-react`
 
@@ -165,15 +166,31 @@ export default function Gooey() {
   }
     `;
   // Fungsi untuk menyalin kode ke clipboard
-  const copyToClipboard = (code: string) => {
+  // Fungsi untuk menyalin kode ke clipboard
+  const copyToClipboard = (code: string, id: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
-        alert('Code copied to clipboard!');
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
       })
       .catch(err => {
         console.error('Failed to copy: ', err);
       });
   };
+
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+      ) : (
+        <h1
+        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
+        onClick={() => copyToClipboard(code, id)}>
+          salin
+        </h1>
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -184,15 +201,17 @@ export default function Gooey() {
           framework={framework}
           onFrameworkChange={setFramework}
         />
-        <main className={`pt-20 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+        <main className="pt-20 flex-1 w-[100vw]">
+        <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+        <div className="p-6">
           <h1 className="text-3xl font-bold">Floating Button</h1>
           <p className="text-muted-foreground mt-2">Sebuah Floating Button yang modern, sangat cocok untuk website kamu yang ingin terlihat modern dan beda dari yang lain</p>
 
-          <div className="w-[90vw] border-dashed border-2 mt-4">
+          <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
             <FloatingButton />
           </div>
 
-          <div className="mt-6 w-2/3"> {/* Menyesuaikan lebar secara dinamis */}
+          <div className="mt-6"> {/* Menyesuaikan lebar secara dinamis */}
             <h2 className="text-2xl font-semibold">Installation</h2>
             <div className="mt-4 ">
               {/* install dependencies code  */}
@@ -210,10 +229,8 @@ export default function Gooey() {
                   }}>
                   {dependencies}
                 </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(dependencies)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+                <CopyIcon id="dependencies" code={dependencies} />
+
               </div>
 
               {/* utils code  */}
@@ -232,10 +249,8 @@ export default function Gooey() {
                   }}>
                   {utils}
                 </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(utils)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+                <CopyIcon id="utils" code={utils} />
+
               </div>
 
               {/* demo.tsx code  */}
@@ -254,10 +269,8 @@ export default function Gooey() {
                   }}>
                   {demotsx}
                 </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(demotsx)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+                <CopyIcon id="demotsx" code={demotsx} />
+
               </div>
 
               {/* floating-button.tsx code  */}
@@ -276,18 +289,14 @@ export default function Gooey() {
                   }}>
                   {floatingButton}
                 </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(floatingButton)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+                <CopyIcon id="floatingButton" code={floatingButton} />
+
               </div>
-
-
-
             </div>
-
+          </div>
           </div>
           <FooterDemo />
+          </div>
         </main>
       </div>
     </div>

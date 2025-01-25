@@ -3,13 +3,14 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { AnimeNavBarDemo } from "@/app/components/UI/anime-navbar/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function animeNavbat() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen] = useState(true);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const dependencies = `npm i clsx tailwind-merge framer-motion lucide-react`;
 
@@ -21,8 +22,7 @@ export default function animeNavbat() {
     }
     `;
 
-  const demotsx = `
-    "use client"
+  const demotsx = `"use client"
 
 import * as React from "react" // Import React
 import { Home, FileText, CreditCard, Info } from "lucide-react"
@@ -57,19 +57,18 @@ const items = [
 
 export function AnimeNavBarDemo() {
   return <AnimeNavBar items={items} defaultActive="Home" />
-}
-`;
+}`;
 
-  const AnimeNavbar = `"use client"
+const AnimeNavbar = `"use client"
 
-    import React, { useEffect, useState } from "react"
-    import { motion, AnimatePresence } from "framer-motion"
-    import Link from "next/link"
-    import { usePathname } from "next/navigation"
-    import { LucideIcon } from "lucide-react"
-    import { cn } from "@/lib/utils"
+import React, { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { LucideIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
     
-    interface NavItem {
+interface NavItem {
       name: string
       url: string
       icon: LucideIcon
@@ -338,8 +337,7 @@ export function AnimeNavBarDemo() {
       )
     } 
     `;
-  const TailwindConfig = `
-    /** @type {import('tailwindcss').Config} */
+  const TailwindConfig = `/** @type {import('tailwindcss').Config} */
 module.exports = {
     theme: {
         extend: {
@@ -358,10 +356,8 @@ module.exports = {
             },
         },
     },
-}
-    `;
-  const globalCss = `
-    @keyframes shine {
+}`;
+  const globalCss = `@keyframes shine {
         0% {
           transform: translateX(-100%);
         }
@@ -371,18 +367,32 @@ module.exports = {
         100% {
           transform: translateX(-100%);
         }
-      }
-    `;
+      }`;
   // Fungsi untuk menyalin kode ke clipboard
-  const copyToClipboard = (code: string) => {
+  const copyToClipboard = (code: string, id: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
-        alert('Code copied to clipboard!');
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
       })
       .catch(err => {
         console.error('Failed to copy: ', err);
       });
   };
+
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+      ) : (
+        <h1
+        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
+        onClick={() => copyToClipboard(code, id)}>
+          salin
+        </h1>
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -393,153 +403,138 @@ module.exports = {
           framework={framework}
           onFrameworkChange={setFramework}
         />
-        <main className={`pt-40 flex-1 w-[90vw] p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-          <h1 className="text-3xl font-bold">Anime Navbar</h1>
-          <p className="text-muted-foreground mt-2">Navbar keren dan interaktif dengan icon yang dinamis</p>
+        <main className="pt-40 flex-1 w-[100vw]">
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Anime Navbar</h1>
+              <p className="text-muted-foreground mt-2">Navbar keren dan interaktif dengan icon yang dinamis</p>
 
-          <div className="w-[70vw] border-dashed border-2 p-32 mt-4">
-            <AnimeNavBarDemo />
-            <h1 className="text-center text-4xl">lihat di bagian atas halaman</h1>
-          </div>
-
-          <div className="mt-6 w-2/3"> {/* Menyesuaikan lebar secara dinamis */}
-            <h2 className="text-2xl font-semibold">Installation</h2>
-            <div className="mt-4 ">
-              {/* install dependencies code  */}
-              <p className="font-bold">Install dependencies</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="bash"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {dependencies}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(dependencies)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+              <div className="max-w-4xl border-dashed border-2 p-32 mt-4 mx-auto">
+                <AnimeNavBarDemo />
+                <h1 className="text-center text-4xl">lihat di bagian atas halaman</h1>
               </div>
 
-              {/* utils code  */}
-              <h1 className="font-bold text-2xl">Add util file</h1>
-              <p className="">src/lib/utils.ts</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="ts"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {utils}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(utils)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
+              <div className="mt-6"> {/* Menyesuaikan lebar secara dinamis */}
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4 ">
+                  {/* install dependencies code  */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
+                  </div>
 
-              {/* demo.tsx code  */}
-              <p className="font-bold">demo.tsx</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {demotsx}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(demotsx)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
+                  {/* utils code  */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
 
-              {/* anime-navbar.tsx code  */}
-              <p className="font-bold">anime-navbar.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {AnimeNavbar}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(AnimeNavbar)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
-              {/* tailwind.config.js code  */}
-              <p className="font-bold">tailwind.config.js</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="js"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {TailwindConfig}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(TailwindConfig)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
-              {/* global.css code  */}
-              <p className="font-bold">global.css</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="css"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {globalCss}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(globalCss)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
+                  </div>
 
+                  {/* demo.tsx code  */}
+                  <p className="font-bold">demo.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
+                  </div>
 
+                  {/* anime-navbar.tsx code  */}
+                  <p className="font-bold">anime-navbar.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {AnimeNavbar}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="AnimeNavbar" code={AnimeNavbar} />
+
+                  </div>
+                  {/* tailwind.config.js code  */}
+                  <p className="font-bold">tailwind.config.js</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="js"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {TailwindConfig}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="TailwindConfig" code={TailwindConfig} />
+
+                  </div>
+                  {/* global.css code  */}
+                  <p className="font-bold">global.css</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="css"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {globalCss}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="globalCss" code={globalCss} />
+                  </div>
+                </div>
+              </div>
             </div>
-
+            <FooterDemo />
           </div>
-          <FooterDemo />
         </main>
       </div>
     </div>

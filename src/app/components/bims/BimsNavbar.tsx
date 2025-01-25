@@ -12,18 +12,18 @@ export const BimsNavbar = ({ onMenuClick }: BimsNavbarProps) => {
           <button className="text-primary-foreground hover:text-primary transition-colors" onClick={onMenuClick}>
             <Menu className="h-5 w-5" />
           </button>
-          <a href="/" className="text-xl font-semibold">BimsUI</a>
+          <a href="/" className="text-xl font-semibold hover:text-blue-500">BimsUI</a>
         </div>
-        <div className="flex items-center space-x-4">
+        {/* <div className="flex items-center space-x-4">
           <a
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            GitHub
+            Request UI
           </a>
-        </div>
+        </div> */}
       </div>
     </nav>
   );

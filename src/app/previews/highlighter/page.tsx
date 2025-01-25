@@ -4,13 +4,14 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { Connect } from "@/app/components/UI/highlighter/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function Highlighter() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const dependencies = `npm i clsx tailwind-merge framer-motion dicons @radix-ui/react-slot class-variance-authority`
 
@@ -649,15 +650,31 @@ export function Connect() {
     export { Button, buttonVariants }
     `
   // Fungsi untuk menyalin kode ke clipboard
-  const copyToClipboard = (code: string) => {
+  // Fungsi untuk menyalin kode ke clipboard
+  const copyToClipboard = (code: string, id: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
-        alert('Code copied to clipboard!');
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
       })
       .catch(err => {
         console.error('Failed to copy: ', err);
       });
   };
+
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+      ) : (
+        <h1
+        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
+        onClick={() => copyToClipboard(code, id)}>
+          salin
+        </h1>
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -668,134 +685,121 @@ export function Connect() {
           framework={framework}
           onFrameworkChange={setFramework}
         />
-        <main className={`pt-20 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-          <h1 className="text-3xl font-bold">Highlighter</h1>
-          <p className="text-muted-foreground mt-2">Sebuah card dengan efek hover highlighter yang akan membuat mu terpukau</p>
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Highlighter</h1>
+              <p className="text-muted-foreground mt-2">Sebuah card dengan efek hover highlighter yang akan membuat mu terpukau</p>
 
-          <div className="w-[90vw] border-dashed border-2 mt-4">
-            <Connect />
-          </div>
-
-          <div className="mt-6 w-2/3"> {/* Menyesuaikan lebar secara dinamis */}
-            <h2 className="text-2xl font-semibold">Installation</h2>
-            <div className="mt-4 w-2/3">
-              {/* install dependencies code  */}
-              <p className="font-bold">Install dependencies</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="bash"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {dependencies}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(dependencies)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+              <div className="w-[90vw] border-dashed border-2 mt-4">
+                <Connect />
               </div>
 
-              {/* utils code  */}
-              <h1 className="font-bold text-2xl">Add util file</h1>
-              <p className="">src/lib/utils.ts</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="ts"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {utils}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(utils)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
+              <div className="mt-6"> {/* Menyesuaikan lebar secara dinamis */}
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4">
+                  {/* install dependencies code  */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
+
+                  </div>
+
+                  {/* utils code  */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
+
+                  </div>
+
+                  {/* demo.tsx code  */}
+                  <p className="font-bold">demo.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+                  </div>
+
+                  {/* highlighter.tsx code  */}
+                  <p className="font-bold">highlighter.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {highlighter}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="highlighter" code={highlighter} />
+
+                  </div>
+
+                  {/* button.tsx code  */}
+                  <p className="font-bold">button.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
+                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                      }}>
+                      {button}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="button" code={button} />
+
+                  </div>
+                </div>
               </div>
-
-              {/* demo.tsx code  */}
-              <p className="font-bold">demo.tsx</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {demotsx}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(demotsx)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
-
-              {/* highlighter.tsx code  */}
-              <p className="font-bold">highlighter.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    maxWidth: "90vw",
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {highlighter}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(highlighter)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
-
-              {/* button.tsx code  */}
-              <p className="font-bold">button.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    maxWidth: "90vw",
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {button}
-                </SyntaxHighlighter>
-                <FaClipboard
-                  onClick={() => copyToClipboard(button)}
-                  className="absolute right-4 top-4 text-white text-2xl cursor-pointer hover:text-blue-500"
-                />
-              </div>
-
-
-
             </div>
-
+            <FooterDemo />
           </div>
-          <FooterDemo />
         </main>
       </div>
     </div>

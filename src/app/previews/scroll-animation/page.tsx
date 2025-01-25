@@ -180,10 +180,11 @@ export default function ScrollAnimationPreview() {
       {copiedId === id ? (
         <FaCheck className="text-green-500 text-xl transition-all duration-300" />
       ) : (
-        <FaRegClipboard
-          onClick={() => copyToClipboard(code, id)}
-          className="text-gray-400 text-xl cursor-pointer hover:text-blue-500 transition-colors"
-        />
+        <h1
+        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
+        onClick={() => copyToClipboard(code, id)}>
+          salin
+        </h1>
       )}
     </div>
   );
@@ -197,117 +198,121 @@ export default function ScrollAnimationPreview() {
           framework={framework}
           onFrameworkChange={setFramework}
         />
-        <main className={`pt-20 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-          <h1 className="text-3xl font-bold">Scroll Animation</h1>
-          <p className="text-muted-foreground mt-2">Ini adala sebuah component Scroll animation tablet. Dengan component ini, website mu menjadi lebih keren di mata user </p>
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={` transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Scroll Animation</h1>
+              <p className="text-muted-foreground mt-2">Ini adala sebuah component Scroll animation tablet. Dengan component ini, website mu menjadi lebih keren di mata user </p>
 
-          <div className="w-[90vw] border-dashed border-2 mt-4">
-            <ScrollaAnimation />
-          </div>
-
-          <div className="mt-6 w-[70vw]">
-            <h2 className="text-2xl font-semibold">Installation</h2>
-            <div className="mt-4">
-              {/* Dependencies */}
-              <p className="font-bold">Install dependencies</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="bash"
-                  style={nightOwl}
-                  customStyle={{
-                    width: "100%",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {dependencies}
-                </SyntaxHighlighter>
-                <CopyIcon id="dependencies" code={dependencies} />
+              <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
+                <ScrollaAnimation />
               </div>
 
-              {/* Utils */}
-              <h1 className="font-bold text-2xl">Add util file</h1>
-              <p className="">src/lib/utils.ts</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="ts"
-                  style={nightOwl}
-                  customStyle={{
-                    width: "100%",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {utils}
-                </SyntaxHighlighter>
-                <CopyIcon id="utils" code={utils} />
-              </div>
+              <div className="mt-6">
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4">
+                  {/* Dependencies */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        width: "100%",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
+                  </div>
 
-              {/* Demo.tsx */}
-              <p className="font-bold">demo.tsx</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    width: "100%",
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {demotsx}
-                </SyntaxHighlighter>
-                <CopyIcon id="demotsx" code={demotsx} />
-              </div>
+                  {/* Utils */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        width: "100%",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
+                  </div>
 
-              {/* Scroll Animation */}
-              <p className="font-bold">scroll-animation.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    width: "100%",
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {scrollAnimation}
-                </SyntaxHighlighter>
-                <CopyIcon id="scrollAnimation" code={scrollAnimation} />
-              </div>
+                  {/* Demo.tsx */}
+                  <p className="font-bold">demo.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        width: "100%",
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+                  </div>
 
-              {/* Next Config */}
-              <p className="font-bold">next.config.ts</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    width: "100%",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {nextConfig}
-                </SyntaxHighlighter>
-                <CopyIcon id="nextConfig" code={nextConfig} />
+                  {/* Scroll Animation */}
+                  <p className="font-bold">scroll-animation.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        width: "100%",
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {scrollAnimation}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="scrollAnimation" code={scrollAnimation} />
+                  </div>
+
+                  {/* Next Config */}
+                  <p className="font-bold">next.config.ts</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        width: "100%",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {nextConfig}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="nextConfig" code={nextConfig} />
+                  </div>
+                </div>
               </div>
             </div>
+            <FooterDemo />
           </div>
-          <FooterDemo />
         </main>
       </div>
     </div>

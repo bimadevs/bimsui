@@ -13,10 +13,10 @@ export default function Gooey() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const dependencies = `npm i react-icon-cloud`
+  const dependencies = `npm i react-icon-cloud next-themes`
 
   const demotsx = `
-  import { IconCloud } from "@/components/ui/interactive-icon-cloud"
+  import { IconCloud } from "@/components/ui/interactive-icon"
 
   const slugs = [
     "typescript",
@@ -163,12 +163,13 @@ export default function Gooey() {
   const CopyIcon = ({ id, code }: { id: string, code: string }) => (
     <div className="absolute right-4 top-4">
       {copiedId === id ? (
-        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+        <FaCheck className="text-green-500 text-lg transition-all duration-300" />
       ) : (
-        <FaRegClipboard
-          onClick={() => copyToClipboard(code, id)}
-          className="text-gray-400 text-xl cursor-pointer hover:text-blue-500 transition-colors"
-        />
+        <h1
+        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
+        onClick={() => copyToClipboard(code, id)}>
+          salin
+        </h1>
       )}
     </div>
   );
@@ -182,71 +183,76 @@ export default function Gooey() {
           framework={framework}
           onFrameworkChange={setFramework}
         />
-        <main className={`pt-20 flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-          <h1 className="text-3xl font-bold">Interaktif Icon</h1>
-          <p className="text-muted-foreground mt-2">Interaktif Icon ini sangat cocok untuk kamu yang pengen pamer langguage program dengan gaya!</p>
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Interaktif Icon</h1>
+              <p className="text-muted-foreground mt-2">Interaktif Icon ini sangat cocok untuk kamu yang pengen pamer langguage program dengan gaya!</p>
 
-          <div className="w-[90vw] border-dashed border-2 flex items-center justify-center mt-4">
-            <InteraktifIcon />
-          </div>
-
-          <div className="mt-6 w-2/3">
-            <h2 className="text-2xl font-semibold">Installation</h2>
-            <div className="mt-4 w-full">
-              {/* Dependencies */}
-              <p className="font-bold">Install dependencies</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="bash"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {dependencies}
-                </SyntaxHighlighter>
-                <CopyIcon id="dependencies" code={dependencies} />
+              <div className="max-w-4xl border-dashed border-2 p-2  mx-auto flex items-center justify-center mt-4">
+                <InteraktifIcon />
               </div>
 
-              {/* Demo.tsx */}
-              <p className="font-bold">demo.tsx</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {demotsx}
-                </SyntaxHighlighter>
-                <CopyIcon id="demotsx" code={demotsx} />
-              </div>
+              <div className="mt-6">
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4">
+                  {/* Dependencies */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
+                  </div>
 
-              {/* Interaktif Icon */}
-              <p className="font-bold">interaktif-icon.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}>
-                  {interaktifIcon}
-                </SyntaxHighlighter>
-                <CopyIcon id="interaktifIcon" code={interaktifIcon} />
+                  {/* Demo.tsx */}
+                  <p className="font-bold">demo.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+                  </div>
+
+                  {/* Interaktif Icon */}
+                  <p className="font-bold">interaktif-icon.tsx</p>
+                  <p className="text-red-700">(Jika Terjadi sebuah error cukup biarkan saja)</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        height: "25rem",
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        backgroundColor: '#1e1e1e',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }}>
+                      {interaktifIcon}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="interaktifIcon" code={interaktifIcon} />
+                  </div>
+                </div>
               </div>
             </div>
             <FooterDemo />
