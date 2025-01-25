@@ -30,6 +30,8 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Canvas", href: "/previews/canvas" },
         { name: "Interaktif Icon", href: "/previews/interaktif-icon" },
         { name: "Scroll Animation", href: "/previews/scroll-animation" },
+        { name: "Text Reveal", href: "/previews/text-reveal" },
+        { name: "Animate Tabs", href: "/previews/animate-tabs" },
     ];
 
     const installasi = [

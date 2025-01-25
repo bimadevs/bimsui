@@ -72,6 +72,22 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       image: "/images/scroll-animation.png",
       link: "/previews/scroll-animation"
     },
+    {
+      id: "Text Reveal",
+      name: "Text Reveal",
+      description: "Efek Mousemove untuk menampilkan konten teks.",
+      category: "NextJS",
+      image: "/images/text-reveal.png",
+      link: "/previews/text-reveal"
+    },
+    {
+      id: "Animate Tabs",
+      name: "Animate Tabs",
+      description: "Animated Tabs, klik tab untuk melihat animasi nya.",
+      category: "NextJS",
+      image: "/images/tabs.png",
+      link: "/previews/animate-tabs"
+    },
   ];
 
   return (
