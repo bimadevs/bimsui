@@ -6,8 +6,15 @@ interface BimsSidebarProps {
     onFrameworkChange: (framework: "nextjs" | "html") => void;
 }
 
+// Tambahkan properti isNew pada interface menu item
+interface MenuItem {
+    name: string;
+    href: string;
+    isNew?: boolean;
+}
+
 export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSidebarProps) => {
-    const HTML = [
+    const HTML: MenuItem[] = [
         { name: "Button", href: "/html/button" },
         { name: "Card", href: "/html/card" },
         { name: "Forms", href: "/html/forms" },
@@ -19,9 +26,9 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Stack", href: "/html/stack" },
         { name: "Installation", href: "/html/installation" },
         { name: "Usage", href: "/html/usage" },
-    ];
+    ].sort((a, b) => a.name.localeCompare(b.name));
 
-    const NextJs = [
+    const NextJs: MenuItem[] = [
         { name: "Spline", href: "/previews/spline" },
         { name: "Gooey Text", href: "/previews/GooeyText" },
         { name: "Anime Navbar", href: "/previews/anime-navbar" },
@@ -32,13 +39,15 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Scroll Animation", href: "/previews/scroll-animation" },
         { name: "Text Reveal", href: "/previews/text-reveal" },
         { name: "Animate Tabs", href: "/previews/animate-tabs" },
-    ];
+        { name: "Hero Parallax", href: "/previews/hero-parallax", isNew: true }, // Tandai sebagai new
+        { name: "Timeline", href: "/previews/timeline", isNew: true }, // Tandai sebagai new
+    ].sort((a, b) => a.name.localeCompare(b.name));
 
-    const installasi = [
-        { name: "Install Next.js", href: "/install-nextjs"},
-        { name: "Install Tailwind", href: "/install-tailwind"},
-        { name: "CLI (Coming Soon)", href: "/cli"},
-    ]
+    const installasi: MenuItem[] = [
+        { name: "Install Next.js", href: "/install-nextjs" },
+        { name: "Install Tailwind", href: "/install-tailwind" },
+        { name: "CLI (Coming Soon)", href: "/cli" },
+    ];
 
     const components = framework === "nextjs" ? NextJs : HTML;
 
@@ -51,34 +60,6 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
             className="fixed left-0 top-16 z-30 h-[calc(100vh-4rem)] w-64 border-r bg-background"
         >
             <div className="flex h-full flex-col gap-2 p-4">
-                {/* <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                        <motion.button
-                            onClick={() => onFrameworkChange("nextjs")}
-                            className={`flex-1 border rounded-md px-3 py-1 text-sm transition-colors ${
-                                framework === "nextjs"
-                                    ? "bg-blue-500 text-white"
-                                    : "bg-transparent text-white"
-                            }`}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Next.js
-                        </motion.button>
-                        <motion.button
-                            onClick={() => onFrameworkChange("html")}
-                            className={`flex-1 border rounded-md px-3 py-1 text-sm transition-colors ${
-                                framework === "html"
-                                    ? "bg-blue-500 text-white"
-                                    : "bg-transparent text-white"
-                            }`}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            HTML
-                        </motion.button>
-                    </div>
-                </div> */}
                 <motion.nav className="mt-6 flex-1 overflow-y-auto">
                     <motion.ul className="space-y-1">
                         <h1 className="font-bold text-xl">Installation</h1>
@@ -94,13 +75,22 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             >
                                 <a
                                     href={install.href}
-                                    className="block px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
+                                    className="flex justify-between items-center px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
                                 >
-                                    {install.name}
+                                    <span>{install.name}</span>
+                                    {install.isNew && (
+                                        <motion.span
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full ml-2"
+                                        >
+                                            New
+                                        </motion.span>
+                                    )}
                                 </a>
                             </motion.li>
                         ))}
-                        <h1 className="font-bold text-xl">All Components</h1>
+                        <h1 className="font-bold text-xl mt-4">All Components</h1>
                         {components.map((component) => (
                             <motion.li
                                 key={component.name}
@@ -113,9 +103,18 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             >
                                 <a
                                     href={component.href}
-                                    className="block px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
+                                    className="flex justify-between items-center px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
                                 >
-                                    {component.name}
+                                    <span>{component.name}</span>
+                                    {component.isNew && (
+                                        <motion.span
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full ml-2"
+                                        >
+                                            New
+                                        </motion.span>
+                                    )}
                                 </a>
                             </motion.li>
                         ))}

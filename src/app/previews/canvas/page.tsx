@@ -1,8 +1,7 @@
 "use client"
-import { GooeyTextDemo } from "@/app/components/UI/goeeyText/demo";
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
@@ -12,6 +11,24 @@ import { FooterDemo } from "@/app/components/bims/footer";
 export default function Gooey() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    
+    // Fungsi untuk update state berdasarkan ukuran layar
+    const handleResize = () => {
+      setSidebarOpen(mediaQuery.matches);
+    };
+    
+    // Set initial state saat komponen mount
+    handleResize();
+    
+    // Add event listener untuk resize
+    mediaQuery.addEventListener('change', handleResize);
+    
+    // Cleanup
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const dependencies = `npm i clsx tailwind-merge @radix-ui/react-slot class-variance-authority dicons`

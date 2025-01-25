@@ -17,6 +17,22 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       link: "/previews/spline"
     },
     {
+      id: "Hero Parallax",
+      name: "Hero Parallax",
+      description: "A scroll effect with rotation, translation and opacity animations.",
+      category: "NextJS",
+      image: "/images/hero-parallax.png",
+      link: "/previews/hero-parallax"
+    },
+    {
+      id: "Timeline",
+      name: "Timeline",
+      description: "A timeline component with sticky header and scroll beam follow.",
+      category: "NextJS",
+      image: "/images/timeline.png",
+      link: "/previews/timeline"
+    },
+    {
       id: "GooeyText",
       name: "GooeyText",
       description: "Create a beautiful gooey effect when displaying text.",

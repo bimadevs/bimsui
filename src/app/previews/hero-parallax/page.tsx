@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaCheck } from 'react-icons/fa';
-import { ScrollaAnimation } from "@/app/components/UI/scroll-animation/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
+import { HeroParallaxDemo } from "@/app/components/UI/hero-parallax/demo";
 
 export default function ScrollAnimationPreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
@@ -42,136 +42,268 @@ export default function ScrollAnimationPreview() {
     `
 
   const demotsx = `
-  "use client";
-  import React from "react";
-  import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-  import Image from "next/image";
-  
-  export function HeroScrollDemo() {
-    return (
-      <div className="flex flex-col overflow-hidden pb-[500px] pt-[1000px]">
-        <ContainerScroll
-          titleComponent={
-            <>
-              <h1 className="text-4xl font-semibold text-black dark:text-white">
-                Unleash the power of <br />
-                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                  Scroll Animations
-                </span>
-              </h1>
-            </>
-          }
-        >
-          <Image
-            src={\`https://ui.aceternity.com/_next/image?url=%2Flinear.webp&w=3840&q=75\`}
-            alt="hero"
-            height={720}
-            width={1400}
-            className="mx-auto rounded-2xl object-cover h-full object-left-top"
-            draggable={false}
-          />
-        </ContainerScroll>
-      </div>
-    );
-  }`;
+"use client";
+import React from "react";
+import { HeroParallax } from "../ui/hero-parallax";
 
-  const scrollAnimation = `"use client";
-  import React, { useRef } from "react";
-  import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+export function HeroParallaxDemo() {
+  return <HeroParallax products={products} />;
+}
+export const products = [
+  {
+    title: "Moonbeam",
+    link: "https://gomoonbeam.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
+  },
+  {
+    title: "Cursor",
+    link: "https://cursor.so",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+  },
+  {
+    title: "Rogue",
+    link: "https://userogue.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+  },
+
+  {
+    title: "Editorially",
+    link: "https://editorially.org",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
+  },
+  {
+    title: "Editrix AI",
+    link: "https://editrix.ai",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
+  },
+  {
+    title: "Pixel Perfect",
+    link: "https://app.pixelperfect.quest",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+  },
+
+  {
+    title: "Algochurn",
+    link: "https://algochurn.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+  },
+  {
+    title: "Tailwind Master Kit",
+    link: "https://tailwindmasterkit.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+  },
+  {
+    title: "SmartBridge",
+    link: "https://smartbridgetech.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+  },
+  {
+    title: "Renderwork Studio",
+    link: "https://renderwork.studio",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
+  },
+
+  {
+    title: "Creme Digital",
+    link: "https://cremedigital.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
+  },
+  {
+    title: "Golden Bells Academy",
+    link: "https://goldenbellsacademy.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
+  },
+  {
+    title: "Invoker Labs",
+    link: "https://invoker.lol",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/invoker.png",
+  },
+  {
+    title: "E Free Invoice",
+    link: "https://efreeinvoice.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+  },
+];`;
+
+  const heroParallax = `"use client";
+  import React from "react";
+  import {
+    motion,
+    useScroll,
+    useTransform,
+    useSpring,
+    MotionValue,
+  } from "framer-motion";
+  import Image from "next/image";
+  import Link from "next/link";
   
-  export const ContainerScroll = ({
-    titleComponent,
-    children,
+  export const HeroParallax = ({
+    products,
   }: {
-    titleComponent: string | React.ReactNode;
-    children: React.ReactNode;
+    products: {
+      title: string;
+      link: string;
+      thumbnail: string;
+    }[];
   }) => {
-    const containerRef = useRef<HTMLDivElement>(null);
+    const firstRow = products.slice(0, 5);
+    const secondRow = products.slice(5, 10);
+    const thirdRow = products.slice(10, 15);
+    const ref = React.useRef(null);
     const { scrollYProgress } = useScroll({
-      target: containerRef,
+      target: ref,
+      offset: ["start start", "end start"],
     });
-    const [isMobile, setIsMobile] = React.useState(false);
   
-    React.useEffect(() => {
-      const checkMobile = () => {
-        setIsMobile(window.innerWidth <= 768);
-      };
-      checkMobile();
-      window.addEventListener("resize", checkMobile);
-      return () => {
-        window.removeEventListener("resize", checkMobile);
-      };
-    }, []);
+    const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
   
-    const scaleDimensions = () => {
-      return isMobile ? [0.7, 0.9] : [1.05, 1];
-    };
-  
-    const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
-    const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
-    const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  
+    const translateX = useSpring(
+      useTransform(scrollYProgress, [0, 1], [0, 1000]),
+      springConfig
+    );
+    const translateXReverse = useSpring(
+      useTransform(scrollYProgress, [0, 1], [0, -1000]),
+      springConfig
+    );
+    const rotateX = useSpring(
+      useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+      springConfig
+    );
+    const opacity = useSpring(
+      useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+      springConfig
+    );
+    const rotateZ = useSpring(
+      useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+      springConfig
+    );
+    const translateY = useSpring(
+      useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+      springConfig
+    );
     return (
       <div
-        className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
-        ref={containerRef}
+        ref={ref}
+        className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       >
-        <div
-          className="py-10 md:py-40 w-full relative"
+        <Header />
+        <motion.div
           style={{
-            perspective: "1000px",
+            rotateX,
+            rotateZ,
+            translateY,
+            opacity,
           }}
+          className=""
         >
-          <Header translate={translate} titleComponent={titleComponent} />
-          <Card rotate={rotate} translate={translate} scale={scale}>
-            {children}
-          </Card>
-        </div>
+          <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+            {firstRow.map((product) => (
+              <ProductCard
+                product={product}
+                translate={translateX}
+                key={product.title}
+              />
+            ))}
+          </motion.div>
+          <motion.div className="flex flex-row  mb-20 space-x-20 ">
+            {secondRow.map((product) => (
+              <ProductCard
+                product={product}
+                translate={translateXReverse}
+                key={product.title}
+              />
+            ))}
+          </motion.div>
+          <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+            {thirdRow.map((product) => (
+              <ProductCard
+                product={product}
+                translate={translateX}
+                key={product.title}
+              />
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
     );
   };
   
-  export const Header = ({ translate, titleComponent }: any) => {
+  export const Header = () => {
     return (
-      <motion.div
-        style={{
-          translateY: translate,
-        }}
-        className="div max-w-5xl mx-auto text-center"
-      >
-        {titleComponent}
-      </motion.div>
+      <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
+        <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+          The Ultimate <br /> development studio
+        </h1>
+        <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+          We build beautiful products with the latest technologies and frameworks.
+          We are a team of passionate developers and designers that love to build
+          amazing products.
+        </p>
+      </div>
     );
   };
   
-  export const Card = ({
-    rotate,
-    scale,
-    children,
+  export const ProductCard = ({
+    product,
+    translate,
   }: {
-    rotate: MotionValue<number>;
-    scale: MotionValue<number>;
+    product: {
+      title: string;
+      link: string;
+      thumbnail: string;
+    };
     translate: MotionValue<number>;
-    children: React.ReactNode;
   }) => {
     return (
       <motion.div
         style={{
-          rotateX: rotate,
-          scale,
-          boxShadow:
-            "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
+          x: translate,
         }}
-        className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
+        whileHover={{
+          y: -20,
+        }}
+        key={product.title}
+        className="group/product h-96 w-[30rem] relative flex-shrink-0"
       >
-        <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
-          {children}
-        </div>
+        <Link
+          href={product.link}
+          className="block group-hover/product:shadow-2xl "
+        >
+          <Image
+            src={product.thumbnail}
+            height="600"
+            width="600"
+            className="object-cover object-left-top absolute h-full w-full inset-0"
+            alt={product.title}
+          />
+        </Link>
+        <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
+        <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+          {product.title}
+        </h2>
       </motion.div>
     );
-  };
-  
-    `;
+  };`;
   const nextConfig = `const nextConfig = {
     images: {
       remotePatterns: [
@@ -219,11 +351,11 @@ export default function ScrollAnimationPreview() {
         <main className="pt-20 flex-1 w-[100vw]">
           <div className={` transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
-              <h1 className="text-3xl font-bold">Scroll Animation</h1>
-              <p className="text-muted-foreground mt-2">This is a scroll animation tablet component. With this component, your website will be cooler in the eyes of users.</p>
+              <h1 className="text-3xl font-bold">Hero Parallax</h1>
+              <p className="text-muted-foreground mt-2">A scroll effect with rotation, translation and opacity animations.</p>
 
               <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
-                <ScrollaAnimation />
+                <HeroParallaxDemo />
               </div>
 
               <div className="mt-6">
@@ -288,8 +420,8 @@ export default function ScrollAnimationPreview() {
                     <CopyIcon id="demotsx" code={demotsx} />
                   </div>
 
-                  {/* Scroll Animation */}
-                  <p className="font-bold">components/ui/container-scroll-animation.tsx</p>
+                  {/* hero-parallax */}
+                  <p className="font-bold">components/ui/hero-parallax.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"
@@ -303,9 +435,9 @@ export default function ScrollAnimationPreview() {
                         whiteSpace: 'pre-wrap',
                         wordBreak: 'break-word',
                       }}>
-                      {scrollAnimation}
+                      {heroParallax}
                     </SyntaxHighlighter>
-                    <CopyIcon id="scrollAnimation" code={scrollAnimation} />
+                    <CopyIcon id="heroParallax" code={heroParallax} />
                   </div>
 
                   {/* Next Config */}
