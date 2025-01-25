@@ -25,11 +25,11 @@ const Custom404: NextPage = () => {
         </div>
 
         <h1 className="text-4xl font-bold mt-8 mb-4">
-          Oops! Halaman Tidak Ditemukan
+        Oops! Page Not Found
         </h1>
 
         <p className="text-lg text-gray-300 mb-8">
-          Sepertinya kamu tersesat di luar angkasa... Mari kita pulang!
+        Looks like you're lost in space... Let's go home!
         </p>
 
         <div className="group relative inline-block">
@@ -52,19 +52,19 @@ const Custom404: NextPage = () => {
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            Kembali ke Beranda
+            Back to Home
           </Link>
         </div>
 
         <div className="mt-12 space-y-4">
-          <p className="text-gray-400">Atau coba:</p>
+          <p className="text-gray-400">Or Try:</p>
           <div className="flex justify-center space-x-4">
             {/* Button Reload */}
             <button
               onClick={() => router.refresh()}
               className="px-4 py-2 text-gray-300 hover:text-white transition-colors border border-gray-700 rounded-lg hover:border-purple-500 hover:bg-purple-500/10"
             >
-              Reload Halaman
+              Reload Page
             </button>
 
             {/* Button WhatsApp */}
@@ -73,7 +73,7 @@ const Custom404: NextPage = () => {
               onClick={() => window.open('https://wa.me/6282254044783', '_blank')} // Ganti nomor WhatsApp
               className="px-4 py-2 text-gray-300 hover:text-white transition-colors border border-gray-700 rounded-lg hover:border-pink-500 hover:bg-pink-500/10"
             >
-              Hubungi Support
+              Call Support
             </button>
           </div>
         </div>
