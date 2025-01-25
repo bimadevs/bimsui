@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | BimsUI"
   },
   description: "Build production-ready applications faster and beautifully crafted React components. Enterprise-grade UI library with dark mode, RTL support, and WCAG accessibility.",
-  keywords: ["React components", "UI library", "Next.js toolkit", "design system", "frontend components", "tailwind component"],
+  keywords: ["React components","bimsui","BimsUI", "UI library", "Next.js toolkit", "design system", "frontend components", "tailwind component"],
   
   openGraph: {
     title: "BimsUI - Modern UI Component Library",
