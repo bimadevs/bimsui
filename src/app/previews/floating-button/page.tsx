@@ -28,7 +28,7 @@ export default function Gooey() {
   'use client'
 
   import { Github, Twitter, Linkedin, Instagram, Youtube, Facebook } from "lucide-react"
-  import { AnimatedSocialIcons } from "@/components/ui/floating-action-button"
+  import { AnimatedSocialIcons } from "@/components/ui/floating-button"
   
   export function Demo() {
     const socialIcons = [
@@ -205,7 +205,7 @@ export default function Gooey() {
         <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
         <div className="p-6">
           <h1 className="text-3xl font-bold">Floating Button</h1>
-          <p className="text-muted-foreground mt-2">Sebuah Floating Button yang modern, sangat cocok untuk website kamu yang ingin terlihat modern dan beda dari yang lain</p>
+          <p className="text-muted-foreground mt-2">A modern floating button that is perfect for your website that wants to look modern and different from the rest.</p>
 
           <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
             <FloatingButton />
@@ -253,8 +253,8 @@ export default function Gooey() {
 
               </div>
 
-              {/* demo.tsx code  */}
-              <p className="font-bold">demo.tsx</p>
+              {/* page.tsx code  */}
+              <p className="font-bold">page.tsx</p>
               <div className="relative mb-8">
                 <SyntaxHighlighter
                   language="tsx"
@@ -274,7 +274,7 @@ export default function Gooey() {
               </div>
 
               {/* floating-button.tsx code  */}
-              <p className="font-bold">floating-button.tsx</p>
+              <p className="font-bold">components/ui/floating-button.tsx</p>
               <div className="relative">
                 <SyntaxHighlighter
                   language="tsx"

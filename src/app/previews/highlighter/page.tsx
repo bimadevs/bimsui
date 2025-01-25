@@ -689,7 +689,7 @@ export function Connect() {
           <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
               <h1 className="text-3xl font-bold">Highlighter</h1>
-              <p className="text-muted-foreground mt-2">Sebuah card dengan efek hover highlighter yang akan membuat mu terpukau</p>
+              <p className="text-muted-foreground mt-2">A card with a floating marker effect that will leave you spellbound.</p>
 
               <div className="w-[90vw] border-dashed border-2 mt-4">
                 <Connect />
@@ -737,8 +737,8 @@ export function Connect() {
 
                   </div>
 
-                  {/* demo.tsx code  */}
-                  <p className="font-bold">demo.tsx</p>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
                       language="tsx"
@@ -757,7 +757,7 @@ export function Connect() {
                   </div>
 
                   {/* highlighter.tsx code  */}
-                  <p className="font-bold">highlighter.tsx</p>
+                  <p className="font-bold">components/ui/highlighter.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"
@@ -777,7 +777,7 @@ export function Connect() {
                   </div>
 
                   {/* button.tsx code  */}
-                  <p className="font-bold">button.tsx</p>
+                  <p className="font-bold">components/ui/button.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"

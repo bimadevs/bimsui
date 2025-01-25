@@ -124,7 +124,7 @@ export function Connect() {
                     <div className="flex flex-col items-center">
                       <h3 className="mt-6   pb-1 font-bold ">
                         <span className="text-2xl md:text-4xl">
-                          Mau request UI Component ?
+                        Request a UI component?
                         </span>
                       </h3>
                     </div>

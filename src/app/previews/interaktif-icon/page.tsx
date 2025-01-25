@@ -186,8 +186,8 @@ export default function Gooey() {
         <main className="pt-20 flex-1 w-[100vw]">
           <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
-              <h1 className="text-3xl font-bold">Interaktif Icon</h1>
-              <p className="text-muted-foreground mt-2">Interaktif Icon ini sangat cocok untuk kamu yang pengen pamer langguage program dengan gaya!</p>
+              <h1 className="text-3xl font-bold">Interactive Icon</h1>
+              <p className="text-muted-foreground mt-2">If you want to show off your programming language in style, this interactive icon is for you!</p>
 
               <div className="max-w-4xl border-dashed border-2 p-2  mx-auto flex items-center justify-center mt-4">
                 <InteraktifIcon />
@@ -214,8 +214,8 @@ export default function Gooey() {
                     <CopyIcon id="dependencies" code={dependencies} />
                   </div>
 
-                  {/* Demo.tsx */}
-                  <p className="font-bold">demo.tsx</p>
+                  {/* page.tsx */}
+                  <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
                       language="tsx"
@@ -234,7 +234,7 @@ export default function Gooey() {
                   </div>
 
                   {/* Interaktif Icon */}
-                  <p className="font-bold">interaktif-icon.tsx</p>
+                  <p className="font-bold">components/ui/interactive-icon.tsx</p>
                   <p className="text-red-700">(Jika Terjadi sebuah error cukup biarkan saja)</p>
                   <div className="relative">
                     <SyntaxHighlighter

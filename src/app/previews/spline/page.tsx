@@ -271,8 +271,8 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
         <FaCheck className="text-green-500 text-xl transition-all duration-300" />
       ) : (
         <h1
-        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
-        onClick={() => copyToClipboard(code, id)}>
+          className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors"
+          onClick={() => copyToClipboard(code, id)}>
           salin
         </h1>
       )}
@@ -294,7 +294,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
           <div className={`transition-all ease-in-out duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
               <h1 className="text-3xl font-bold">Spline 3d</h1>
-              <p className="text-muted-foreground mt-2">Hero Section ini sangat cocok untuk kamu yang suka dengan 3D.</p>
+              <p className="text-muted-foreground mt-2">This hero section is perfect for those who enjoy 3D.</p>
 
               <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
                 <SplineSceneBasic />
@@ -302,7 +302,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 
               <div className="mt-6">
                 <h2 className="text-2xl font-semibold">Installation</h2>
-                <div className="mt-4">
+                <div className="mt-4 space-y-4">
                   {/* Dependencies */}
                   <p className="font-bold">Install dependencies</p>
                   <div className="relative mb-8">
@@ -340,8 +340,8 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
                     <CopyIcon id="utils" code={utils} />
                   </div>
 
-                  {/* Demo.tsx */}
-                  <p className="font-bold">demo.tsx</p>
+                  {/* page.tsx */}
+                  <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
                       language="tsx"
@@ -360,7 +360,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
                   </div>
 
                   {/* Spline.tsx */}
-                  <p className="font-bold">splite.tsx</p>
+                  <p className="font-bold">components/ui/spline.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"
@@ -379,7 +379,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
                   </div>
 
                   {/* Spotlight.tsx */}
-                  <p className="font-bold">spotlight.tsx</p>
+                  <p className="font-bold">components/ui/spotlight.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"
@@ -398,7 +398,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
                   </div>
 
                   {/* Card.tsx */}
-                  <p className="font-bold">card.tsx</p>
+                  <p className="font-bold">components/ui/card.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"

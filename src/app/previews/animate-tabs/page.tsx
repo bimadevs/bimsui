@@ -272,7 +272,7 @@ export default function AnimateTabs() {
                     <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
                         <div className="p-6">
                             <h1 className="text-3xl font-bold">Animated Tabs</h1>
-                            <p className="text-muted-foreground mt-2">Animated Tabs, klik tab untuk melihat animasi nya.</p>
+                            <p className="text-muted-foreground mt-2">Tabs to switch content, click on a tab to check background animation.</p>
 
                             <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
                                 <TabsDemo />
@@ -320,8 +320,8 @@ export default function AnimateTabs() {
 
                                     </div>
 
-                                    {/* demo.tsx code  */}
-                                    <p className="font-bold">demo.tsx</p>
+                                    {/* page.tsx code  */}
+                                    <p className="font-bold">page.tsx</p>
                                     <div className="relative mb-8">
                                         <SyntaxHighlighter
                                             language="tsx"
@@ -341,7 +341,7 @@ export default function AnimateTabs() {
                                     </div>
 
                                     {/* tabs.tsx code  */}
-                                    <p className="font-bold">tabs.tsx</p>
+                                    <p className="font-bold">components/ui/tabs.tsx</p>
                                     <div className="relative">
                                         <SyntaxHighlighter
                                             language="tsx"

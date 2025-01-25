@@ -276,7 +276,7 @@ export default function TextReveals() {
                     <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
                         <div className="p-6">
                             <h1 className="text-3xl font-bold">Text Reveal</h1>
-                            <p className="text-muted-foreground mt-2">Efek Mousemove untuk menampilkan konten teks.</p>
+                            <p className="text-muted-foreground mt-2">Mousemove effect to reveal text content at the bottom of the card.</p>
 
                             <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
                                 <TextRevealCardPreview />
@@ -324,8 +324,8 @@ export default function TextReveals() {
 
                                     </div>
 
-                                    {/* demo.tsx code  */}
-                                    <p className="font-bold">demo.tsx</p>
+                                    {/* page.tsx code  */}
+                                    <p className="font-bold">page.tsx</p>
                                     <div className="relative mb-8">
                                         <SyntaxHighlighter
                                             language="tsx"
@@ -345,7 +345,7 @@ export default function TextReveals() {
                                     </div>
 
                                     {/* text-reveal.tsx code  */}
-                                    <p className="font-bold">text-reveal.tsx</p>
+                                    <p className="font-bold">components/ui/text-reveal.tsx</p>
                                     <div className="relative">
                                         <SyntaxHighlighter
                                             language="tsx"

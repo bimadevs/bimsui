@@ -24,8 +24,7 @@ export default function Gooey() {
     }
     `
 
-  const demotsx = `
-  "use client";
+  const demotsx = `"use client";
 
 // this is a client component
 import { useEffect } from "react";
@@ -456,7 +455,7 @@ const CopyIcon = ({ id, code }: { id: string, code: string }) => (
           <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
           <div className="p-6">
             <h1 className="text-3xl font-bold">Canvas</h1>
-            <p className="text-muted-foreground mt-2">Sebuah Hero section dengan effek hover yang memukau, membuat website mu terlihat lebih indah dan interaktif</p>
+            <p className="text-muted-foreground mt-2">Make your website look nicer and more interactive with a hero section with stunning hover effects.</p>
 
             <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
               <Canvas />
@@ -504,8 +503,8 @@ const CopyIcon = ({ id, code }: { id: string, code: string }) => (
 
                 </div>
 
-                {/* demo.tsx code  */}
-                <p className="font-bold">demo.tsx</p>
+                {/* page.tsx code  */}
+                <p className="font-bold">page.tsx</p>
                 <div className="relative mb-8">
                   <SyntaxHighlighter
                     language="tsx"
@@ -525,7 +524,7 @@ const CopyIcon = ({ id, code }: { id: string, code: string }) => (
                 </div>
 
                 {/* canvas.tsx code  */}
-                <p className="font-bold">canvas.tsx</p>
+                <p className="font-bold">components/ui/canvas.tsx</p>
                 <div className="relative">
                   <SyntaxHighlighter
                     language="tsx"
@@ -545,7 +544,7 @@ const CopyIcon = ({ id, code }: { id: string, code: string }) => (
                 </div>
 
                 {/* button.tsx code  */}
-                <p className="font-bold">button.tsx</p>
+                <p className="font-bold">components/ui/button.tsx</p>
                 <div className="relative">
                   <SyntaxHighlighter
                     language="tsx"

@@ -10,14 +10,14 @@ export function TextRevealCardPreview() {
   return (
     <div className="flex items-center justify-center bg-[#0E0E10] h-[40rem] rounded-2xl w-full">
       <TextRevealCard
-        text="PHP sangat jelek"
-        revealText="JS 100x lebih baik"
+        text="PHP is really bad"
+        revealText="Wait... Just Kidding"
       >
         <TextRevealCardTitle>
-          Kamu harus melihat ini!
+        You must watch it!
         </TextRevealCardTitle>
         <TextRevealCardDescription>
-          Ini adalah text-reveal. Hover teks nya, maka teks nya akan berubah
+        This is text-reveal. Hover the text, then you will see the truth
         </TextRevealCardDescription>
       </TextRevealCard>
     </div>

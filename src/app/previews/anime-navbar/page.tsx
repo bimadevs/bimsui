@@ -407,7 +407,7 @@ module.exports = {
           <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
               <h1 className="text-3xl font-bold">Anime Navbar</h1>
-              <p className="text-muted-foreground mt-2">Navbar keren dan interaktif dengan icon yang dinamis</p>
+              <p className="text-muted-foreground mt-2">A cool and interactive navbar with cute icons</p>
 
               <div className="max-w-4xl border-dashed border-2 p-32 mt-4 mx-auto">
                 <AnimeNavBarDemo />
@@ -455,8 +455,8 @@ module.exports = {
 
                   </div>
 
-                  {/* demo.tsx code  */}
-                  <p className="font-bold">demo.tsx</p>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
                       language="tsx"
@@ -476,7 +476,7 @@ module.exports = {
                   </div>
 
                   {/* anime-navbar.tsx code  */}
-                  <p className="font-bold">anime-navbar.tsx</p>
+                  <p className="font-bold">components/ui/anime-navbar.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"

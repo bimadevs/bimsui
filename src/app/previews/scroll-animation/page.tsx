@@ -202,7 +202,7 @@ export default function ScrollAnimationPreview() {
           <div className={` transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
               <h1 className="text-3xl font-bold">Scroll Animation</h1>
-              <p className="text-muted-foreground mt-2">Ini adala sebuah component Scroll animation tablet. Dengan component ini, website mu menjadi lebih keren di mata user </p>
+              <p className="text-muted-foreground mt-2">This is a scroll animation tablet component. With this component, your website will be cooler in the eyes of users.</p>
 
               <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
                 <ScrollaAnimation />
@@ -250,8 +250,8 @@ export default function ScrollAnimationPreview() {
                     <CopyIcon id="utils" code={utils} />
                   </div>
 
-                  {/* Demo.tsx */}
-                  <p className="font-bold">demo.tsx</p>
+                  {/* page.tsx */}
+                  <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
                       language="tsx"
@@ -271,7 +271,7 @@ export default function ScrollAnimationPreview() {
                   </div>
 
                   {/* Scroll Animation */}
-                  <p className="font-bold">scroll-animation.tsx</p>
+                  <p className="font-bold">components/ui/container-scroll-animation.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"

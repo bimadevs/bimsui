@@ -52,7 +52,7 @@ export function Canvas() {
                   strokeWidth={4}
                   className="text-ali absolute -bottom-5 -right-5 h-10 w-10"
                 />
-                UI Component terbaik buatan anak bangsa
+                Best open source UI components
               </h1>
               <div className="flex items-center justify-center gap-1">
                 <span className="relative flex h-3 w-3 items-center justify-center">
@@ -65,12 +65,12 @@ export function Canvas() {
           </div>
 
           <h1 className="mt-8 text-2xl md:text-2xl">
-            Selamat datang di BimsUI I&#39;m{" "}
+            Welcome to BimsUI I&#39;m{" "}
             <span className="text-ali font-bold">Bima Jovanta </span>
           </h1>
 
           <p className="md:text-md mx-auto mb-16 mt-2 max-w-2xl px-6 text-sm text-primary/60 sm:px-6 md:max-w-4xl md:px-20 lg:text-lg">
-            Saya membuat UI Component yang keren dan open source namun seperti premium
+          I made a cool UI component. It is open source but looks like a premium component.
           </p>
           <div className="flex justify-center gap-2">
             <Link href={"/"}>

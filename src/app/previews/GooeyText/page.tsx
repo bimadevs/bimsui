@@ -25,7 +25,7 @@ export default function Gooey() {
 
   const demotsx = `
     import * as React from "react";
-    import { GooeyText } from "@/components/ui/gooey-text-morphing";
+    import { GooeyText } from "@/components/ui/gooey-text";
     
     function GooeyTextDemo() {
       return (
@@ -216,7 +216,7 @@ export function GooeyText({
           <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
               <h1 className="text-3xl font-bold">Gooey Text</h1>
-              <p className="text-muted-foreground mt-2">Menampilkan teks dengan efek Gooey yang indah.</p>
+              <p className="text-muted-foreground mt-2">Create a beautiful gooey effect when displaying text.</p>
 
               <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
                 <GooeyTextDemo />
@@ -265,7 +265,7 @@ export function GooeyText({
                   </div>
 
                   {/* demo.tsx code  */}
-                  <p className="font-bold">demo.tsx</p>
+                  <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
                       language="tsx"
@@ -285,7 +285,7 @@ export function GooeyText({
                   </div>
 
                   {/* splite.tsx code  */}
-                  <p className="font-bold">splite.tsx</p>
+                  <p className="font-bold">components/ui/gooey-text.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
                       language="tsx"

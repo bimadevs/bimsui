@@ -11,16 +11,16 @@ import { ScrollaAnimation } from "../components/UI/scroll-animation/demo";
 
 export default function pict() {
     return (
-        <div className="flex justify-center items-center h-[500vh]">
+        <div className="flex justify-center items-center">
         {/* <AnimeNavBarDemo /> */}
-        {/* <Canvas /> */}
+        <Canvas />
         {/* <FloatingButton /> */}
         {/* <GooeyTextDemo /> */}
         {/* <Connect /> */}
         {/* <InteraktifIcon /> */}
         {/* <SplineSceneBasic /> */}
         {/* <ScrollaAnimation /> */}
-        <TabsDemo />
+        {/* <TabsDemo /> */}
         {/* <TextRevealCardPreview /> */}
         </div>
     )

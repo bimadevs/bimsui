@@ -11,7 +11,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "Spline",
       name: "Spline",
-      description: "Tampilan 3D dengan framer-motion dan Spline",
+      description: "This hero section is perfect for those who enjoy 3D.",
       category: "NextJS",
       image: "/images/spline.png",
       link: "/previews/spline"
@@ -19,7 +19,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "GooeyText",
       name: "GooeyText",
-      description: "Teks Gooey dengan framer-motion",
+      description: "Create a beautiful gooey effect when displaying text.",
       category: "NextJS",
       image: "/images/gooey-text.png",
       link: "/previews/GooeyText"
@@ -27,7 +27,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "anime-navbar",
       name: "anime-navbar",
-      description: "Sebuah Navbar dengan animasi keren dan hover efek",
+      description: "A cool and interactive navbar with cute icons",
       category: "NextJS",
       image: "/images/anime-navbar.png",
       link: "/previews/anime-navbar"
@@ -35,7 +35,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "highlighter",
       name: "highlighter",
-      description: "Sebuah card dengan animasi highlight saat hover",
+      description: "A card with a floating marker effect that will leave you spellbound.",
       category: "NextJS",
       image: "/images/highlighter.png",
       link: "/previews/highlighter"
@@ -43,7 +43,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "Floating Button",
       name: "Floating Button",
-      description: "Sebuah Floating Button yang modern, sangat cocok untuk website kamu yang ingin terlihat modern dan beda dari yang lain",
+      description: "A modern floating button that is perfect for your website that wants to look modern and different from the rest.",
       category: "NextJS",
       image: "/images/floating-button.png",
       link: "/previews/floating-button"
@@ -51,15 +51,15 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "Canvas",
       name: "Canvas",
-      description: "Sebuah Hero section dengan effek hover yang memukau, membuat website mu terlihat lebih indah dan interaktif",
+      description: "Make your website look nicer and more interactive with a hero section with stunning hover effects.",
       category: "NextJS",
       image: "/images/canvas.png",
       link: "/previews/canvas"
     },
     {
-      id: "Interaktif Icon",
-      name: "Interaktif Icon",
-      description: "Interaktif Icon ini sangat cocok untuk kamu yang pengen pamer langguage program dengan gaya!",
+      id: "Interactive Icon",
+      name: "Interactive Icon",
+      description: "If you want to show off your programming language in style, this interactive icon is for you!",
       category: "NextJS",
       image: "/images/interaktif-icon.png",
       link: "/previews/interaktif-icon"
@@ -67,7 +67,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "Scroll Animation",
       name: "Scroll Animation",
-      description: "Ini adala sebuah component Scroll animation tablet. Dengan component ini, website mu menjadi lebih keren di mata user",
+      description: "This is a scroll animation tablet component. With this component, your website will be cooler in the eyes of users.",
       category: "NextJS",
       image: "/images/scroll-animation.png",
       link: "/previews/scroll-animation"
@@ -75,7 +75,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "Text Reveal",
       name: "Text Reveal",
-      description: "Efek Mousemove untuk menampilkan konten teks.",
+      description: "Mousemove effect to reveal text content at the bottom of the card.",
       category: "NextJS",
       image: "/images/text-reveal.png",
       link: "/previews/text-reveal"
@@ -83,7 +83,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     {
       id: "Animate Tabs",
       name: "Animate Tabs",
-      description: "Animated Tabs, klik tab untuk melihat animasi nya.",
+      description: "Tabs to switch content, click on a tab to check background animation",
       category: "NextJS",
       image: "/images/tabs.png",
       link: "/previews/animate-tabs"
