@@ -39,8 +39,12 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Scroll Animation", href: "/previews/scroll-animation" },
         { name: "Text Reveal", href: "/previews/text-reveal" },
         { name: "Animate Tabs", href: "/previews/animate-tabs" },
-        { name: "Hero Parallax", href: "/previews/hero-parallax", isNew: true }, // Tandai sebagai new
-        { name: "Timeline", href: "/previews/timeline", isNew: true }, // Tandai sebagai new
+        { name: "Hero Parallax", href: "/previews/hero-parallax" }, 
+        { name: "Timeline", href: "/previews/timeline" },
+        { name: "Animated Gradient Background", href: "/previews/animated-gradient-background", isNew: true }, // Tandai sebagai new
+        { name: "Carousel", href: "/previews/carousel", isNew: true }, // Tandai sebagai new
+        { name: "Link Preview", href: "/previews/link-preview", isNew: true }, // Tandai sebagai new
+        { name: "Shape Landing Hero", href: "/previews/shape-landing-hero", isNew: true }, // Tandai sebagai new
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const installasi: MenuItem[] = [

@@ -104,7 +104,39 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       image: "/images/tabs.png",
       link: "/previews/animate-tabs"
     },
-  ];
+    {
+      id: "Shape Landing Hero",
+      name: "Shape Landing Hero",
+      description: "a landing hero with a modern look",
+      category: "NextJS",
+      image: "/images/shape-landing-hero.png",
+      link: "/previews/shape-landing-hero"
+    },
+    {
+      id: "Animated Gradient Background",
+      name: "Animated Gradient Background",
+      description: "A customizable animated radial gradient background with a subtle breathing effect.",
+      category: "NextJS",
+      image: "/images/animated-gradient-bg.png",
+      link: "/previews/animated-gradient-background"
+    },
+    {
+      id: "Carousel",
+      name: "Carousel",
+      description: "A customizable carousel with microinteractions and slider.      ",
+      category: "NextJS",
+      image: "/images/carousel.png",
+      link: "/previews/carousel"
+    },
+    {
+      id: "link Preveiw",
+      name: "link Preveiw",
+      description: "Dynamic link previews for your anchor tags.",
+      category: "NextJS",
+      image: "/images/link-preview.png",
+      link: "/previews/link-preview"
+    },
+  ].sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div className="min-h-screen bg-black text-white py-12 px-4">
