@@ -14,10 +14,14 @@ import { TextRevealCardPreview } from "../components/UI/reveal-card/demo";
 import { DemoHeroGeometric } from "../components/UI/shape-landing-hero/demo";
 import { ScrollaAnimation } from "../components/UI/scroll-animation/demo";
 import { TimelineDemo } from "../components/UI/timeline/demo";
+import { ThreeDCardDemo } from "../components/UI/3d-card-effect/demo";
+import { AnimatedTooltipPreview } from "../components/UI/animated-tooltip/demo";
+import { FloatingDockDemo } from "../components/UI/floating-dock/demo";
+import { LensDemo } from "../components/UI/lens/demo";
 
 export default function pict() {
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center h-[100vh] items-center">
         {/* <AnimeNavBarDemo /> */}
         {/* <Canvas /> */}
         {/* <FloatingButton /> */}
@@ -34,6 +38,10 @@ export default function pict() {
         {/* <CarouselDemo /> */}
         {/* <LinkPreviewDemo /> */}
         {/* <DemoHeroGeometric /> */}
+        {/* <ThreeDCardDemo /> */}
+        {/* <AnimatedTooltipPreview /> */}
+        {/* <FloatingDockDemo /> */}
+        <LensDemo />
         </div>
     )
 }

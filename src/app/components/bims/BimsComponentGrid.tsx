@@ -136,12 +136,71 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       image: "/images/link-preview.png",
       link: "/previews/link-preview"
     },
+    {
+      id: "3D Card Effect",
+      name: "3D Card Effect",
+      description: "Dynamic link previews for your anchor tags.",
+      category: "NextJS",
+      image: "/images/3d-card-effect.png",
+      link: "/previews/3d-card-effect"
+    },
+    {
+      id: "Animated Tooltip",
+      name: "Animated Tooltip",
+      description: "Dynamic link previews for your anchor tags.",
+      category: "NextJS",
+      image: "/images/animated-tooltip.png",
+      link: "/previews/animated-tooltip"
+    },
+    {
+      id: "Floating Dock",
+      name: "Floating Dock",
+      description: "Dynamic link previews for your anchor tags.",
+      category: "NextJS",
+      image: "/images/floating-dock.png",
+      link: "/previews/floating-dock"
+    },
+    {
+      id: "Lens",
+      name: "Lens",
+      description: "Dynamic link previews for your anchor tags.",
+      category: "NextJS",
+      image: "/images/lens.png",
+      link: "/previews/lens"
+    },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div className="min-h-screen bg-black text-white py-12 md:px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Components</h1>
+        <Link target="_blank" href={'https://wa.me/6282254044783'}>
+          <button className="bg-slate-800 my-12 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
+            <span className="absolute inset-0 overflow-hidden rounded-full">
+              <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            </span>
+            <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10 ">
+              <span>
+                ✨ Request a component
+              </span>
+              <svg
+                fill="none"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.75 8.75L14.25 12L10.75 15.25"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                />
+              </svg>
+            </div>
+            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+          </button>
+        </Link>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {components.map((component) => (
             <Link key={component.id} href={component.link}>
