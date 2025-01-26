@@ -4,7 +4,7 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { Connect } from "@/app/components/UI/highlighter/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
@@ -683,13 +683,12 @@ export function Connect() {
   const CopyIcon = ({ id, code }: { id: string, code: string }) => (
     <div className="absolute right-4 top-4">
       {copiedId === id ? (
-        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+        < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
-        <h1
-        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
-        onClick={() => copyToClipboard(code, id)}>
-          salin
-        </h1>
+        < FaRegCopy
+        onClick={() => copyToClipboard(code, id)}
+        className="transition-all duration-300 cursor-pointer" />
+
       )}
     </div>
   );
@@ -720,14 +719,18 @@ export function Connect() {
                   <p className="font-bold">Install dependencies</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
+                      wrapLines={true}
                       language="bash"
                       style={nightOwl}
                       customStyle={{
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {dependencies}
                     </SyntaxHighlighter>
@@ -740,14 +743,19 @@ export function Connect() {
                   <p className="">src/lib/utils.ts</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="ts"
                       style={nightOwl}
                       customStyle={{
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {utils}
                     </SyntaxHighlighter>
@@ -759,15 +767,19 @@ export function Connect() {
                   <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="tsx"
                       style={nightOwl}
                       customStyle={{
-                        height: "25rem",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {demotsx}
                     </SyntaxHighlighter>
@@ -778,15 +790,19 @@ export function Connect() {
                   <p className="font-bold">components/ui/highlighter.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="tsx"
                       style={nightOwl}
                       customStyle={{
-                        height: "25rem",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {highlighter}
                     </SyntaxHighlighter>
@@ -798,15 +814,19 @@ export function Connect() {
                   <p className="font-bold">components/ui/button.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="tsx"
                       style={nightOwl}
                       customStyle={{
-                        height: "25rem",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {button}
                     </SyntaxHighlighter>

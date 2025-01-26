@@ -5,7 +5,7 @@ import { BimsSidebar } from "../components/bims/BimsSidebar";
 import { BimsNavbar } from "../components/bims/BimsNavbar";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaCheck, FaClipboard } from "react-icons/fa";
+import { FaRegCopy, FaCheck, FaClipboard } from "react-icons/fa";
 import { FooterDemo } from "../components/bims/footer";
 
 export default function InsatallTailwind() {
@@ -13,48 +13,47 @@ export default function InsatallTailwind() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
     useEffect(() => {
         const mediaQuery = window.matchMedia('(min-width: 768px)');
-        
+
         // Fungsi untuk update state berdasarkan ukuran layar
         const handleResize = () => {
-          setSidebarOpen(mediaQuery.matches);
+            setSidebarOpen(mediaQuery.matches);
         };
-        
+
         // Set initial state saat komponen mount
         handleResize();
-        
+
         // Add event listener untuk resize
         mediaQuery.addEventListener('change', handleResize);
-        
+
         // Cleanup
         return () => mediaQuery.removeEventListener('change', handleResize);
-      }, []);
+    }, []);
     const [copiedId, setCopiedId] = useState<string | null>(null);
 
     // Fungsi untuk menyalin kode ke clipboard
     const copyToClipboard = (code: string, id: string) => {
         navigator.clipboard.writeText(code)
-          .then(() => {
-            setCopiedId(id);
-            setTimeout(() => setCopiedId(null), 2000);
-          })
-          .catch(err => {
-            console.error('Failed to copy: ', err);
-          });
-      };
-    
-      const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+            .then(() => {
+                setCopiedId(id);
+                setTimeout(() => setCopiedId(null), 2000);
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    };
+
+    const CopyIcon = ({ id, code }: { id: string, code: string }) => (
         <div className="absolute right-4 top-4">
-          {copiedId === id ? (
-            <FaCheck className="text-green-500 text-xl transition-all duration-300" />
-          ) : (
-            <h1
-            className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
-            onClick={() => copyToClipboard(code, id)}>
-              salin
-            </h1>
-          )}
+            {copiedId === id ? (
+                < FaCheck className="text-green-500 font-light transition-all duration-300" />
+            ) : (
+                < FaRegCopy
+                    onClick={() => copyToClipboard(code, id)}
+                    className="transition-all duration-300 cursor-pointer" />
+
+            )}
         </div>
-      );
+    );
 
     const createProject = `npx create-next-app@latest my-project --typescript --eslint
 cd my-project`
@@ -111,14 +110,18 @@ module.exports = {
                             {/* install next js code  */}
                             <div className="relative mb-8">
                                 <SyntaxHighlighter
+                                    wrapLines={true}
                                     language="bash"
                                     style={nightOwl}
                                     customStyle={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#1e1e1e',
-                                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                                        maxHeight: '25rem',
+                                        padding: '20px',
+                                        borderRadius: '10px',
+                                        fontSize: '0.9em',
+                                        lineHeight: '1.5',
+                                        margin: '20px 0',
+                                        overflowX: 'auto',
+                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                                     }}>
                                     {createProject}
                                 </SyntaxHighlighter>
@@ -129,14 +132,18 @@ module.exports = {
                             {/* install tailwind code  */}
                             <div className="relative mb-8">
                                 <SyntaxHighlighter
+                                    wrapLines={true}
                                     language="bash"
                                     style={nightOwl}
                                     customStyle={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#1e1e1e',
-                                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                                        maxHeight: '25rem',
+                                        padding: '20px',
+                                        borderRadius: '10px',
+                                        fontSize: '0.9em',
+                                        lineHeight: '1.5',
+                                        margin: '20px 0',
+                                        overflowX: 'auto',
+                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                                     }}>
                                     {installTailwind}
                                 </SyntaxHighlighter>
@@ -151,14 +158,19 @@ module.exports = {
                             {/* konfigure tailwind code  */}
                             <div className="relative mb-8">
                                 <SyntaxHighlighter
+                                    showLineNumbers={true}
+                                    wrapLines={true}
                                     language="typescript"
                                     style={nightOwl}
                                     customStyle={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#1e1e1e',
-                                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                                        maxHeight: '25rem',
+                                        padding: '20px',
+                                        borderRadius: '10px',
+                                        fontSize: '0.9em',
+                                        lineHeight: '1.5',
+                                        margin: '20px 0',
+                                        overflowX: 'auto',
+                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                                     }}>
                                     {TailwindCofig}
                                 </SyntaxHighlighter>
@@ -171,14 +183,19 @@ module.exports = {
                             <p>global.css</p>
                             <div className="relative mb-8">
                                 <SyntaxHighlighter
+                                    showLineNumbers={true}
+                                    wrapLines={true}
                                     language="typescript"
                                     style={nightOwl}
                                     customStyle={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#1e1e1e',
-                                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                                        maxHeight: '25rem',
+                                        padding: '20px',
+                                        borderRadius: '10px',
+                                        fontSize: '0.9em',
+                                        lineHeight: '1.5',
+                                        margin: '20px 0',
+                                        overflowX: 'auto',
+                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                                     }}>
                                     {globalcss}
                                 </SyntaxHighlighter>
@@ -190,14 +207,18 @@ module.exports = {
                             {/* terminal code  */}
                             <div className="relative mb-8">
                                 <SyntaxHighlighter
+                                    wrapLines={true}
                                     language="bash"
                                     style={nightOwl}
                                     customStyle={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#1e1e1e',
-                                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                                        maxHeight: '25rem',
+                                        padding: '20px',
+                                        borderRadius: '10px',
+                                        fontSize: '0.9em',
+                                        lineHeight: '1.5',
+                                        margin: '20px 0',
+                                        overflowX: 'auto',
+                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                                     }}>
                                     {run}
                                 </SyntaxHighlighter>
@@ -211,14 +232,19 @@ module.exports = {
                             <p>page.tsx</p>
                             <div className="relative mb-8">
                                 <SyntaxHighlighter
+                                    showLineNumbers={true}
+                                    wrapLines={true}
                                     language="tsx"
                                     style={nightOwl}
                                     customStyle={{
-                                        padding: '1rem',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#1e1e1e',
-                                        whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                        wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
+                                        maxHeight: '25rem',
+                                        padding: '20px',
+                                        borderRadius: '10px',
+                                        fontSize: '0.9em',
+                                        lineHeight: '1.5',
+                                        margin: '20px 0',
+                                        overflowX: 'auto',
+                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                                     }}>
                                     {indextsx}
                                 </SyntaxHighlighter>

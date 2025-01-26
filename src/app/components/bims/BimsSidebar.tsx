@@ -75,7 +75,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             >
                                 <a
                                     href={install.href}
-                                    className="flex justify-between items-center px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
+                                    className="flex justify-between items-center px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 hover:translate-x-2 rounded-md transition-all duration-300"
                                 >
                                     <span>{install.name}</span>
                                     {install.isNew && (
@@ -103,14 +103,14 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             >
                                 <a
                                     href={component.href}
-                                    className="flex justify-between items-center px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 rounded-md transition-colors"
+                                    className="flex justify-between items-center px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-blue-500 hover:translate-x-2 rounded-md transition-all duration-300"
                                 >
                                     <span>{component.name}</span>
                                     {component.isNew && (
                                         <motion.span
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
-                                            className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full ml-2"
+                                            className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full mr-2"
                                         >
                                             New
                                         </motion.span>

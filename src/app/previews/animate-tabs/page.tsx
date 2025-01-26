@@ -4,42 +4,42 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaCheck } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FaRegCopy, FaCheck } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FooterDemo } from "@/app/components/bims/footer";
 import { TabsDemo } from "@/app/components/UI/animate-tabs/demo";
 
 export default function AnimateTabs() {
-    const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-    useEffect(() => {
-      const mediaQuery = window.matchMedia('(min-width: 768px)');
-      
-      // Fungsi untuk update state berdasarkan ukuran layar
-      const handleResize = () => {
-        setSidebarOpen(mediaQuery.matches);
-      };
-      
-      // Set initial state saat komponen mount
-      handleResize();
-      
-      // Add event listener untuk resize
-      mediaQuery.addEventListener('change', handleResize);
-      
-      // Cleanup
-      return () => mediaQuery.removeEventListener('change', handleResize);
-    }, []);
-    const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-    const dependencies = `npm i motion clsx tailwind-merge`
+    // Fungsi untuk update state berdasarkan ukuran layar
+    const handleResize = () => {
+      setSidebarOpen(mediaQuery.matches);
+    };
 
-    const utils = `import { ClassValue, clsx } from "clsx";
+    // Set initial state saat komponen mount
+    handleResize();
+
+    // Add event listener untuk resize
+    mediaQuery.addEventListener('change', handleResize);
+
+    // Cleanup
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const dependencies = `npm i motion clsx tailwind-merge`
+
+  const utils = `import { ClassValue, clsx } from "clsx";
     import { twMerge } from "tailwind-merge";
     
     export function cn(...inputs: ClassValue[]) {
       return twMerge(clsx(inputs));
     }`
 
-    const demotsx = `"use client";
+  const demotsx = `"use client";
 
     import Image from "next/image";
     import { Tabs } from "../ui/tabs";
@@ -117,7 +117,7 @@ export default function AnimateTabs() {
       );
     };`;
 
-    const tabs = `"use client";
+  const tabs = `"use client";
 
     import { useState } from "react";
     import { motion } from "framer-motion";
@@ -241,7 +241,7 @@ export default function AnimateTabs() {
         </div>
       );
     };`;
-    const globalcss = `.no-visible-scrollbar {
+  const globalcss = `.no-visible-scrollbar {
         scrollbar-width: none;
         -ms-overflow-style: none;
         -webkit-overflow-scrolling: touch;
@@ -250,157 +250,178 @@ export default function AnimateTabs() {
       .no-visible-scrollbar::-webkit-scrollbar {
         display: none;
       }`
-    // Fungsi untuk menyalin kode ke clipboard
-    const copyToClipboard = (code: string, id: string) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopiedId(id);
-                setTimeout(() => setCopiedId(null), 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-    };
+  // Fungsi untuk menyalin kode ke clipboard
+  const copyToClipboard = (code: string, id: string) => {
+    navigator.clipboard.writeText(code)
+      .then(() => {
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  };
 
-    const CopyIcon = ({ id, code }: { id: string, code: string }) => (
-        <div className="absolute right-4 top-4">
-            {copiedId === id ? (
-                <FaCheck className="text-green-500 text-xl transition-all duration-300" />
-            ) : (
-                <h1
-                    className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors"
-                    onClick={() => copyToClipboard(code, id)}>
-                    salin
-                </h1>
-            )}
-        </div>
-    );
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        < FaCheck className="text-green-500 font-light transition-all duration-300" />
+      ) : (
+        < FaRegCopy
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
-    return (
-        <div className="min-h-screen bg-background overflow-x-hidden">
-            <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-            <div className="flex">
-                <BimsSidebar
-                    isOpen={sidebarOpen}
-                    framework={framework}
-                    onFrameworkChange={setFramework}
-                />
-                <main className="pt-20 flex-1 w-[100vw]">
-                    <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-                        <div className="p-6">
-                            <h1 className="text-3xl font-bold">Animated Tabs</h1>
-                            <p className="text-muted-foreground mt-2">Tabs to switch content, click on a tab to check background animation.</p>
+      )}
+    </div>
+  );
 
-                            <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
-                                <TabsDemo />
-                            </div>
+  return (
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex">
+        <BimsSidebar
+          isOpen={sidebarOpen}
+          framework={framework}
+          onFrameworkChange={setFramework}
+        />
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Animated Tabs</h1>
+              <p className="text-muted-foreground mt-2">Tabs to switch content, click on a tab to check background animation.</p>
 
-                            <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
-                                <h2 className="text-2xl font-semibold">Installation</h2>
-                                <div className="mt-4 ">
-                                    {/* install dependencies code  */}
-                                    <p className="font-bold">Install dependencies</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            language="bash"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {dependencies}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="dependencies" code={dependencies} />
+              <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
+                <TabsDemo />
+              </div>
 
-                                    </div>
+              <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4 ">
+                  {/* install dependencies code  */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      wrapLines={true}
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
 
-                                    {/* utils code  */}
-                                    <h1 className="font-bold text-2xl">Add util file</h1>
-                                    <p className="">src/lib/utils.ts</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            language="ts"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {utils}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="utils" code={utils} />
+                  </div>
 
-                                    </div>
+                  {/* utils code  */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
 
-                                    {/* page.tsx code  */}
-                                    <p className="font-bold">page.tsx</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                height: "25rem",
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {demotsx}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="demotsx" code={demotsx} />
+                  </div>
 
-                                    </div>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
-                                    {/* tabs.tsx code  */}
-                                    <p className="font-bold">components/ui/tabs.tsx</p>
-                                    <div className="relative">
-                                        <SyntaxHighlighter
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                height: "25rem",
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {tabs}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="tabs" code={tabs} />
+                  </div>
 
-                                    </div>
-                                    {/* global.css code  */}
-                                    <p className="font-bold">global.css</p>
-                                    <div className="relative">
-                                        <SyntaxHighlighter
-                                            language="css"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {globalcss}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="globalcss" code={globalcss} />
+                  {/* tabs.tsx code  */}
+                  <p className="font-bold">components/ui/tabs.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {tabs}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="tabs" code={tabs} />
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <FooterDemo />
-                    </div>
-                </main>
+                  </div>
+                  {/* global.css code  */}
+                  <p className="font-bold">global.css</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="css"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {globalcss}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="globalcss" code={globalcss} />
+
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    );
+            <FooterDemo />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 }

@@ -4,42 +4,42 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FooterDemo } from "@/app/components/bims/footer";
 import { TextRevealCardPreview } from "@/app/components/UI/reveal-card/demo";
 
 export default function TextReveals() {
-    const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-    useEffect(() => {
-      const mediaQuery = window.matchMedia('(min-width: 768px)');
-      
-      // Fungsi untuk update state berdasarkan ukuran layar
-      const handleResize = () => {
-        setSidebarOpen(mediaQuery.matches);
-      };
-      
-      // Set initial state saat komponen mount
-      handleResize();
-      
-      // Add event listener untuk resize
-      mediaQuery.addEventListener('change', handleResize);
-      
-      // Cleanup
-      return () => mediaQuery.removeEventListener('change', handleResize);
-    }, []);
-    const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-    const dependencies = `npm i motion clsx tailwind-merge`
+    // Fungsi untuk update state berdasarkan ukuran layar
+    const handleResize = () => {
+      setSidebarOpen(mediaQuery.matches);
+    };
 
-    const utils = `import { ClassValue, clsx } from "clsx";
+    // Set initial state saat komponen mount
+    handleResize();
+
+    // Add event listener untuk resize
+    mediaQuery.addEventListener('change', handleResize);
+
+    // Cleanup
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const dependencies = `npm i motion clsx tailwind-merge`
+
+  const utils = `import { ClassValue, clsx } from "clsx";
     import { twMerge } from "tailwind-merge";
     
     export function cn(...inputs: ClassValue[]) {
       return twMerge(clsx(inputs));
     }`
 
-    const demotsx = `"use client";
+  const demotsx = `"use client";
   import React from "react";
   import {
     TextRevealCard,
@@ -66,7 +66,7 @@ export default function TextReveals() {
     );
   }`;
 
-    const textReveal = `"use client";
+  const textReveal = `"use client";
     import React, { useEffect, useRef, useState, memo } from "react";
     import { motion } from "framer-motion";
     import { twMerge } from "tailwind-merge";
@@ -253,139 +253,155 @@ export default function TextReveals() {
     };
     
     export const MemoizedStars = memo(Stars);`;
-    // Fungsi untuk menyalin kode ke clipboard
-    const copyToClipboard = (code: string, id: string) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopiedId(id);
-                setTimeout(() => setCopiedId(null), 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-    };
+  // Fungsi untuk menyalin kode ke clipboard
+  const copyToClipboard = (code: string, id: string) => {
+    navigator.clipboard.writeText(code)
+      .then(() => {
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  };
 
-    const CopyIcon = ({ id, code }: { id: string, code: string }) => (
-        <div className="absolute right-4 top-4">
-            {copiedId === id ? (
-                <FaCheck className="text-green-500 text-xl transition-all duration-300" />
-            ) : (
-                <h1
-                    className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors"
-                    onClick={() => copyToClipboard(code, id)}>
-                    salin
-                </h1>
-            )}
-        </div>
-    );
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        < FaCheck className="text-green-500 font-light transition-all duration-300" />
+      ) : (
+        < FaRegCopy
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
-    return (
-        <div className="min-h-screen bg-background overflow-x-hidden">
-            <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-            <div className="flex">
-                <BimsSidebar
-                    isOpen={sidebarOpen}
-                    framework={framework}
-                    onFrameworkChange={setFramework}
-                />
-                <main className="pt-20 flex-1 w-[100vw]">
-                    <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-                        <div className="p-6">
-                            <h1 className="text-3xl font-bold">Text Reveal</h1>
-                            <p className="text-muted-foreground mt-2">Mousemove effect to reveal text content at the bottom of the card.</p>
+      )}
+    </div>
+  );
 
-                            <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
-                                <TextRevealCardPreview />
-                            </div>
+  return (
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex">
+        <BimsSidebar
+          isOpen={sidebarOpen}
+          framework={framework}
+          onFrameworkChange={setFramework}
+        />
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Text Reveal</h1>
+              <p className="text-muted-foreground mt-2">Mousemove effect to reveal text content at the bottom of the card.</p>
 
-                            <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
-                                <h2 className="text-2xl font-semibold">Installation</h2>
-                                <div className="mt-4 ">
-                                    {/* install dependencies code  */}
-                                    <p className="font-bold">Install dependencies</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            language="bash"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {dependencies}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="dependencies" code={dependencies} />
+              <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
+                <TextRevealCardPreview />
+              </div>
 
-                                    </div>
+              <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4 ">
+                  {/* install dependencies code  */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      wrapLines={true}
+                      language="bash"
+                      style={nightOwl}
+                     customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
 
-                                    {/* utils code  */}
-                                    <h1 className="font-bold text-2xl">Add util file</h1>
-                                    <p className="">src/lib/utils.ts</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            language="ts"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {utils}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="utils" code={utils} />
+                  </div>
 
-                                    </div>
+                  {/* utils code  */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="ts"
+                      style={nightOwl}
+                     customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
 
-                                    {/* page.tsx code  */}
-                                    <p className="font-bold">page.tsx</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                height: "25rem",
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {demotsx}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="demotsx" code={demotsx} />
+                  </div>
 
-                                    </div>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
-                                    {/* text-reveal.tsx code  */}
-                                    <p className="font-bold">components/ui/text-reveal.tsx</p>
-                                    <div className="relative">
-                                        <SyntaxHighlighter
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                height: "25rem",
-                                                padding: '1rem',
-                                                borderRadius: '8px',
-                                                backgroundColor: '#1e1e1e',
-                                                whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                                                wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                                            }}>
-                                            {textReveal}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="textReveal" code={textReveal} />
+                  </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <FooterDemo />
-                    </div>
-                </main>
+                  {/* text-reveal.tsx code  */}
+                  <p className="font-bold">components/ui/text-reveal.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {textReveal}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="textReveal" code={textReveal} />
+
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    );
+            <FooterDemo />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 }

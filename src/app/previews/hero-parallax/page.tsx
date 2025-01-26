@@ -4,7 +4,7 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { FaCheck } from 'react-icons/fa';
+import { FaRegCopy, FaCheck } from 'react-icons/fa';
 import { FooterDemo } from "@/app/components/bims/footer";
 import { HeroParallaxDemo } from "@/app/components/UI/hero-parallax/demo";
 
@@ -31,15 +31,14 @@ export default function ScrollAnimationPreview() {
   }, []);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const dependencies = `npm i clsx tailwind-merge `
+  const dependencies = `npm i motion clsx tailwind-merge`
 
   const utils = `import { ClassValue, clsx } from "clsx";
     import { twMerge } from "tailwind-merge";
     
     export function cn(...inputs: ClassValue[]) {
       return twMerge(clsx(inputs));
-    }
-    `
+    }`
 
   const demotsx = `
 "use client";
@@ -328,13 +327,12 @@ export const products = [
   const CopyIcon = ({ id, code }: { id: string, code: string }) => (
     <div className="absolute right-4 top-4">
       {copiedId === id ? (
-        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+        < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
-        <h1
-        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
-        onClick={() => copyToClipboard(code, id)}>
-          salin
-        </h1>
+        < FaRegCopy
+        onClick={() => copyToClipboard(code, id)}
+        className="transition-all duration-300 cursor-pointer" />
+
       )}
     </div>
   );
@@ -365,15 +363,18 @@ export const products = [
                   <p className="font-bold">Install dependencies</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
+                      wrapLines={true}
                       language="bash"
                       style={nightOwl}
                       customStyle={{
-                        width: "100%",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap',
-                        wordBreak: 'break-word',
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {dependencies}
                     </SyntaxHighlighter>
@@ -385,15 +386,19 @@ export const products = [
                   <p className="">src/lib/utils.ts</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="ts"
                       style={nightOwl}
                       customStyle={{
-                        width: "100%",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap',
-                        wordBreak: 'break-word',
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {utils}
                     </SyntaxHighlighter>
@@ -404,16 +409,19 @@ export const products = [
                   <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="tsx"
                       style={nightOwl}
                       customStyle={{
-                        width: "100%",
-                        height: "25rem",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap',
-                        wordBreak: 'break-word',
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {demotsx}
                     </SyntaxHighlighter>
@@ -424,16 +432,19 @@ export const products = [
                   <p className="font-bold">components/ui/hero-parallax.tsx</p>
                   <div className="relative">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="tsx"
                       style={nightOwl}
                       customStyle={{
-                        width: "100%",
-                        height: "25rem",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap',
-                        wordBreak: 'break-word',
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {heroParallax}
                     </SyntaxHighlighter>
@@ -444,15 +455,19 @@ export const products = [
                   <p className="font-bold">next.config.ts</p>
                   <div className="relative">
                     <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
                       language="tsx"
                       style={nightOwl}
                       customStyle={{
-                        width: "100%",
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        backgroundColor: '#1e1e1e',
-                        whiteSpace: 'pre-wrap',
-                        wordBreak: 'break-word',
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
                       {nextConfig}
                     </SyntaxHighlighter>

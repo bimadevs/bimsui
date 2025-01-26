@@ -4,7 +4,7 @@ import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
-import { FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
+import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FloatingButton } from "@/app/components/UI/floating-button/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
@@ -14,18 +14,18 @@ export default function Gooey() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
-    
+
     // Fungsi untuk update state berdasarkan ukuran layar
     const handleResize = () => {
       setSidebarOpen(mediaQuery.matches);
     };
-    
+
     // Set initial state saat komponen mount
     handleResize();
-    
+
     // Add event listener untuk resize
     mediaQuery.addEventListener('change', handleResize);
-    
+
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
@@ -198,13 +198,12 @@ export default function Gooey() {
   const CopyIcon = ({ id, code }: { id: string, code: string }) => (
     <div className="absolute right-4 top-4">
       {copiedId === id ? (
-        <FaCheck className="text-green-500 text-xl transition-all duration-300" />
+        < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
-        <h1
-        className="text-gray-400 text-lg cursor-pointer hover:text-blue-500 transition-colors" 
-        onClick={() => copyToClipboard(code, id)}>
-          salin
-        </h1>
+        < FaRegCopy
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
+
       )}
     </div>
   );
@@ -219,100 +218,117 @@ export default function Gooey() {
           onFrameworkChange={setFramework}
         />
         <main className="pt-20 flex-1 w-[100vw]">
-        <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-        <div className="p-6">
-          <h1 className="text-3xl font-bold">Floating Button</h1>
-          <p className="text-muted-foreground mt-2">A modern floating button that is perfect for your website that wants to look modern and different from the rest.</p>
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Floating Button</h1>
+              <p className="text-muted-foreground mt-2">A modern floating button that is perfect for your website that wants to look modern and different from the rest.</p>
 
-          <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
-            <FloatingButton />
-          </div>
-
-          <div className="mt-6"> {/* Menyesuaikan lebar secara dinamis */}
-            <h2 className="text-2xl font-semibold">Installation</h2>
-            <div className="mt-4 ">
-              {/* install dependencies code  */}
-              <p className="font-bold">Install dependencies</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="bash"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {dependencies}
-                </SyntaxHighlighter>
-                <CopyIcon id="dependencies" code={dependencies} />
-
+              <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
+                <FloatingButton />
               </div>
 
-              {/* utils code  */}
-              <h1 className="font-bold text-2xl">Add util file</h1>
-              <p className="">src/lib/utils.ts</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="ts"
-                  style={nightOwl}
-                  customStyle={{
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {utils}
-                </SyntaxHighlighter>
-                <CopyIcon id="utils" code={utils} />
+              <div className="mt-6"> {/* Menyesuaikan lebar secara dinamis */}
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4 ">
+                  {/* install dependencies code  */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      wrapLines={true}
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
 
-              </div>
+                  </div>
 
-              {/* page.tsx code  */}
-              <p className="font-bold">page.tsx</p>
-              <div className="relative mb-8">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {demotsx}
-                </SyntaxHighlighter>
-                <CopyIcon id="demotsx" code={demotsx} />
+                  {/* utils code  */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
 
-              </div>
+                  </div>
 
-              {/* floating-button.tsx code  */}
-              <p className="font-bold">components/ui/floating-button.tsx</p>
-              <div className="relative">
-                <SyntaxHighlighter
-                  language="tsx"
-                  style={nightOwl}
-                  customStyle={{
-                    height: "25rem",
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#1e1e1e',
-                    whiteSpace: 'pre-wrap', // Membungkus kode agar tidak meluas
-                    wordBreak: 'break-word', // Menambahkan pemutusan kata agar tidak melebihi batas
-                  }}>
-                  {floatingButton}
-                </SyntaxHighlighter>
-                <CopyIcon id="floatingButton" code={floatingButton} />
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
+                  </div>
+
+                  {/* floating-button.tsx code  */}
+                  <p className="font-bold">components/ui/floating-button.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {floatingButton}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="floatingButton" code={floatingButton} />
+
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
-          <FooterDemo />
+            <FooterDemo />
           </div>
         </main>
       </div>
