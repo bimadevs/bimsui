@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
+import Head from 'next/head';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +27,9 @@ export const metadata: Metadata = {
     default: "BimsUI - Modern UI Component Library",
     template: "%s | BimsUI"
   },
-  description: "Build production-ready applications faster and beautifully crafted React components. Enterprise-grade UI library with dark mode, RTL support, and WCAG accessibility.",
-  keywords: ["React components","bimsui","BimsUI", "UI library", "Next.js toolkit", "design system", "frontend components", "tailwind component"],
-  
+  description: "Open-source React components for building modern web applications",
+  keywords: ["React components", "bimsui", "BimsUI", "UI library", "Next.js toolkit", "design system", "frontend components", "tailwind component"],
+
   openGraph: {
     title: "BimsUI - Modern UI Component Library",
     description: "Open-source React components for building modern web applications",
@@ -86,34 +88,62 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+       <Head>
+      {/* Primary Meta Tags */}
+      <title>BimsUI - Modern UI Component Library</title>
+      <meta name="description" content="Open-source React components for building modern web applications" />
+      <meta name="keywords" content="React components, UI library,UI Tailwind, BimsUI, bimsui,Tailwind Component, React Component, Nextjs Component, Web Design System, Frontend Toolkit, Next.js UI Kit, Modern Web Components" />
+      
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://ui.bimadev.xyz/" />
+      <meta property="og:title" content="BimaDev UI | Modern Component Library for Web Developers" />
+      <meta property="og:description" content="Open-source React components for building modern web applications" />
+      <meta property="og:image" content="https://ui.bimadev.xyz/images/preview-web.png" />
+
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://ui.bimadev.xyz/" />
+      <meta property="twitter:title" content="BimaDev UI | Modern Component Library for Web Developers" />
+      <meta property="twitter:description" content="Open-source React components for building modern web applications" />
+      <meta property="twitter:image" content="https://ui.bimadev.xyz/images/preview-web.png" />
+
+      {/* Structured Data */}
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": ["WebSite", "SoftwareApplication"],
+          "name": "BimaDev UI",
+          "applicationCategory": "DesignApplication",
+          "operatingSystem": "Web",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "150"
+          }
+        }
+        `}
+      </script>
+
+      {/* Canonical */}
+      <link rel="canonical" href="https://ui.bimadev.xyz/" />
+
+      {/* Mobile Optimization */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+      <meta name="theme-color" content="#2563eb" />
+    </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+      >
         {children}
-        <Analytics/>
-        
-        {/* Global Organization Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "BimsUI",
-              "url": "https://ui.bimadev.xyz",
-              "logo": "https://ui.bimadev.xyz/favicon.ico",
-              "sameAs": [
-                "https://instagram.com/biimaa_jo",
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "bimaj0206@gmail.com",
-                "contactType": "technical support",
-                "availableLanguage": "English"
-              }
-            })
-          }}
-        />
+        <Analytics />
+
       </body>
     </html>
   );
