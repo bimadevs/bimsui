@@ -5,11 +5,12 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { AnimeNavBarDemo } from "@/app/components/UI/anime-navbar/demo";
+import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function animeNavbat() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
-  const [sidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const dependencies = `npm i clsx tailwind-merge framer-motion lucide-react`;
@@ -395,7 +396,7 @@ module.exports = {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} /> */}
+      <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex">
         <BimsSidebar
           isOpen={sidebarOpen}
