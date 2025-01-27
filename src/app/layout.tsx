@@ -89,6 +89,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
        <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345833827561984"
+             crossOrigin="anonymous"></script>
       {/* Primary Meta Tags */}
       <title>BimsUI - Modern UI Component Library</title>
       <meta name="description" content="Open-source React components for building modern web applications" />
