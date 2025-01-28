@@ -88,31 +88,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-       <Head>
+      <Head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345833827561984"
-             crossOrigin="anonymous"></script>
-      {/* Primary Meta Tags */}
-      <title>BimsUI - Modern UI Component Library</title>
-      <meta name="description" content="Open-source React components for building modern web applications" />
-      <meta name="keywords" content="React components, UI library,UI Tailwind, BimsUI, bimsui,Tailwind Component, React Component, Nextjs Component, Web Design System, Frontend Toolkit, Next.js UI Kit, Modern Web Components" />
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://ui.bimadev.xyz/" />
-      <meta property="og:title" content="BimaDev UI | Modern Component Library for Web Developers" />
-      <meta property="og:description" content="Open-source React components for building modern web applications" />
-      <meta property="og:image" content="https://ui.bimadev.xyz/images/preview-web.png" />
+          crossOrigin="anonymous"></script>
+        <meta name="clckd" content="62d929e125b7b6a1f66f0601c9d0ca8b" />
+        {/* Primary Meta Tags */}
+        <title>BimsUI - Modern UI Component Library</title>
+        <meta name="description" content="Open-source React components for building modern web applications" />
+        <meta name="keywords" content="React components, UI library,UI Tailwind, BimsUI, bimsui,Tailwind Component, React Component, Nextjs Component, Web Design System, Frontend Toolkit, Next.js UI Kit, Modern Web Components" />
 
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://ui.bimadev.xyz/" />
-      <meta property="twitter:title" content="BimaDev UI | Modern Component Library for Web Developers" />
-      <meta property="twitter:description" content="Open-source React components for building modern web applications" />
-      <meta property="twitter:image" content="https://ui.bimadev.xyz/images/preview-web.png" />
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ui.bimadev.xyz/" />
+        <meta property="og:title" content="BimaDev UI | Modern Component Library for Web Developers" />
+        <meta property="og:description" content="Open-source React components for building modern web applications" />
+        <meta property="og:image" content="https://ui.bimadev.xyz/images/preview-web.png" />
 
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {`
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://ui.bimadev.xyz/" />
+        <meta property="twitter:title" content="BimaDev UI | Modern Component Library for Web Developers" />
+        <meta property="twitter:description" content="Open-source React components for building modern web applications" />
+        <meta property="twitter:image" content="https://ui.bimadev.xyz/images/preview-web.png" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
         {
           "@context": "https://schema.org",
           "@type": ["WebSite", "SoftwareApplication"],
@@ -131,15 +132,15 @@ export default function RootLayout({
           }
         }
         `}
-      </script>
+        </script>
 
-      {/* Canonical */}
-      <link rel="canonical" href="https://ui.bimadev.xyz/" />
+        {/* Canonical */}
+        <link rel="canonical" href="https://ui.bimadev.xyz/" />
 
-      {/* Mobile Optimization */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-      <meta name="theme-color" content="#2563eb" />
-    </Head>
+        {/* Mobile Optimization */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <meta name="theme-color" content="#2563eb" />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
