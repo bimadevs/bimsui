@@ -16,8 +16,8 @@ interface MenuItem {
 
 export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSidebarProps) => {
     const HTML: MenuItem[] = [
-        // { name: "Button", href: "/html/button" },
-        // { name: "Card", href: "/html/card" },
+        { name: "Card", href: "/html/card" },
+        { name: "Navbar", href: "/html/navbar" },
         // { name: "Forms", href: "/html/forms" },
         // { name: "Navigation", href: "/html/navigation" },
         // { name: "Modal", href: "/html/modal" },
@@ -27,7 +27,6 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         // { name: "Stack", href: "/html/stack" },
         // { name: "Installation", href: "/html/installation" },
         // { name: "Usage", href: "/html/usage" },
-        { name: "Coming Soon", href: "/html/comingsoon" },
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const NextJs: MenuItem[] = [

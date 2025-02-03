@@ -188,22 +188,22 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   const html = [
-    // {
-    //   id: "Simple Card",
-    //   name: "Simple Card",
-    //   description: "A simple HTML/CSS card component.",
-    //   category: "HTML",
-    //   image: "/images/simple-card.png",
-    //   link: "/html/simple-card",
-    // },
-    // {
-    //   id: "Hover Button",
-    //   name: "Hover Button",
-    //   description: "A button with a cool hover effect purely in HTML/CSS.",
-    //   category: "HTML",
-    //   image: "/images/hover-button.png",
-    //   link: "/html/hover-button",
-    // },
+    {
+      id: "Card",
+      name: "Card",
+      description: "A Cool HTML/CSS or Tailwind card component.",
+      category: "HTML",
+      image: "/images/html/card.png",
+      link: "/html/card",
+    },
+    {
+      id: "Navbar",
+      name: "Navbar",
+      description: "A cool HTML/CSS or Tailwind navbar component.",
+      category: "HTML",
+      image: "/images/html/navbar.png",
+      link: "/html/navbar",
+    },
     // {
     //   id: "Responsive Nav",
     //   name: "Responsive Nav",

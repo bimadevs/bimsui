@@ -2,7 +2,7 @@ import { Footer } from "./large-name";
 
 function FooterDemo() {
   return (
-    <div>
+    <div className="mt-8">
       <Footer />
     </div>
   );
