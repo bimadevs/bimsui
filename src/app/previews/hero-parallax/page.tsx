@@ -14,18 +14,18 @@ export default function ScrollAnimationPreview() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
-    
+
     // Fungsi untuk update state berdasarkan ukuran layar
     const handleResize = () => {
       setSidebarOpen(mediaQuery.matches);
     };
-    
+
     // Set initial state saat komponen mount
     handleResize();
-    
+
     // Add event listener untuk resize
     mediaQuery.addEventListener('change', handleResize);
-    
+
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
@@ -330,8 +330,8 @@ export const products = [
         < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
         < FaRegCopy
-        onClick={() => copyToClipboard(code, id)}
-        className="transition-all duration-300 cursor-pointer" />
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
       )}
     </div>
@@ -405,9 +405,9 @@ export const products = [
                     <CopyIcon id="utils" code={utils} />
                   </div>
 
-                  {/* page.tsx */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
+                  {/* Next Config */}
+                  <p className="font-bold">next.config.ts</p>
+                  <div className="relative">
                     <SyntaxHighlighter
                       showLineNumbers={true}
                       wrapLines={true}
@@ -423,9 +423,9 @@ export const products = [
                         overflowX: 'auto',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
-                      {demotsx}
+                      {nextConfig}
                     </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
+                    <CopyIcon id="nextConfig" code={nextConfig} />
                   </div>
 
                   {/* hero-parallax */}
@@ -451,9 +451,11 @@ export const products = [
                     <CopyIcon id="heroParallax" code={heroParallax} />
                   </div>
 
-                  {/* Next Config */}
-                  <p className="font-bold">next.config.ts</p>
-                  <div className="relative">
+
+
+                  {/* page.tsx */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
                     <SyntaxHighlighter
                       showLineNumbers={true}
                       wrapLines={true}
@@ -469,10 +471,11 @@ export const products = [
                         overflowX: 'auto',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
-                      {nextConfig}
+                      {demotsx}
                     </SyntaxHighlighter>
-                    <CopyIcon id="nextConfig" code={nextConfig} />
+                    <CopyIcon id="demotsx" code={demotsx} />
                   </div>
+
                 </div>
               </div>
             </div>

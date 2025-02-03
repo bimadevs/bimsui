@@ -528,29 +528,7 @@ export function Hero() {
 
                   </div>
 
-                  {/* page.tsx code  */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {demotsx}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
 
-                  </div>
 
                   {/* canvas.tsx code  */}
                   <p className="font-bold">components/ui/canvas.tsx</p>
@@ -573,7 +551,6 @@ export function Hero() {
                       {canvas}
                     </SyntaxHighlighter>
                     <CopyIcon id="canvas" code={canvas} />
-
                   </div>
 
                   {/* button.tsx code  */}
@@ -597,6 +574,30 @@ export function Hero() {
                       {button}
                     </SyntaxHighlighter>
                     <CopyIcon id="button" code={demotsx} />
+                  </div>
+
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+
                   </div>
                 </div>
               </div>

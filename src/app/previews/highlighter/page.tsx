@@ -14,18 +14,18 @@ export default function Highlighter() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
-    
+
     // Fungsi untuk update state berdasarkan ukuran layar
     const handleResize = () => {
       setSidebarOpen(mediaQuery.matches);
     };
-    
+
     // Set initial state saat komponen mount
     handleResize();
-    
+
     // Add event listener untuk resize
     mediaQuery.addEventListener('change', handleResize);
-    
+
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
@@ -686,8 +686,8 @@ export function Connect() {
         < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
         < FaRegCopy
-        onClick={() => copyToClipboard(code, id)}
-        className="transition-all duration-300 cursor-pointer" />
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
       )}
     </div>
@@ -763,28 +763,6 @@ export function Connect() {
 
                   </div>
 
-                  {/* page.tsx code  */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {demotsx}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
-                  </div>
 
                   {/* highlighter.tsx code  */}
                   <p className="font-bold">components/ui/highlighter.tsx</p>
@@ -833,6 +811,29 @@ export function Connect() {
                     <CopyIcon id="button" code={button} />
 
                   </div>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+                  </div>
+
                 </div>
               </div>
             </div>

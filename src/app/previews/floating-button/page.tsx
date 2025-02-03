@@ -278,6 +278,30 @@ export default function Gooey() {
 
                   </div>
 
+                  
+
+                  {/* floating-button.tsx code  */}
+                  <p className="font-bold">components/ui/floating-button.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {floatingButton}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="floatingButton" code={floatingButton} />
+                  </div>
                   {/* page.tsx code  */}
                   <p className="font-bold">page.tsx</p>
                   <div className="relative mb-8">
@@ -301,30 +325,7 @@ export default function Gooey() {
                     <CopyIcon id="demotsx" code={demotsx} />
 
                   </div>
-
-                  {/* floating-button.tsx code  */}
-                  <p className="font-bold">components/ui/floating-button.tsx</p>
-                  <div className="relative">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {floatingButton}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="floatingButton" code={floatingButton} />
-
-                  </div>
+              
                 </div>
               </div>
             </div>

@@ -366,28 +366,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
                     <CopyIcon id="utils" code={utils} />
                   </div>
 
-                  {/* page.tsx */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {demotsx}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
-                  </div>
+
 
                   {/* Spline.tsx */}
                   <p className="font-bold">components/ui/spline.tsx</p>
@@ -456,6 +435,28 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
                       {cardtsx}
                     </SyntaxHighlighter>
                     <CopyIcon id="cardtsx" code={cardtsx} />
+                  </div>
+                  {/* page.tsx */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
                   </div>
                 </div>
               </div>

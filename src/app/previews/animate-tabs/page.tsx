@@ -345,13 +345,14 @@ export default function AnimateTabs() {
 
                   </div>
 
-                  {/* page.tsx code  */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
+                  </div>
+                  {/* global.css code  */}
+                  <p className="font-bold">global.css</p>
+                  <div className="relative">
                     <SyntaxHighlighter
                       showLineNumbers={true}
                       wrapLines={true}
-                      language="tsx"
+                      language="css"
                       style={nightOwl}
                       customStyle={{
                         maxHeight: '25rem',
@@ -363,10 +364,9 @@ export default function AnimateTabs() {
                         overflowX: 'auto',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
-                      {demotsx}
+                      {globalcss}
                     </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
-
+                    <CopyIcon id="globalcss" code={globalcss} />
                   </div>
 
                   {/* tabs.tsx code  */}
@@ -391,14 +391,15 @@ export default function AnimateTabs() {
                     </SyntaxHighlighter>
                     <CopyIcon id="tabs" code={tabs} />
 
-                  </div>
-                  {/* global.css code  */}
-                  <p className="font-bold">global.css</p>
-                  <div className="relative">
+                  
+
+                   {/* page.tsx code  */}
+                   <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
                     <SyntaxHighlighter
                       showLineNumbers={true}
                       wrapLines={true}
-                      language="css"
+                      language="tsx"
                       style={nightOwl}
                       customStyle={{
                         maxHeight: '25rem',
@@ -410,11 +411,11 @@ export default function AnimateTabs() {
                         overflowX: 'auto',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
-                      {globalcss}
+                      {demotsx}
                     </SyntaxHighlighter>
-                    <CopyIcon id="globalcss" code={globalcss} />
-
+                    <CopyIcon id="demotsx" code={demotsx} />
                   </div>
+                  
                 </div>
               </div>
             </div>

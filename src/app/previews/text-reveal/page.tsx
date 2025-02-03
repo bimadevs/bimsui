@@ -307,7 +307,7 @@ export default function TextReveals() {
                       wrapLines={true}
                       language="bash"
                       style={nightOwl}
-                     customStyle={{
+                      customStyle={{
                         maxHeight: '25rem',
                         padding: '20px',
                         borderRadius: '10px',
@@ -332,7 +332,7 @@ export default function TextReveals() {
                       wrapLines={true}
                       language="ts"
                       style={nightOwl}
-                     customStyle={{
+                      customStyle={{
                         maxHeight: '25rem',
                         padding: '20px',
                         borderRadius: '10px',
@@ -345,30 +345,6 @@ export default function TextReveals() {
                       {utils}
                     </SyntaxHighlighter>
                     <CopyIcon id="utils" code={utils} />
-
-                  </div>
-
-                  {/* page.tsx code  */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {demotsx}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
 
                   </div>
 
@@ -393,6 +369,29 @@ export default function TextReveals() {
                       {textReveal}
                     </SyntaxHighlighter>
                     <CopyIcon id="textReveal" code={textReveal} />
+
+                  </div>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
                   </div>
                 </div>

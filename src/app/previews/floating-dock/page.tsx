@@ -421,29 +421,7 @@ export default function FloatingDoctPreview() {
 
                   </div>
 
-                  {/* page.tsx code  */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {demotsx}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
-
-                  </div>
+                  
 
                   {/* code  */}
                   <p className="font-bold">components/ui/{namaFile}.tsx</p>
@@ -466,6 +444,29 @@ export default function FloatingDoctPreview() {
                       {Code}
                     </SyntaxHighlighter>
                     <CopyIcon id="Code" code={Code} />
+
+                  </div>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
                   </div>
                 </div>

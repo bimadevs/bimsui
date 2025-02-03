@@ -14,18 +14,18 @@ export default function Gooey() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
-    
+
     // Fungsi untuk update state berdasarkan ukuran layar
     const handleResize = () => {
       setSidebarOpen(mediaQuery.matches);
     };
-    
+
     // Set initial state saat komponen mount
     handleResize();
-    
+
     // Add event listener untuk resize
     mediaQuery.addEventListener('change', handleResize);
-    
+
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
@@ -213,8 +213,8 @@ export function GooeyText({
         < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
         < FaRegCopy
-        onClick={() => copyToClipboard(code, id)}
-        className="transition-all duration-300 cursor-pointer" />
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
       )}
     </div>
@@ -290,29 +290,6 @@ export function GooeyText({
 
                   </div>
 
-                  {/* demo.tsx code  */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {demotsx}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
-
-                  </div>
 
                   {/* splite.tsx code  */}
                   <p className="font-bold">components/ui/gooey-text.tsx</p>
@@ -337,6 +314,30 @@ export function GooeyText({
                     <CopyIcon id="gooeyTextMorphing" code={gooeyTextMorphing} />
 
                   </div>
+                  {/* demo.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+
+                  </div>
+
                 </div>
               </div>
             </div>

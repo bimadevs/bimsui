@@ -10,37 +10,37 @@ import { LinkPreviewDemo } from "@/app/components/nextjs/link-preview/demo";
 import { CarouselDemo } from "@/app/components/nextjs/carousel/demo";
 
 export default function CarouselPreview() {
-    const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(min-width: 768px)');
+  const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-        // Fungsi untuk update state berdasarkan ukuran layar
-        const handleResize = () => {
-            setSidebarOpen(mediaQuery.matches);
-        };
+    // Fungsi untuk update state berdasarkan ukuran layar
+    const handleResize = () => {
+      setSidebarOpen(mediaQuery.matches);
+    };
 
-        // Set initial state saat komponen mount
-        handleResize();
+    // Set initial state saat komponen mount
+    handleResize();
 
-        // Add event listener untuk resize
-        mediaQuery.addEventListener('change', handleResize);
+    // Add event listener untuk resize
+    mediaQuery.addEventListener('change', handleResize);
 
-        // Cleanup
-        return () => mediaQuery.removeEventListener('change', handleResize);
-    }, []);
-    const [copiedId, setCopiedId] = useState<string | null>(null);
+    // Cleanup
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
-    const dependencies = `npm i motion clsx tailwind-merge`
+  const dependencies = `npm i motion clsx tailwind-merge`
 
-    const utils = `import { ClassValue, clsx } from "clsx";
+  const utils = `import { ClassValue, clsx } from "clsx";
     import { twMerge } from "tailwind-merge";
     
     export function cn(...inputs: ClassValue[]) {
       return twMerge(clsx(inputs));
     }`
 
-    const demotsx = `"use client";
+  const demotsx = `"use client";
     import {Carousel} from "./carousel";
     export function CarouselDemo() {
       const slideData = [
@@ -72,7 +72,7 @@ export default function CarouselPreview() {
       );
     }`;
 
-    const Carousel = `"use client";
+  const Carousel = `"use client";
     import { IconArrowNarrowRight } from "@tabler/icons-react";
     import { useState, useRef, useId, useEffect } from "react";
     
@@ -286,7 +286,7 @@ export default function CarouselPreview() {
         </div>
       );
     }`;
-    const nextConfig = `import type { NextConfig } from "next";
+  const nextConfig = `import type { NextConfig } from "next";
 
   const nextConfig: NextConfig = {
     /* config options here */
@@ -300,179 +300,179 @@ export default function CarouselPreview() {
     },
   
   export default nextConfig;`
-    // Fungsi untuk menyalin kode ke clipboard
-    const copyToClipboard = (code: string, id: string) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopiedId(id);
-                setTimeout(() => setCopiedId(null), 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-    };
+  // Fungsi untuk menyalin kode ke clipboard
+  const copyToClipboard = (code: string, id: string) => {
+    navigator.clipboard.writeText(code)
+      .then(() => {
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  };
 
-    const CopyIcon = ({ id, code }: { id: string, code: string }) => (
-        <div className="absolute right-4 top-4">
-            {copiedId === id ? (
-                < FaCheck className="text-green-500 font-light transition-all duration-300" />
-            ) : (
-                < FaRegCopy
-                    onClick={() => copyToClipboard(code, id)}
-                    className="transition-all duration-300 cursor-pointer" />
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        < FaCheck className="text-green-500 font-light transition-all duration-300" />
+      ) : (
+        < FaRegCopy
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
-            )}
-        </div>
-    );
+      )}
+    </div>
+  );
 
-    return (
-        <div className="min-h-screen bg-background overflow-x-hidden">
-            <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-            <div className="flex">
-                <BimsSidebar
-                    isOpen={sidebarOpen}
-                    framework={framework}
-                    onFrameworkChange={setFramework}
-                />
-                <main className="pt-20 flex-1 w-[100vw]">
-                    <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-                        <div className="p-6">
-                            <h1 className="text-3xl font-bold">Carousel</h1>
-                            <p className="text-muted-foreground mt-2">A customizable carousel with microinteractions and slider.</p>
+  return (
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex">
+        <BimsSidebar
+          isOpen={sidebarOpen}
+          framework={framework}
+          onFrameworkChange={setFramework}
+        />
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Carousel</h1>
+              <p className="text-muted-foreground mt-2">A customizable carousel with microinteractions and slider.</p>
 
-                            <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
-                                <CarouselDemo />
-                            </div>
+              <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
+                <CarouselDemo />
+              </div>
 
-                            <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
-                                <h2 className="text-2xl font-semibold">Installation</h2>
-                                <div className="mt-4 ">
-                                    {/* install dependencies code  */}
-                                    <p className="font-bold">Install dependencies</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            wrapLines={true}
-                                            language="bash"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {dependencies}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="dependencies" code={dependencies} />
+              <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4 ">
+                  {/* install dependencies code  */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      wrapLines={true}
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
 
-                                    </div>
+                  </div>
 
-                                    {/* utils code  */}
-                                    <h1 className="font-bold text-2xl">Add util file</h1>
-                                    <p className="">src/lib/utils.ts</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="ts"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {utils}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="utils" code={utils} />
+                  {/* utils code  */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
 
-                                    </div>
-                                    {/* next.config.ts code  */}
-                                    <p className="font-bold">next.config.ts</p>
-                                    <div className="relative">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {nextConfig}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="nextConfig" code={nextConfig} />
+                  </div>
+                  {/* next.config.ts code  */}
+                  <p className="font-bold">next.config.ts</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {nextConfig}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="nextConfig" code={nextConfig} />
 
-                                    </div>
+                  </div>
 
-                                    {/* page.tsx code  */}
-                                    <p className="font-bold">page.tsx</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {demotsx}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="demotsx" code={demotsx} />
 
-                                    </div>
+                  {/* carousel.tsx code  */}
+                  <p className="font-bold">components/ui/carousel.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {Carousel}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="Carousel" code={Carousel} />
+                  </div>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
-                                    {/* carousel.tsx code  */}
-                                    <p className="font-bold">components/ui/carousel.tsx</p>
-                                    <div className="relative">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {Carousel}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="Carousel" code={Carousel} />
+                  </div>
 
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <FooterDemo />
-                    </div>
-                </main>
+                </div>
+              </div>
             </div>
-        </div>
-    );
+            <FooterDemo />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 }

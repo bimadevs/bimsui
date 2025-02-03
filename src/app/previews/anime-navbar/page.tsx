@@ -77,7 +77,7 @@ export function AnimeNavBarDemo() {
   return <AnimeNavBar items={items} defaultActive="Home" />
 }`;
 
-const AnimeNavbar = `"use client"
+  const AnimeNavbar = `"use client"
 
 import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -404,8 +404,8 @@ module.exports = {
         < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
         < FaRegCopy
-        onClick={() => copyToClipboard(code, id)}
-        className="transition-all duration-300 cursor-pointer" />
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
       )}
     </div>
@@ -479,54 +479,7 @@ module.exports = {
                     <CopyIcon id="utils" code={utils} />
 
                   </div>
-
-                  {/* page.tsx code  */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {demotsx}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
-
-                  </div>
-
-                  {/* anime-navbar.tsx code  */}
-                  <p className="font-bold">components/ui/anime-navbar.tsx</p>
-                  <div className="relative">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {AnimeNavbar}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="AnimeNavbar" code={AnimeNavbar} />
-
-                  </div>
+                  
                   {/* tailwind.config.js code  */}
                   <p className="font-bold">tailwind.config.js</p>
                   <div className="relative">
@@ -572,6 +525,55 @@ module.exports = {
                     </SyntaxHighlighter>
                     <CopyIcon id="globalCss" code={globalCss} />
                   </div>
+
+                  {/* anime-navbar.tsx code  */}
+                  <p className="font-bold">components/ui/anime-navbar.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {AnimeNavbar}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="AnimeNavbar" code={AnimeNavbar} />
+
+                  </div>
+
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
+
+                  </div>
+
                 </div>
               </div>
             </div>

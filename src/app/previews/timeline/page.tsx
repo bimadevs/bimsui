@@ -388,9 +388,9 @@ export default function TimelinePreview() {
                     <CopyIcon id="utils" code={utils} />
                   </div>
 
-                  {/* page.tsx */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
+                  {/* Next Config */}
+                  <p className="font-bold">next.config.ts</p>
+                  <div className="relative">
                     <SyntaxHighlighter
                       showLineNumbers={true}
                       wrapLines={true}
@@ -406,9 +406,9 @@ export default function TimelinePreview() {
                         overflowX: 'auto',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
-                      {demotsx}
+                      {nextConfig}
                     </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
+                    <CopyIcon id="nextConfig" code={nextConfig} />
                   </div>
 
                   {/* timeline */}
@@ -434,9 +434,10 @@ export default function TimelinePreview() {
                     <CopyIcon id="timeline" code={timeline} />
                   </div>
 
-                  {/* Next Config */}
-                  <p className="font-bold">next.config.ts</p>
-                  <div className="relative">
+                  
+                  {/* page.tsx */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
                     <SyntaxHighlighter
                       showLineNumbers={true}
                       wrapLines={true}
@@ -452,9 +453,9 @@ export default function TimelinePreview() {
                         overflowX: 'auto',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
-                      {nextConfig}
+                      {demotsx}
                     </SyntaxHighlighter>
-                    <CopyIcon id="nextConfig" code={nextConfig} />
+                    <CopyIcon id="demotsx" code={demotsx} />
                   </div>
                 </div>
               </div>

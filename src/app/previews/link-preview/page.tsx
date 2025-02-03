@@ -9,37 +9,37 @@ import { FooterDemo } from "@/app/components/bims/footer";
 import { LinkPreviewDemo } from "@/app/components/nextjs/link-preview/demo";
 
 export default function TextReveals() {
-    const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(min-width: 768px)');
+  const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-        // Fungsi untuk update state berdasarkan ukuran layar
-        const handleResize = () => {
-            setSidebarOpen(mediaQuery.matches);
-        };
+    // Fungsi untuk update state berdasarkan ukuran layar
+    const handleResize = () => {
+      setSidebarOpen(mediaQuery.matches);
+    };
 
-        // Set initial state saat komponen mount
-        handleResize();
+    // Set initial state saat komponen mount
+    handleResize();
 
-        // Add event listener untuk resize
-        mediaQuery.addEventListener('change', handleResize);
+    // Add event listener untuk resize
+    mediaQuery.addEventListener('change', handleResize);
 
-        // Cleanup
-        return () => mediaQuery.removeEventListener('change', handleResize);
-    }, []);
-    const [copiedId, setCopiedId] = useState<string | null>(null);
+    // Cleanup
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
-    const dependencies = `npm i motion clsx tailwind-merge @radix-ui/react-hover-card qss`
+  const dependencies = `npm i motion clsx tailwind-merge @radix-ui/react-hover-card qss`
 
-    const utils = `import { ClassValue, clsx } from "clsx";
+  const utils = `import { ClassValue, clsx } from "clsx";
     import { twMerge } from "tailwind-merge";
     
     export function cn(...inputs: ClassValue[]) {
       return twMerge(clsx(inputs));
     }`
 
-    const demotsx = `"use client";
+  const demotsx = `"use client";
   import React from "react";
   import { motion } from "framer-motion";
   import { LinkPreview } from "./link-preview";
@@ -71,7 +71,7 @@ export default function TextReveals() {
     );
   }`;
 
-    const LinkPreview = `"use client";
+  const LinkPreview = `"use client";
   import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
   import Image from "next/image";
   import { encode } from "qss";
@@ -228,7 +228,7 @@ export default function TextReveals() {
       </>
     );
   };`;
-    const nextConfig = `import type { NextConfig } from "next";
+  const nextConfig = `import type { NextConfig } from "next";
 
   const nextConfig: NextConfig = {
     /* config options here */
@@ -242,179 +242,180 @@ export default function TextReveals() {
     },
   
   export default nextConfig;`
-    // Fungsi untuk menyalin kode ke clipboard
-    const copyToClipboard = (code: string, id: string) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopiedId(id);
-                setTimeout(() => setCopiedId(null), 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-    };
+  // Fungsi untuk menyalin kode ke clipboard
+  const copyToClipboard = (code: string, id: string) => {
+    navigator.clipboard.writeText(code)
+      .then(() => {
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  };
 
-    const CopyIcon = ({ id, code }: { id: string, code: string }) => (
-        <div className="absolute right-4 top-4">
-            {copiedId === id ? (
-                < FaCheck className="text-green-500 font-light transition-all duration-300" />
-            ) : (
-                < FaRegCopy
-                    onClick={() => copyToClipboard(code, id)}
-                    className="transition-all duration-300 cursor-pointer" />
+  const CopyIcon = ({ id, code }: { id: string, code: string }) => (
+    <div className="absolute right-4 top-4">
+      {copiedId === id ? (
+        < FaCheck className="text-green-500 font-light transition-all duration-300" />
+      ) : (
+        < FaRegCopy
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
-            )}
-        </div>
-    );
+      )}
+    </div>
+  );
 
-    return (
-        <div className="min-h-screen bg-background overflow-x-hidden">
-            <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-            <div className="flex">
-                <BimsSidebar
-                    isOpen={sidebarOpen}
-                    framework={framework}
-                    onFrameworkChange={setFramework}
-                />
-                <main className="pt-20 flex-1 w-[100vw]">
-                    <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-                        <div className="p-6">
-                            <h1 className="text-3xl font-bold">Link Preview</h1>
-                            <p className="text-muted-foreground mt-2">Dynamic link previews for your anchor tags.</p>
+  return (
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex">
+        <BimsSidebar
+          isOpen={sidebarOpen}
+          framework={framework}
+          onFrameworkChange={setFramework}
+        />
+        <main className="pt-20 flex-1 w-[100vw]">
+          <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="p-6">
+              <h1 className="text-3xl font-bold">Link Preview</h1>
+              <p className="text-muted-foreground mt-2">Dynamic link previews for your anchor tags.</p>
 
-                            <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
-                                <LinkPreviewDemo />
-                            </div>
+              <div className="max-w-4xl border-dashed border-2 p-2 mt-4 mx-auto">
+                <LinkPreviewDemo />
+              </div>
 
-                            <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
-                                <h2 className="text-2xl font-semibold">Installation</h2>
-                                <div className="mt-4 ">
-                                    {/* install dependencies code  */}
-                                    <p className="font-bold">Install dependencies</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            wrapLines={true}
-                                            language="bash"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {dependencies}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="dependencies" code={dependencies} />
+              <div className="mt-6 "> {/* Menyesuaikan lebar secara dinamis */}
+                <h2 className="text-2xl font-semibold">Installation</h2>
+                <div className="mt-4 ">
+                  {/* install dependencies code  */}
+                  <p className="font-bold">Install dependencies</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      wrapLines={true}
+                      language="bash"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {dependencies}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="dependencies" code={dependencies} />
 
-                                    </div>
+                  </div>
 
-                                    {/* utils code  */}
-                                    <h1 className="font-bold text-2xl">Add util file</h1>
-                                    <p className="">src/lib/utils.ts</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="ts"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {utils}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="utils" code={utils} />
+                  {/* utils code  */}
+                  <h1 className="font-bold text-2xl">Add util file</h1>
+                  <p className="">src/lib/utils.ts</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="ts"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {utils}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="utils" code={utils} />
 
-                                    </div>
-                                    {/* next.config.ts code  */}
-                                    <p className="font-bold">next.config.ts</p>
-                                    <div className="relative">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {nextConfig}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="nextConfig" code={nextConfig} />
+                  </div>
+                  {/* next.config.ts code  */}
+                  <p className="font-bold">next.config.ts</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {nextConfig}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="nextConfig" code={nextConfig} />
 
-                                    </div>
+                  </div>
 
-                                    {/* page.tsx code  */}
-                                    <p className="font-bold">page.tsx</p>
-                                    <div className="relative mb-8">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {demotsx}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="demotsx" code={demotsx} />
 
-                                    </div>
 
-                                    {/* link-preview.tsx code  */}
-                                    <p className="font-bold">components/ui/link-preview.tsx</p>
-                                    <div className="relative">
-                                        <SyntaxHighlighter
-                                            showLineNumbers={true}
-                                            wrapLines={true}
-                                            language="tsx"
-                                            style={nightOwl}
-                                            customStyle={{
-                                                maxHeight: '25rem',
-                                                padding: '20px',
-                                                borderRadius: '10px',
-                                                fontSize: '0.9em',
-                                                lineHeight: '1.5',
-                                                margin: '20px 0',
-                                                overflowX: 'auto',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                                            }}>
-                                            {LinkPreview}
-                                        </SyntaxHighlighter>
-                                        <CopyIcon id="LinkPreview" code={LinkPreview} />
+                  {/* link-preview.tsx code  */}
+                  <p className="font-bold">components/ui/link-preview.tsx</p>
+                  <div className="relative">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {LinkPreview}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="LinkPreview" code={LinkPreview} />
 
-                                    </div>
+                  </div>
+                  {/* page.tsx code  */}
+                  <p className="font-bold">page.tsx</p>
+                  <div className="relative mb-8">
+                    <SyntaxHighlighter
+                      showLineNumbers={true}
+                      wrapLines={true}
+                      language="tsx"
+                      style={nightOwl}
+                      customStyle={{
+                        maxHeight: '25rem',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        fontSize: '0.9em',
+                        lineHeight: '1.5',
+                        margin: '20px 0',
+                        overflowX: 'auto',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}>
+                      {demotsx}
+                    </SyntaxHighlighter>
+                    <CopyIcon id="demotsx" code={demotsx} />
 
-                                </div>
-                            </div>
-                        </div>
-                        <FooterDemo />
-                    </div>
-                </main>
+                  </div>
+
+                </div>
+              </div>
             </div>
-        </div>
-    );
+            <FooterDemo />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 }
