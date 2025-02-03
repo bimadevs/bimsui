@@ -6,7 +6,7 @@ interface BimsNavbarProps {
 
 export const BimsNavbar = ({ onMenuClick }: BimsNavbarProps) => {
   return (
-    <nav className="fixed top-0 left-0 right-0 h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
+    <nav className="fixed top-0 left-0 right-0 h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-[5000000]">
       <div className="flex items-center justify-between h-full px-4">
         <div className="flex items-center space-x-4">
           <button className="text-primary-foreground hover:text-primary transition-colors" onClick={onMenuClick}>
