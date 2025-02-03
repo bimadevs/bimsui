@@ -6,8 +6,8 @@ function GooeyTextDemo() {
     <div className="h-[200px] flex items-center justify-center">
       <GooeyText
         texts={["BimsUI", "Is", "The", "Best"]}
-        morphTime={1}
-        cooldownTime={0.5}
+        morphTime={1.5}
+        cooldownTime={1}
         className="font-bold"
       />
     </div>

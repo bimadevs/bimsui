@@ -6,7 +6,7 @@ import { FooterDemo } from "@/app/components/bims/footer";
 import { CodeBlock } from "@/app/components/bims/CodeBlok";
 import { CardEight, CardFive, Cardfour, CardNine, CardOne, CardSeven, CardSix, CardThree, CardTwo } from "@/app/components/html/card";
 
-export default function FloatingDoctPreview() {
+export default function HtmlCard() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   useEffect(() => {
