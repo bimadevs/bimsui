@@ -16,8 +16,8 @@ interface MenuItem {
 
 export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSidebarProps) => {
     const HTML: MenuItem[] = [
-        { name: "Card", href: "/html/card" },
-        { name: "Navbar", href: "/html/navbar" },
+        { name: "Card", href: "/html/card",isNew: true },
+        { name: "Navbar", href: "/html/navbar", isNew: true },
         // { name: "Forms", href: "/html/forms" },
         // { name: "Navigation", href: "/html/navigation" },
         // { name: "Modal", href: "/html/modal" },
