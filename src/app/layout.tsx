@@ -46,12 +46,14 @@ export const metadata: Metadata = {
       description: siteConfig.description,
       url: siteConfig.url,
       siteName: siteConfig.name,
+      images :siteConfig.ogImage,
   },
   twitter: {
       card: "summary_large_image",
       creator: "@bimadevs",
       title: siteConfig.name,
       description: siteConfig.description,
+      images: siteConfig.ogImage,
   },
 };
 
