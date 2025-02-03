@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
-import { AnimeNavBarDemo } from "@/app/components/UI/anime-navbar/demo";
+import { AnimeNavBarDemo } from "@/app/components/nextjs/anime-navbar/demo";
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { FooterDemo } from "@/app/components/bims/footer";
 

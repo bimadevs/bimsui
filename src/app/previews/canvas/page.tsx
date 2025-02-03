@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
-import { Canvas } from "@/app/components/UI/canvas/demo";
+import { Canvas } from "@/app/components/nextjs/canvas/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function Gooey() {

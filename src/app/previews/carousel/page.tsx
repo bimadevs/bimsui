@@ -6,8 +6,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FooterDemo } from "@/app/components/bims/footer";
-import { LinkPreviewDemo } from "@/app/components/UI/link-preview/demo";
-import { CarouselDemo } from "@/app/components/UI/carousel/demo";
+import { LinkPreviewDemo } from "@/app/components/nextjs/link-preview/demo";
+import { CarouselDemo } from "@/app/components/nextjs/carousel/demo";
 
 export default function CarouselPreview() {
     const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");

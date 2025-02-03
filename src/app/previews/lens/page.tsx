@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FooterDemo } from "@/app/components/bims/footer";
-import { LensDemo } from "@/app/components/UI/lens/demo";
+import { LensDemo } from "@/app/components/nextjs/lens/demo";
 
 export default function LensPreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");

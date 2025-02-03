@@ -1,4 +1,4 @@
-import { TextRevealCardPreview } from "../components/UI/reveal-card/demo";
+import { TextRevealCardPreview } from "../components/nextjs/reveal-card/demo";
 
 
 export default function Page() {

@@ -6,8 +6,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 import { FooterDemo } from "@/app/components/bims/footer";
-import { ThreeDCardDemo } from "@/app/components/UI/3d-card-effect/demo";
-import { WithRotationDemo } from "@/app/components/UI/3d-card-effect/with-rotation";
+import { ThreeDCardDemo } from "@/app/components/nextjs/3d-card-effect/demo";
+import { WithRotationDemo } from "@/app/components/nextjs/3d-card-effect/with-rotation";
 
 export default function ThreeDCardPreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
@@ -15,18 +15,18 @@ export default function ThreeDCardPreview() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
-    
+
     // Fungsi untuk update state berdasarkan ukuran layar
     const handleResize = () => {
       setSidebarOpen(mediaQuery.matches);
     };
-    
+
     // Set initial state saat komponen mount
     handleResize();
-    
+
     // Add event listener untuk resize
     mediaQuery.addEventListener('change', handleResize);
-    
+
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
@@ -340,8 +340,8 @@ export default function ThreeDCardPreview() {
         < FaCheck className="text-green-500 font-light transition-all duration-300" />
       ) : (
         < FaRegCopy
-        onClick={() => copyToClipboard(code, id)}
-        className="transition-all duration-300 cursor-pointer" />
+          onClick={() => copyToClipboard(code, id)}
+          className="transition-all duration-300 cursor-pointer" />
 
       )}
     </div>
@@ -420,10 +420,10 @@ export default function ThreeDCardPreview() {
                     </SyntaxHighlighter>
                     <CopyIcon id="utils" code={utils} />
                   </div>
-
-                  {/* page.tsx */}
-                  <p className="font-bold">page.tsx</p>
-                  <div className="relative mb-8">
+                  
+                   {/* Next Config */}
+                   <p className="font-bold">next.config.ts</p>
+                  <div className="relative">
                     <SyntaxHighlighter
                       showLineNumbers={true}
                       wrapLines={true}
@@ -439,32 +439,10 @@ export default function ThreeDCardPreview() {
                         overflowX: 'auto',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                       }}>
-                      {demotsx}
+                      {nextConfig}
                     </SyntaxHighlighter>
-                    <CopyIcon id="demotsx" code={demotsx} />
-                  </div>
-                  {/* page.tsx (With Rotation) */}
-                  <p className="font-bold">page.tsx (With Rotation)</p>
-                  <div className="relative mb-8">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {withrotation}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="withrotation" code={withrotation} />
-                  </div>
+                    <CopyIcon id="nextConfig" code={nextConfig} />
+                    </div>
 
                   {/* 3d-card */}
                   <p className="font-bold">components/ui/3d-card.tsx</p>
@@ -489,27 +467,49 @@ export default function ThreeDCardPreview() {
                     <CopyIcon id="threed" code={threed} />
                   </div>
 
-                  {/* Next Config */}
-                  <p className="font-bold">next.config.ts</p>
-                  <div className="relative">
-                    <SyntaxHighlighter
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      language="tsx"
-                      style={nightOwl}
-                      customStyle={{
-                        maxHeight: '25rem',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        fontSize: '0.9em',
-                        lineHeight: '1.5',
-                        margin: '20px 0',
-                        overflowX: 'auto',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                      }}>
-                      {nextConfig}
-                    </SyntaxHighlighter>
-                    <CopyIcon id="nextConfig" code={nextConfig} />
+                    {/* page.tsx */}
+                    <p className="font-bold">page.tsx</p>
+                    <div className="relative mb-8">
+                      <SyntaxHighlighter
+                        showLineNumbers={true}
+                        wrapLines={true}
+                        language="tsx"
+                        style={nightOwl}
+                        customStyle={{
+                          maxHeight: '25rem',
+                          padding: '20px',
+                          borderRadius: '10px',
+                          fontSize: '0.9em',
+                          lineHeight: '1.5',
+                          margin: '20px 0',
+                          overflowX: 'auto',
+                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                        }}>
+                        {demotsx}
+                      </SyntaxHighlighter>
+                      <CopyIcon id="demotsx" code={demotsx} />
+                    </div>
+                    {/* page.tsx (With Rotation) */}
+                    <p className="font-bold">page.tsx (With Rotation)</p>
+                    <div className="relative mb-8">
+                      <SyntaxHighlighter
+                        showLineNumbers={true}
+                        wrapLines={true}
+                        language="tsx"
+                        style={nightOwl}
+                        customStyle={{
+                          maxHeight: '25rem',
+                          padding: '20px',
+                          borderRadius: '10px',
+                          fontSize: '0.9em',
+                          lineHeight: '1.5',
+                          margin: '20px 0',
+                          overflowX: 'auto',
+                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                        }}>
+                        {withrotation}
+                      </SyntaxHighlighter>
+                      <CopyIcon id="withrotation" code={withrotation} />
                   </div>
                 </div>
               </div>

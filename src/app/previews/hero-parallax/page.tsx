@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 import { FooterDemo } from "@/app/components/bims/footer";
-import { HeroParallaxDemo } from "@/app/components/UI/hero-parallax/demo";
+import { HeroParallaxDemo } from "@/app/components/nextjs/hero-parallax/demo";
 
 export default function ScrollAnimationPreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");

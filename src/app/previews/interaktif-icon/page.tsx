@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaRegClipboard, FaRegCopy, FaCheck } from 'react-icons/fa';
-import { InteraktifIcon } from "@/app/components/UI/interaktif-icon/demo";
+import { InteraktifIcon } from "@/app/components/nextjs/interaktif-icon/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function Gooey() {

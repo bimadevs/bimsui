@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
-import { ScrollaAnimation } from "@/app/components/UI/scroll-animation/demo";
+import { ScrollaAnimation } from "@/app/components/nextjs/scroll-animation/demo";
 import { FooterDemo } from "@/app/components/bims/footer";
 
 export default function ScrollAnimationPreview() {

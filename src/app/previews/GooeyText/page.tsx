@@ -1,5 +1,5 @@
 "use client"
-import { GooeyTextDemo } from "@/app/components/UI/goeeyText/demo";
+import { GooeyTextDemo } from "@/app/components/nextjs/goeeyText/demo";
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState, useEffect } from "react";

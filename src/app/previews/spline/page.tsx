@@ -1,5 +1,5 @@
 "use client"
-import { SplineSceneBasic } from "@/app/components/UI/interaktif3D/demo";
+import { SplineSceneBasic } from "@/app/components/nextjs/interaktif3D/demo";
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { BimsSidebar } from "@/app/components/bims/BimsSidebar";
 import { useState, useEffect } from "react";

@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FooterDemo } from "@/app/components/bims/footer";
-import { TextRevealCardPreview } from "@/app/components/UI/reveal-card/demo";
+import { TextRevealCardPreview } from "@/app/components/nextjs/reveal-card/demo";
 
 export default function TextReveals() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");

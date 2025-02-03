@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FooterDemo } from "@/app/components/bims/footer";
-import { FloatingDockDemo } from "@/app/components/UI/floating-dock/demo";
+import { FloatingDockDemo } from "@/app/components/nextjs/floating-dock/demo";
 
 export default function FloatingDoctPreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");

@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 import { FooterDemo } from "@/app/components/bims/footer";
-import { TimelineDemo } from "@/app/components/UI/timeline/demo";
+import { TimelineDemo } from "@/app/components/nextjs/timeline/demo";
 
 export default function TimelinePreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");

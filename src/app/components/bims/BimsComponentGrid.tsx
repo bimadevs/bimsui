@@ -1,13 +1,30 @@
 import { Card } from "./Card";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence  } from "framer-motion";
 import Link from "next/link";
 
 interface BimsComponentGridProps {
   framework: "nextjs" | "html";
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 20 } },
+};
+
+
 export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
-  const components = [
+
+  const nextjs = [
     {
       id: "Spline",
       name: "Spline",
@@ -170,18 +187,46 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
     },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
+  const html = [
+    // {
+    //   id: "Simple Card",
+    //   name: "Simple Card",
+    //   description: "A simple HTML/CSS card component.",
+    //   category: "HTML",
+    //   image: "/images/simple-card.png",
+    //   link: "/html/simple-card",
+    // },
+    // {
+    //   id: "Hover Button",
+    //   name: "Hover Button",
+    //   description: "A button with a cool hover effect purely in HTML/CSS.",
+    //   category: "HTML",
+    //   image: "/images/hover-button.png",
+    //   link: "/html/hover-button",
+    // },
+    // {
+    //   id: "Responsive Nav",
+    //   name: "Responsive Nav",
+    //   description: "A navigation bar that adapts to your screen size.",
+    //   category: "HTML",
+    //   image: "/images/responsive-nav.png",
+    //   link: "/html/responsive-nav",
+    // },
+  ].sort((a, b) => a.name.localeCompare(b.name));
+
+  const components = framework === "nextjs" ? nextjs : html;
+
+
   return (
     <div className="min-h-screen bg-black text-white py-12 md:px-4">
       <div className="max-w-6xl mx-auto">
-        <Link target="_blank" href={'https://wa.me/6282254044783'}>
-          <button className="bg-slate-800 my-12 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
+        <Link target="_blank" href={"https://wa.me/6282254044783"}>
+          <button className="bg-slate-800 my-12 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
             <span className="absolute inset-0 overflow-hidden rounded-full">
               <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </span>
-            <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10 ">
-              <span>
-                ✨ Request a component
-              </span>
+            <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
+              <span>✨ Request a component</span>
               <svg
                 fill="none"
                 height="16"
@@ -201,33 +246,44 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
             <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
           </button>
         </Link>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {components.map((component) => (
-            <Link key={component.id} href={component.link}>
+
+        {/* Animasi grid container */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <AnimatePresence>
+            {components.map((component) => (
               <motion.div
-                className="relative  group rounded-lg overflow-hidden bg-neutral-900 p-6 border border-neutral-800 hover:shadow-2xl transition-shadow duration-300"
-                whileHover={{ scale: 1.02 }}
+                key={component.id}
+                variants={itemVariants}
+                exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
               >
-                <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                  <img
-                    src={component.image}
-                    alt={component.name}
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="text-left">
-                  <p className="text-sm mb-2 text-blue-500">{component.category}</p>
-                  <h2 className="text-xl font-semibold mb-2">
-                    {component.name}
-                  </h2>
-                  <p className="text-sm text-neutral-400">
-                    {component.description}
-                  </p>
-                </div>
+                <Link href={component.link}>
+                  <motion.div
+                    className="relative group rounded-lg overflow-hidden bg-neutral-900 p-6 border border-neutral-800 hover:shadow-2xl transition-shadow duration-300"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                      <img
+                        src={component.image}
+                        alt={component.name}
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-sm mb-2 text-blue-500">{component.category}</p>
+                      <h2 className="text-xl font-semibold mb-2">{component.name}</h2>
+                      <p className="text-sm text-neutral-400">{component.description}</p>
+                    </div>
+                  </motion.div>
+                </Link>
               </motion.div>
-            </Link>
-          ))}
-        </div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );
