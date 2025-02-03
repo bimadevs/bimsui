@@ -319,7 +319,7 @@ export default function FloatingDoctPreview() {
           onFrameworkChange={setFramework}
         />
         <main className="pt-20 flex-1 w-[100vw] ">
-          <div className={`transition-all px-10 duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+          <div className={`transition-all px-2 md:px-10 duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
             <div className="p-6">
               <h1 className="text-3xl font-bold">{judul}</h1>
               <p className="text-muted-foreground mt-2">{deskripsi}</p>
