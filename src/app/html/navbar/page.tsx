@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import { FooterDemo } from "@/app/components/bims/footer";
 import { CodeBlock } from "@/app/components/bims/CodeBlok";
 import { NavbarOne, NavbarThree, NavbarTwo } from "@/app/components/html/navbar";
+import Loading from "@/app/loading";
 
 export default function FloatingDoctPreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -308,6 +310,18 @@ export default function FloatingDoctPreview() {
   const judul = "Navbar"
   const deskripsi = "A cool navbar with html and css or tailwind"
 
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">

@@ -8,10 +8,12 @@ import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'
 import { FooterDemo } from "@/app/components/bims/footer";
 import { AnimatedDemo } from "@/app/components/nextjs/animated-gradient-background/demo";
 import { DemoHeroGeometric } from "@/app/components/nextjs/shape-landing-hero/demo";
+import Loading from "@/app/loading";
 
 export default function CarouselPreview() {
     const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
     const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -278,6 +280,19 @@ export default function CarouselPreview() {
             )}
         </div>
     );
+
+    // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
 
     return (
         <div className="min-h-screen bg-background overflow-x-hidden">

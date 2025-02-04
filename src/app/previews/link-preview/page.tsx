@@ -7,10 +7,12 @@ import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pi
 import { FaRegCopy, FaCheck, FaClipboard, FaRegClipboard } from 'react-icons/fa'; // Menggunakan ikon copy dari react-icons
 import { FooterDemo } from "@/app/components/bims/footer";
 import { LinkPreviewDemo } from "@/app/components/nextjs/link-preview/demo";
+import Loading from "@/app/loading";
 
 export default function TextReveals() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -266,6 +268,19 @@ export default function TextReveals() {
       )}
     </div>
   );
+
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">

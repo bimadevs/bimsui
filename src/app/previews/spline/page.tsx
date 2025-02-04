@@ -7,10 +7,14 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaRegCopy, FaCheck } from 'react-icons/fa'; // Ikon lebih minimalis
 import { FooterDemo } from "@/app/components/bims/footer";
+import Loading from "@/app/loading";
+
+
 
 export default function Splite() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
@@ -29,6 +33,9 @@ export default function Splite() {
     // Cleanup
     return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
+
+  
+
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const dependencies = `npm i framer-motion clsx tailwind-merge @splinetool/runtime @splinetool/react-spline`
@@ -295,7 +302,18 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
       )}
     </div>
   );
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />

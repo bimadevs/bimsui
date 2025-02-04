@@ -7,10 +7,13 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Pilih style sesuai keinginan
 import { FaRegCopy, FaCheck, FaClipboard } from "react-icons/fa";
 import { FooterDemo } from "../components/bims/footer";
+import Loading from "../loading";
 
 export default function InsatallTailwind() {
     const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -84,6 +87,19 @@ module.exports = {
     const indextsx = `export default function Home() {
     return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
   }`
+
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
     return (
         <div className="min-h-screen bg-background">
             <BimsNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />

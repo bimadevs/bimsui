@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import { FooterDemo } from "@/app/components/bims/footer";
 import { CodeBlock } from "@/app/components/bims/CodeBlok";
 import { CardEight, CardFive, Cardfour, CardNine, CardOne, CardSeven, CardSix, CardThree, CardTwo } from "@/app/components/html/card";
+import Loading from "@/app/loading";
 
 export default function HtmlCard() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -2169,6 +2171,19 @@ const css9 = `.card {
 
   const judul = "Card"
   const deskripsi = "A cool Cards with html and css or tailwind"
+
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
 
 
   return (

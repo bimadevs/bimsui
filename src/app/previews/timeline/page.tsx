@@ -7,10 +7,12 @@ import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 import { FooterDemo } from "@/app/components/bims/footer";
 import { TimelineDemo } from "@/app/components/nextjs/timeline/demo";
+import Loading from "@/app/loading";
 
 export default function TimelinePreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
@@ -306,6 +308,19 @@ export default function TimelinePreview() {
       .catch(err => {
         console.error('Failed to copy: ', err);
       });
+  };
+
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
   };
 
   const CopyIcon = ({ id, code }: { id: string, code: string }) => (

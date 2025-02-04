@@ -8,10 +8,12 @@ import { FaRegCopy, FaCheck } from 'react-icons/fa';
 import { FooterDemo } from "@/app/components/bims/footer";
 import { ThreeDCardDemo } from "@/app/components/nextjs/3d-card-effect/demo";
 import { WithRotationDemo } from "@/app/components/nextjs/3d-card-effect/with-rotation";
+import Loading from "@/app/loading";
 
 export default function ThreeDCardPreview() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
@@ -346,6 +348,19 @@ export default function ThreeDCardPreview() {
       )}
     </div>
   );
+
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">

@@ -7,10 +7,12 @@ import { FaRegCopy, FaCheck } from 'react-icons/fa'; // Menggunakan ikon copy da
 import { AnimeNavBarDemo } from "@/app/components/nextjs/anime-navbar/demo";
 import { BimsNavbar } from "@/app/components/bims/BimsNavbar";
 import { FooterDemo } from "@/app/components/bims/footer";
+import Loading from "@/app/loading";
 
 export default function animeNavbat() {
   const [framework, setFramework] = useState<"html" | "nextjs">("nextjs");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -410,6 +412,19 @@ module.exports = {
       )}
     </div>
   );
+
+  // Simulasi proses loading (misalnya 2 detik)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Jika isLoading true, tampilkan animasi loading
+  if (isLoading) {
+    return <Loading />;
+  };
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
