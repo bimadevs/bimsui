@@ -14,13 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: "https://ui.bimadev.xyz/install-nextjs",
             lastModified: currentDate,
             changeFrequency: "monthly",
-            priority: 0.9,
+            priority: 0.8,
         },
         {
             url: "https://ui.bimadev.xyz/install-tailwind",
             lastModified: currentDate,
             changeFrequency: "monthly",
-            priority: 0.9,
+            priority: 0.7,
         },
         {
             url: "https://ui.bimadev.xyz/previews/3d-card-effect",
@@ -137,6 +137,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.5,
         },
         {
+            url: "https://ui.bimadev.xyz/html/button",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
+        {
             url: "https://ui.bimadev.xyz/html/card",
             lastModified: currentDate,
             changeFrequency: "monthly",
@@ -144,6 +150,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: "https://ui.bimadev.xyz/html/navbar",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
+        {
+            url: "https://ui.bimadev.xyz/html/tooltip",
             lastModified: currentDate,
             changeFrequency: "monthly",
             priority: 0.5,
