@@ -16,17 +16,9 @@ interface MenuItem {
 
 export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSidebarProps) => {
     const HTML: MenuItem[] = [
-        { name: "Card", href: "/html/card",isNew: true },
+        { name: "Card", href: "/html/card", isNew: true },
         { name: "Navbar", href: "/html/navbar", isNew: true },
-        // { name: "Forms", href: "/html/forms" },
-        // { name: "Navigation", href: "/html/navigation" },
-        // { name: "Modal", href: "/html/modal" },
-        // { name: "Table", href: "/html/table" },
-        // { name: "Container", href: "/html/container" },
-        // { name: "Grid", href: "/html/grid" },
-        // { name: "Stack", href: "/html/stack" },
-        // { name: "Installation", href: "/html/installation" },
-        // { name: "Usage", href: "/html/usage" },
+        { name: "Button", href: "/html/button", isNew: true },
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const NextJs: MenuItem[] = [
@@ -40,7 +32,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Scroll Animation", href: "/previews/scroll-animation" },
         { name: "Text Reveal", href: "/previews/text-reveal" },
         { name: "Animate Tabs", href: "/previews/animate-tabs" },
-        { name: "Hero Parallax", href: "/previews/hero-parallax" }, 
+        { name: "Hero Parallax", href: "/previews/hero-parallax" },
         { name: "Timeline", href: "/previews/timeline" },
         { name: "Animated Gradient Background", href: "/previews/animated-gradient-background" },
         { name: "Carousel", href: "/previews/carousel" },

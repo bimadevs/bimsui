@@ -204,14 +204,14 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       image: "/images/html/navbar.png",
       link: "/html/navbar",
     },
-    // {
-    //   id: "Responsive Nav",
-    //   name: "Responsive Nav",
-    //   description: "A navigation bar that adapts to your screen size.",
-    //   category: "HTML",
-    //   image: "/images/responsive-nav.png",
-    //   link: "/html/responsive-nav",
-    // },
+    {
+      id: "Button",
+      name: "Button",
+      description: "A cool HTML/CSS or Tailwind button component.",
+      category: "HTML",
+      image: "/images/html/button.png",
+      link: "/html/button",
+    },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   const components = framework === "nextjs" ? nextjs : html;
