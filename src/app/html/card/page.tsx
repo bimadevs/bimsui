@@ -1311,7 +1311,7 @@ export default function HtmlCard() {
    /* Non-prefixed version, currently
 									supported by Chrome, Edge, Opera and Firefox */
 }`
-const html8 = `<div class="card">
+  const html8 = `<div class="card">
         <button class="mail">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
         </button>
@@ -1770,7 +1770,7 @@ const html8 = `<div class="card">
            </div>
         </div>
     </div>`
-const css8 = ` .card {
+  const css8 = ` .card {
   width: 280px;
   height: 280px;
   background: white;
@@ -1948,7 +1948,7 @@ const css8 = ` .card {
   transform: scale(2.5);
   transition: all 0.5s ease-in-out 0.5s;
 }`
-const html9 = `<div class="main">
+  const html9 = `<div class="main">
 <div class="card">
   <div class="heading">UltraFlex</div>
   <div class="details">Beste Design till date.<br>Flex it up as you wish,<br> but you can't break it.</div>
@@ -2049,7 +2049,7 @@ OjAwbhzgtAAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xNlQxMjozMDo1MSswMDowMDkJ
 wWsAAAAASUVORK5CYII="></image>
 </svg>
 </div>`
-const css9 = `.card {
+  const css9 = `.card {
   position: relative;
   top: 2em;
   width: 12.5em;
@@ -2196,154 +2196,154 @@ const css9 = `.card {
           onFrameworkChange={setFramework}
         />
         <main className="pt-20 flex-1 w-[100vw] ">
-          <div className={`transition-all px-2 md:px-10 duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-            <div className="p-6">
+          <div className={`transition-all  duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="px-2 md:px-10">
               <h1 className="text-3xl font-bold">{judul}</h1>
               <p className="text-muted-foreground mt-2">{deskripsi}</p>
 
-            </div>
 
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardFive />
-            </div>
-            <div className="mt-4 ">
-              {/* card 5 */}
-              <CodeBlock
-                language="jsx"
-                filename="DummyComponent.jsx"
-                tabs={[
-                  { name: "index.html", code: html5, language: "html" },
-                  {
-                    name: "style.css",
-                    code: css5,
-                    language: "css",
-                  },
-                ]}
-              />
-            </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardFive />
+              </div>
+              <div className="mt-4 ">
+                {/* card 5 */}
+                <CodeBlock
+                  language="jsx"
+                  filename="DummyComponent.jsx"
+                  tabs={[
+                    { name: "index.html", code: html5, language: "html" },
+                    {
+                      name: "style.css",
+                      code: css5,
+                      language: "css",
+                    },
+                  ]}
+                />
+              </div>
 
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardSix />
-            </div>
-            <div className="mt-4 ">
-              {/* card 6 */}
-              <CodeBlock
-                language="jsx"
-                filename="DummyComponent.jsx"
-                tabs={[
-                  { name: "index.html", code: html6, language: "html" },
-                  {
-                    name: "style.css",
-                    code: css6,
-                    language: "css",
-                  },
-                ]}
-              />
-            </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardSix />
+              </div>
+              <div className="mt-4 ">
+                {/* card 6 */}
+                <CodeBlock
+                  language="jsx"
+                  filename="DummyComponent.jsx"
+                  tabs={[
+                    { name: "index.html", code: html6, language: "html" },
+                    {
+                      name: "style.css",
+                      code: css6,
+                      language: "css",
+                    },
+                  ]}
+                />
+              </div>
 
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardSeven />
-            </div>
-            <div className="mt-4 ">
-              {/* card 7 */}
-              <CodeBlock
-                language="jsx"
-                filename="DummyComponent.jsx"
-                tabs={[
-                  { name: "index.html", code: html7, language: "html" },
-                  {
-                    name: "style.css",
-                    code: css7,
-                    language: "css",
-                  },
-                ]}
-              />
-            </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardSeven />
+              </div>
+              <div className="mt-4 ">
+                {/* card 7 */}
+                <CodeBlock
+                  language="jsx"
+                  filename="DummyComponent.jsx"
+                  tabs={[
+                    { name: "index.html", code: html7, language: "html" },
+                    {
+                      name: "style.css",
+                      code: css7,
+                      language: "css",
+                    },
+                  ]}
+                />
+              </div>
 
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardOne />
-            </div>
-            <div className="mt-4 ">
-              {/* card 1 */}
-              <CodeBlock
-                language="html"
-                filename="index.html + tailwindcsss"
-                code={html1}
-              />
-            </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardOne />
+              </div>
+              <div className="mt-4 ">
+                {/* card 1 */}
+                <CodeBlock
+                  language="html"
+                  filename="index.html + tailwindcsss"
+                  code={html1}
+                />
+              </div>
 
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardEight />
-            </div>
-            <div className="mt-4 ">
-              {/* card 8 */}
-              <CodeBlock
-                language="jsx"
-                filename="DummyComponent.jsx"
-                tabs={[
-                  { name: "index.html", code: html8, language: "html" },
-                  {
-                    name: "style.css",
-                    code: css8,
-                    language: "css",
-                  },
-                ]}
-              />
-            </div>
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardNine />
-            </div>
-            <div className="mt-4 ">
-              {/* card 8 */}
-              <CodeBlock
-                language="jsx"
-                filename="DummyComponent.jsx"
-                tabs={[
-                  { name: "index.html", code: html9, language: "html" },
-                  {
-                    name: "style.css",
-                    code: css9,
-                    language: "css",
-                  },
-                ]}
-              />
-            </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardEight />
+              </div>
+              <div className="mt-4 ">
+                {/* card 8 */}
+                <CodeBlock
+                  language="jsx"
+                  filename="DummyComponent.jsx"
+                  tabs={[
+                    { name: "index.html", code: html8, language: "html" },
+                    {
+                      name: "style.css",
+                      code: css8,
+                      language: "css",
+                    },
+                  ]}
+                />
+              </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardNine />
+              </div>
+              <div className="mt-4 ">
+                {/* card 8 */}
+                <CodeBlock
+                  language="jsx"
+                  filename="DummyComponent.jsx"
+                  tabs={[
+                    { name: "index.html", code: html9, language: "html" },
+                    {
+                      name: "style.css",
+                      code: css9,
+                      language: "css",
+                    },
+                  ]}
+                />
+              </div>
 
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardTwo />
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardTwo />
+              </div>
+              <div className="mt-4 ">
+                {/* card 2 */}
+                <CodeBlock
+                  language="html"
+                  filename="index.html + tailwindcsss"
+                  code={html2}
+                />
+              </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <CardThree />
+              </div>
+              <div className="mt-4 ">
+                {/* card 3 */}
+                <CodeBlock
+                  language="html"
+                  filename="index.html + tailwindcsss"
+                  code={html3}
+                />
+              </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <Cardfour />
+              </div>
+              <div className="mt-4 ">
+                {/* card 4 */}
+                <CodeBlock
+                  language="html"
+                  filename="index.html + tailwindcsss"
+                  code={html4}
+                />
+              </div>
             </div>
-            <div className="mt-4 ">
-              {/* card 2 */}
-              <CodeBlock
-                language="html"
-                filename="index.html + tailwindcsss"
-                code={html2}
-              />
-            </div>
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <CardThree />
-            </div>
-            <div className="mt-4 ">
-              {/* card 3 */}
-              <CodeBlock
-                language="html"
-                filename="index.html + tailwindcsss"
-                code={html3}
-              />
-            </div>
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <Cardfour />
-            </div>
-            <div className="mt-4 ">
-              {/* card 4 */}
-              <CodeBlock
-                language="html"
-                filename="index.html + tailwindcsss"
-                code={html4}
-              />
-            </div>
-          </div>
           <FooterDemo />
+          </div>
         </main>
       </div>
     </div>

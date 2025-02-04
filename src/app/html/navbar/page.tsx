@@ -333,62 +333,62 @@ export default function FloatingDoctPreview() {
           onFrameworkChange={setFramework}
         />
         <main className="pt-20 flex-1 w-[100vw] ">
-          <div className={`transition-all px-2 md:px-10 duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
-            <div className="p-6">
+          <div className={`transition-all  duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+            <div className="px-2 md:px-10">
               <h1 className="text-3xl font-bold">{judul}</h1>
               <p className="text-muted-foreground mt-2">{deskripsi}</p>
 
-            </div>
 
-            <div className=" border-dashed border-2 p-4 mt-4 flex justify-center items-center">
-              <NavbarOne />
+              <div className=" border-dashed border-2 p-4 mt-4 flex justify-center items-center">
+                <NavbarOne />
+              </div>
+              <div className="mt-4 ">
+                {/* navbar 1 */}
+                <CodeBlock
+                  language="jsx"
+                  filename="DummyComponent.jsx"
+                  tabs={[
+                    { name: "index.html", code: html1, language: "html" },
+                    {
+                      name: "style.css",
+                      code: css1,
+                      language: "css",
+                    },
+                  ]}
+                />
+              </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <NavbarTwo />
+              </div>
+              <div className="mt-4 ">
+                {/* navbar 1 */}
+                <CodeBlock
+                  language="jsx"
+                  filename="DummyComponent.jsx"
+                  tabs={[
+                    { name: "index.html", code: html2, language: "html" },
+                    {
+                      name: "style.css",
+                      code: css2,
+                      language: "css",
+                    },
+                  ]}
+                />
+              </div>
+              <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
+                <NavbarThree />
+              </div>
+              <div className="mt-4 ">
+                {/* navbar 1 */}
+                <CodeBlock
+                  language="html"
+                  filename="index.html + tailwindcsss"
+                  code={html3}
+                />
+              </div>
             </div>
-            <div className="mt-4 ">
-              {/* navbar 1 */}
-              <CodeBlock
-                language="jsx"
-                filename="DummyComponent.jsx"
-                tabs={[
-                  { name: "index.html", code: html1, language: "html" },
-                  {
-                    name: "style.css",
-                    code: css1,
-                    language: "css",
-                  },
-                ]}
-              />
-            </div>
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <NavbarTwo />
-            </div>
-            <div className="mt-4 ">
-              {/* navbar 1 */}
-              <CodeBlock
-                language="jsx"
-                filename="DummyComponent.jsx"
-                tabs={[
-                  { name: "index.html", code: html2, language: "html" },
-                  {
-                    name: "style.css",
-                    code: css2,
-                    language: "css",
-                  },
-                ]}
-              />
-            </div>
-            <div className=" border-dashed border-2 p-4 mt-10 flex justify-center items-center">
-              <NavbarThree />
-            </div>
-            <div className="mt-4 ">
-              {/* navbar 1 */}
-              <CodeBlock
-                language="html"
-                filename="index.html + tailwindcsss"
-                code={html3}
-              />
-            </div>
+            <FooterDemo />
           </div>
-          <FooterDemo />
         </main>
       </div>
     </div>

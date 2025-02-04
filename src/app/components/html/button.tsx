@@ -615,5 +615,4 @@ const StyledFour = styled.div`
         to {
           transform: translateX(-10px);
         }
-      }`;
-
+}`;

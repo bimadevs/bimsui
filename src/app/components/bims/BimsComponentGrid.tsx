@@ -212,6 +212,14 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       image: "/images/html/button.png",
       link: "/html/button",
     },
+    {
+      id: "Tooltip",
+      name: "Tooltip",
+      description: "A cool HTML/CSS or Tailwind tooltip component.",
+      category: "HTML",
+      image: "/images/html/tooltip.png",
+      link: "/html/tooltip",
+    },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   const components = framework === "nextjs" ? nextjs : html;

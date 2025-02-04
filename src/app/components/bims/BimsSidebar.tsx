@@ -19,6 +19,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Card", href: "/html/card", isNew: true },
         { name: "Navbar", href: "/html/navbar", isNew: true },
         { name: "Button", href: "/html/button", isNew: true },
+        { name: "Tooltip", href: "/html/tooltip", isNew: true },
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const NextJs: MenuItem[] = [
