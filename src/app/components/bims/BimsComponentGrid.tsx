@@ -185,6 +185,14 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       image: "/images/lens.png",
       link: "/previews/lens"
     },
+    {
+      id: "Loaders",
+      name: "Loaders",
+      description: "A cool loaders with React and CSS",
+      category: "NextJS",
+      image: "/images/loaders.png",
+      link: "/previews/loaders"
+    },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   const html = [
@@ -219,6 +227,14 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "HTML",
       image: "/images/html/tooltip.png",
       link: "/html/tooltip",
+    },
+    {
+      id: "Loaders",
+      name: "Loaders",
+      description: "A cool HTML/CSS or Tailwind loaders component.",
+      category: "HTML",
+      image: "/images/html/loaders.png",
+      link: "/html/loaders",
     },
   ].sort((a, b) => a.name.localeCompare(b.name));
 

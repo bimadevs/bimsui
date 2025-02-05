@@ -20,6 +20,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Navbar", href: "/html/navbar", isNew: true },
         { name: "Button", href: "/html/button", isNew: true },
         { name: "Tooltip", href: "/html/tooltip", isNew: true },
+        { name: "Loaders", href: "/html/loaders", isNew: true },
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const NextJs: MenuItem[] = [
@@ -43,6 +44,7 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Animated Tooltip", href: "/previews/animated-tooltip", isNew: true }, // Tandai sebagai new
         { name: "Floating Dock", href: "/previews/floating-dock", isNew: true }, // Tandai sebagai new
         { name: "Lens", href: "/previews/lens", isNew: true }, // Tandai sebagai new
+        { name: "Loaders", href: "/previews/loaders", isNew: true }, // Tandai sebagai new
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const installasi: MenuItem[] = [
