@@ -137,6 +137,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.5,
         },
         {
+            url: "https://ui.bimadev.xyz/previews/loaders",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
+        {
             url: "https://ui.bimadev.xyz/html/button",
             lastModified: currentDate,
             changeFrequency: "monthly",
@@ -156,6 +162,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: "https://ui.bimadev.xyz/html/tooltip",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
+        {
+            url: "https://ui.bimadev.xyz/html/loaders",
             lastModified: currentDate,
             changeFrequency: "monthly",
             priority: 0.5,
