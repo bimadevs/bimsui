@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "BimsUI",
     url: "https://ui.bimadev.xyz",
-    ogImage: "https://ui.bimadev.xyz/images/preview-web.png",
+    ogImage: "https://ui.bimadev.xyz/og-image.png",
     description:
         "Copy, paste and customize our ui into your project design easily.",
     links: {
