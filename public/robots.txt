@@ -1,8 +1,21 @@
-# *
+# **** BimsUI Robots.txt ****
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
 
-# Host
+# Allow search engines to access images
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.png$
+Allow: /*.webp$
+
+# Crawl delay untuk mengontrol rate crawling
+Crawl-delay: 10
+
+# Host  
 Host: https://ui.bimadev.xyz
 
 # Sitemaps
