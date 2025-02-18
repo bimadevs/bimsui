@@ -6,6 +6,16 @@ interface BimsComponentGridProps {
   framework: "nextjs" | "html";
 }
 
+interface ComponentItem {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  image: string;
+  link: string;
+  isNew?: boolean;
+}
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -24,7 +34,7 @@ const itemVariants = {
 
 export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
 
-  const nextjs = [
+  const nextjs: ComponentItem[] = [
     {
       id: "Spline",
       name: "Spline",
@@ -191,11 +201,47 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       description: "A cool loaders with React and CSS",
       category: "NextJS",
       image: "/images/loaders.png",
-      link: "/previews/loaders"
+      link: "/previews/loaders",
+    },
+    {
+      id: "Grid Gallery",
+      name: "Grid Gallery",
+      description: "A grid gallery with smooth animation and filter.",
+      category: "NextJS",
+      image: "/images/grid-gallery.png",
+      link: "/previews/grid-gallery",
+      isNew: true
+    },
+    {
+      id: "Infinite Marquee",
+      name: "Infinite Marquee",
+      description: "A infinite marquee for testimonials smooth animation.",
+      category: "NextJS",
+      image: "/images/marquee.png",
+      link: "/previews/infinite-marquee",
+      isNew: true
+    },
+    {
+      id: "Particle Text",
+      name: "Particle Text",
+      description: "A particle text cool animation and mouse interaction",
+      category: "NextJS",
+      image: "/images/particle-text.png",
+      link: "/previews/particle-text",
+      isNew: true
+    },
+    {
+      id: "Visualizer",
+      name: "Visualizer",
+      description: "A audio visualizer for music with smooth animation and controls.",
+      category: "NextJS",
+      image: "/images/visualizer.png",
+      link: "/previews/visualizer",
+      isNew: true
     },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
-  const html = [
+  const html: ComponentItem[] = [
     {
       id: "Card",
       name: "Card",
@@ -203,6 +249,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "HTML",
       image: "/images/html/card.png",
       link: "/html/card",
+      isNew: true
     },
     {
       id: "Navbar",
@@ -211,6 +258,8 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "HTML",
       image: "/images/html/navbar.png",
       link: "/html/navbar",
+      isNew: true
+
     },
     {
       id: "Button",
@@ -219,6 +268,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "HTML",
       image: "/images/html/button.png",
       link: "/html/button",
+      isNew: true
     },
     {
       id: "Tooltip",
@@ -227,6 +277,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "HTML",
       image: "/images/html/tooltip.png",
       link: "/html/tooltip",
+      isNew: true
     },
     {
       id: "Loaders",
@@ -235,11 +286,18 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "HTML",
       image: "/images/html/loaders.png",
       link: "/html/loaders",
+      isNew: true
     },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   const components = framework === "nextjs" ? nextjs : html;
 
+  // Urutkan components dengan item "new" di atas
+  const sortedComponents = [...components].sort((a, b) => {
+    if (a.isNew && !b.isNew) return -1;
+    if (!b.isNew && a.isNew) return 1;
+    return a.name.localeCompare(b.name);
+  });
 
   return (
     <div className="min-h-screen bg-black text-white py-12 md:px-4">
@@ -279,7 +337,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
           animate="visible"
         >
           <AnimatePresence>
-            {components.map((component) => (
+            {sortedComponents.map((component) => (
               <motion.div
                 key={component.id}
                 variants={itemVariants}
@@ -287,7 +345,7 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
               >
                 <Link href={component.link}>
                   <motion.div
-                    className="relative group rounded-lg overflow-hidden bg-neutral-900 p-6 border border-neutral-800 hover:shadow-2xl transition-shadow duration-300"
+                    className="relative  group rounded-lg overflow-hidden bg-neutral-900 p-6 border border-neutral-800 hover:shadow-2xl transition-shadow duration-300"
                     whileHover={{ scale: 1.02 }}
                   >
                     <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
@@ -296,6 +354,13 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
                         alt={component.name}
                         className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                       />
+                      {component.isNew && (
+                        <div className="absolute top-2 right-2">
+                          <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
+                            New
+                          </span>
+                        </div>
+                      )}
                     </div>
                     <div className="text-left">
                       <p className="text-sm mb-2 text-blue-500">{component.category}</p>

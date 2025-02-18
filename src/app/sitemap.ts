@@ -11,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
+            url: "https://ui.bimadev.xyz/components",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
+        {
             url: "https://ui.bimadev.xyz/install-nextjs",
             lastModified: currentDate,
             changeFrequency: "monthly",
@@ -18,6 +24,60 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: "https://ui.bimadev.xyz/install-tailwind",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
+            url: "https://ui.bimadev.xyz/previews/grid-gallery",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/previews/infinite-marquee",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/previews/particle-text",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/previews/visualizer",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/html/card",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/html/navbar",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/html/button",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/html/tooltip",
+            lastModified: currentDate,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        },
+        {
+            url: "https://ui.bimadev.xyz/html/loaders",
             lastModified: currentDate,
             changeFrequency: "monthly",
             priority: 0.7,
@@ -136,41 +196,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "monthly",
             priority: 0.5,
         },
-        {
-            url: "https://ui.bimadev.xyz/previews/loaders",
-            lastModified: currentDate,
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-        {
-            url: "https://ui.bimadev.xyz/html/button",
-            lastModified: currentDate,
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-        {
-            url: "https://ui.bimadev.xyz/html/card",
-            lastModified: currentDate,
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-        {
-            url: "https://ui.bimadev.xyz/html/navbar",
-            lastModified: currentDate,
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-        {
-            url: "https://ui.bimadev.xyz/html/tooltip",
-            lastModified: currentDate,
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-        {
-            url: "https://ui.bimadev.xyz/html/loaders",
-            lastModified: currentDate,
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-    ];
+    ].sort((a, b) => a.url.localeCompare(b.url));
 }

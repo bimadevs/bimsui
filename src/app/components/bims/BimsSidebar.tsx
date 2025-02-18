@@ -40,11 +40,15 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Carousel", href: "/previews/carousel" },
         { name: "Link Preview", href: "/previews/link-preview" },
         { name: "Shape Landing Hero", href: "/previews/shape-landing-hero" },
-        { name: "3D Card Effect", href: "/previews/3d-card-effect", isNew: true }, // Tandai sebagai new
-        { name: "Animated Tooltip", href: "/previews/animated-tooltip", isNew: true }, // Tandai sebagai new
-        { name: "Floating Dock", href: "/previews/floating-dock", isNew: true }, // Tandai sebagai new
-        { name: "Lens", href: "/previews/lens", isNew: true }, // Tandai sebagai new
+        { name: "3D Card Effect", href: "/previews/3d-card-effect" },
+        { name: "Animated Tooltip", href: "/previews/animated-tooltip" },
+        { name: "Floating Dock", href: "/previews/floating-dock" },
+        { name: "Lens", href: "/previews/lens" },
         { name: "Loaders", href: "/previews/loaders", isNew: true }, // Tandai sebagai new
+        { name: "Grid Gallery", href: "/previews/grid-gallery", isNew: true }, // Tandai sebagai new
+        { name: "Infinite Marquee", href: "/previews/infinite-marquee", isNew: true }, // Tandai sebagai new
+        { name: "Particle Text", href: "/previews/particle-text", isNew: true }, // Tandai sebagai new
+        { name: "Visualizer", href: "/previews/visualizer", isNew: true }, // Tandai sebagai new
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const installasi: MenuItem[] = [
@@ -54,6 +58,13 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
     ];
 
     const components = framework === "nextjs" ? NextJs : HTML;
+    
+    // Urutkan components dengan item "new" di atas
+    const sortedComponents = [...components].sort((a, b) => {
+        if (a.isNew && !b.isNew) return -1;
+        if (!a.isNew && b.isNew) return 1;
+        return a.name.localeCompare(b.name);
+    });
 
     return (
         <motion.aside
@@ -116,13 +127,13 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
                             </>
                         )}
                         <h1 className="font-bold text-xl mt-4">All Components</h1>
-                        {components.map((component) => (
+                        {sortedComponents.map((component) => (
                             <motion.li
                                 key={component.name}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{
-                                    delay: 0.1 * components.indexOf(component),
+                                    delay: 0.1 * sortedComponents.indexOf(component),
                                     duration: 0.3,
                                 }}
                             >
