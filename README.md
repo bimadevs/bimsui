@@ -9,22 +9,6 @@
 
 BimsUI is a collection of modern UI components built with Next.js, Tailwind CSS, and Framer Motion. This library provides beautiful and interactive components for modern web development.
 
-## 🚀 Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
 ## ✨ Key Features
 
 - 🎨 20+ Modern UI Components
