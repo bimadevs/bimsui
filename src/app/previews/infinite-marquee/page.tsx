@@ -36,7 +36,7 @@ export default function MagneticPage() {
   const dependencies = `npm i motion react-icons`
 
   const demotsx = `"use client"
-import { SocialTestimonialsMarquee } from "./marquee"
+import { SocialTestimonialsMarquee } from "./app/components/ui/marquee"
 
 const testimonials = [
   {

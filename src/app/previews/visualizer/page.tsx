@@ -36,15 +36,15 @@ export default function VisualizerPage() {
   const dependencies = `npm i motion react-icons`
 
   const demotsx = `"use client"
-import { MagneticEffect } from "./magnetic"
+import { AudioVisualizer } from "./app/components/ui/visualizer"
 
-export function MagneticEffectDemo() {
+export function AudioVisualizerDemo() {
   return (
-    <div className="w-full">
-      <MagneticEffect />
+    <div className="w-full min-h-[600px] bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-8">
+      <AudioVisualizer />
     </div>
   )
-}`;
+} `;
 
   const Code = `"use client"
 import { useEffect, useRef, useState } from "react"
