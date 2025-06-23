@@ -12,7 +12,7 @@ export const BimsNavbar = ({ onMenuClick }: BimsNavbarProps) => {
           <button className="text-primary-foreground hover:text-primary transition-colors" onClick={onMenuClick}>
             <Menu className="h-5 w-5" />
           </button>
-          <a href="/components" className="text-xl font-semibold hover:text-blue-500">BimsUI</a>
+          <a href="/" className="text-xl font-semibold hover:text-blue-500">BimsUI</a>
         </div>
         {/* <div className="flex items-center space-x-4">
           <a

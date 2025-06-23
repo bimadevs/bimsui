@@ -210,7 +210,6 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "NextJS",
       image: "/images/grid-gallery.png",
       link: "/previews/grid-gallery",
-      isNew: true
     },
     {
       id: "Infinite Marquee",
@@ -219,7 +218,6 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "NextJS",
       image: "/images/marquee.png",
       link: "/previews/infinite-marquee",
-      isNew: true
     },
     {
       id: "Particle Text",
@@ -228,7 +226,6 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "NextJS",
       image: "/images/particle-text.png",
       link: "/previews/particle-text",
-      isNew: true
     },
     {
       id: "Visualizer",
@@ -237,6 +234,23 @@ export const BimsComponentGrid = ({ framework }: BimsComponentGridProps) => {
       category: "NextJS",
       image: "/images/visualizer.png",
       link: "/previews/visualizer",
+    },
+    {
+      id: "Lightning Text",
+      name: "Lightning Text",
+      description: "A lightning text with cool animation.",
+      category: "NextJS",
+      image: "/images/lightning-text.png",
+      link: "/previews/lightning-text",
+      isNew: true
+    },
+    {
+      id: "Side Panel Video",
+      name: "Side Panel Video",
+      description: "A side panel video with smooth animation and responsive design",
+      category: "NextJS",
+      image: "/images/side-panel-video.png",
+      link: "/previews/side-panel-video",
       isNew: true
     },
   ].sort((a, b) => a.name.localeCompare(b.name));

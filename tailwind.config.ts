@@ -28,10 +28,24 @@ export default {
             transform: 'translateX(100%)',
           },
         },
+        particle: {
+          '0%': {
+            transform: 'translate(var(--tx-start), var(--ty-start)) scale(0)',
+            opacity: '0'
+          },
+          '50%': {
+            opacity: '1'
+          },
+          '100%': {
+            transform: 'translate(var(--tx-end), var(--ty-end)) scale(1)',
+            opacity: '0'
+          }
+        }
       },
       animation: {
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         'pulse-bg': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'particle': 'particle 1s ease-in-out infinite',
       },
     },
   },

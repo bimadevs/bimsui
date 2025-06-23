@@ -14,11 +14,12 @@
     "@lottiefiles/dotlottie-react": "^0.12.2",
     "@radix-ui/react-hover-card": "^1.1.5",
     "@radix-ui/react-slot": "^1.1.1",
-    "@react-three/drei": "^9.121.5",
-    "@react-three/fiber": "^8.17.14",
+    "@react-three/drei": "^10.3.0",
+    "@react-three/fiber": "^9.1.2",
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.59",
     "@tabler/icons-react": "^3.29.0",
+    "@types/three": "^0.177.0",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "class-variance-authority": "^0.7.1",
@@ -26,8 +27,9 @@
     "dicons": "^1.1.7",
     "fortawesome": "^0.0.1-security",
     "framer-motion": "^12.0.5",
-    "gsap": "^3.12.7",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.473.0",
+    "motion": "^12.18.2",
     "next": "^15.1.6",
     "next-sitemap": "^4.2.3",
     "next-themes": "^0.4.4",
@@ -37,10 +39,13 @@
     "react-icon": "^1.0.0",
     "react-icon-cloud": "^4.1.7",
     "react-icons": "^5.4.0",
+    "react-player": "^2.16.0",
     "react-syntax-highlighter": "^15.6.1",
     "styled-components": "^6.1.14",
     "tailwind-merge": "^2.6.0",
-    "three": "^0.173.0"
+    "three": "^0.177.0",
+    "three-stdlib": "^2.36.0",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -51,6 +56,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "postcss": "^8",
+    "raw-loader": "^4.0.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

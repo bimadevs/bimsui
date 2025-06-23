@@ -44,11 +44,13 @@ export const BimsSidebar = ({ isOpen, framework, onFrameworkChange }: BimsSideba
         { name: "Animated Tooltip", href: "/previews/animated-tooltip" },
         { name: "Floating Dock", href: "/previews/floating-dock" },
         { name: "Lens", href: "/previews/lens" },
-        { name: "Loaders", href: "/previews/loaders", isNew: true }, // Tandai sebagai new
-        { name: "Grid Gallery", href: "/previews/grid-gallery", isNew: true }, // Tandai sebagai new
-        { name: "Infinite Marquee", href: "/previews/infinite-marquee", isNew: true }, // Tandai sebagai new
-        { name: "Particle Text", href: "/previews/particle-text", isNew: true }, // Tandai sebagai new
-        { name: "Visualizer", href: "/previews/visualizer", isNew: true }, // Tandai sebagai new
+        { name: "Loaders", href: "/previews/loaders" },
+        { name: "Grid Gallery", href: "/previews/grid-gallery" },
+        { name: "Infinite Marquee", href: "/previews/infinite-marquee" },
+        { name: "Particle Text", href: "/previews/particle-text" },
+        { name: "Visualizer", href: "/previews/visualizer" },
+        { name: "Lightning Text", href: "/previews/lightning-text", isNew: true }, // Tandai sebagai new
+        { name: "Side Panel Video", href: "/previews/side-panel-video", isNew: true }, // Tandai sebagai new
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const installasi: MenuItem[] = [
